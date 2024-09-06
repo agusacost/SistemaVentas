@@ -57,7 +57,7 @@
             this.Acerca});
             this.menu2.Location = new System.Drawing.Point(0, 60);
             this.menu2.Name = "menu2";
-            this.menu2.Size = new System.Drawing.Size(800, 71);
+            this.menu2.Size = new System.Drawing.Size(1058, 71);
             this.menu2.TabIndex = 0;
             this.menu2.Text = "menuStrip1";
             this.menu2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menu2_ItemClicked);
@@ -160,7 +160,7 @@
             this.menuTitulo.Location = new System.Drawing.Point(0, 0);
             this.menuTitulo.Name = "menuTitulo";
             this.menuTitulo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menuTitulo.Size = new System.Drawing.Size(800, 60);
+            this.menuTitulo.Size = new System.Drawing.Size(1058, 60);
             this.menuTitulo.TabIndex = 1;
             this.menuTitulo.Text = "menuStrip2";
             this.menuTitulo.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip2_ItemClicked);
@@ -183,7 +183,7 @@
             this.Contenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Contenedor.Location = new System.Drawing.Point(0, 131);
             this.Contenedor.Name = "Contenedor";
-            this.Contenedor.Size = new System.Drawing.Size(800, 319);
+            this.Contenedor.Size = new System.Drawing.Size(1058, 428);
             this.Contenedor.TabIndex = 3;
             this.Contenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -191,13 +191,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1058, 559);
             this.Controls.Add(this.Contenedor);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menu2);
             this.Controls.Add(this.menuTitulo);
             this.MainMenuStrip = this.menu2;
             this.Name = "Inicio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Inicio_Load);
             this.menu2.ResumeLayout(false);

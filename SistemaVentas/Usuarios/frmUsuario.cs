@@ -102,5 +102,10 @@ namespace SistemaVentas.Usuarios
             frmAddUsuario form = new frmAddUsuario();
             form.Show();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

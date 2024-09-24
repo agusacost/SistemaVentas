@@ -46,5 +46,10 @@ namespace SistemaVentas.Usuarios
         {
 
         }
+
+        private void frmAddUsuario_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

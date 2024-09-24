@@ -45,6 +45,7 @@
             this.btnAgregar = new FontAwesome.Sharp.IconButton();
             this.btnCancelar = new FontAwesome.Sharp.IconButton();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblNom
@@ -193,7 +194,7 @@
             this.btnAgregar.BackColor = System.Drawing.Color.Green;
             this.btnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnAgregar.ForeColor = System.Drawing.Color.White;
-            this.btnAgregar.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.btnAgregar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
             this.btnAgregar.IconColor = System.Drawing.Color.White;
             this.btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAgregar.IconSize = 16;
@@ -232,12 +233,21 @@
             this.label3.TabIndex = 19;
             this.label3.Text = "Agregar Usuario";
             // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(357, 89);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(30, 20);
+            this.txtId.TabIndex = 20;
+            this.txtId.Visible = false;
+            // 
             // frmAddUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ClientSize = new System.Drawing.Size(507, 512);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregar);
@@ -257,6 +267,7 @@
             this.Controls.Add(this.lblNom);
             this.Name = "frmAddUsuario";
             this.Text = "frmAddUsuario";
+            this.Load += new System.EventHandler(this.frmAddUsuario_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,5 +292,6 @@
         private FontAwesome.Sharp.IconButton btnAgregar;
         private FontAwesome.Sharp.IconButton btnCancelar;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtId;
     }
 }

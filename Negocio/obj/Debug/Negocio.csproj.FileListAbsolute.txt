@@ -1,0 +1,13 @@
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\Negocio\bin\Debug\Negocio.dll
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\Negocio\bin\Debug\Negocio.pdb
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\Negocio\bin\Debug\Data.dll
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\Negocio\bin\Debug\Entidades.dll
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\Negocio\bin\Debug\Data.pdb
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\Negocio\bin\Debug\Entidades.pdb
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\Negocio\obj\Debug\Negocio.csproj.Up2Date
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\Negocio\obj\Debug\Negocio.dll
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\Negocio\obj\Debug\Negocio.pdb
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\Negocio\bin\Debug\System.Data.SqlClient.dll
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\Negocio\bin\Debug\System.Data.SqlClient.xml

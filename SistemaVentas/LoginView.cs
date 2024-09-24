@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Negocio;
+using Entidades;
+
 namespace SistemaVentas
 {
     public partial class LoginView : Form
@@ -44,22 +47,39 @@ namespace SistemaVentas
 
         private void ingresarBtn_Click(object sender, EventArgs e)
         {
-            Inicio form = new Inicio();
+            List<Usuario> TEST = new N_User().Listar();
+            Usuario ousuario = new N_User().Listar().Where(u => (u.Documento == txtDocumento.Text) && (u.Clave == txtClave.Text)).FirstOrDefault();
+            
+            if (ousuario != null)
+            {
 
-            form.Show();
-            this.Hide();
+                Inicio form = new Inicio(ousuario);
 
-            form.FormClosing += frm_closing;
+                form.Show();
+                this.Hide();
+
+                form.FormClosing += frm_closing;
+            }
+            else
+            {
+                MessageBox.Show("No se encontro el usuario", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
         }
 
         private void frm_closing(object sender, FormClosingEventArgs e)
         {
             txtDocumento.Text = "";
-            txtPass.Text = "";
+            txtClave.Text = "";
             this.Show();
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDocumento_TextChanged(object sender, EventArgs e)
         {
 
         }

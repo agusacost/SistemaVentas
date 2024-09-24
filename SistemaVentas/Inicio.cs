@@ -24,9 +24,13 @@ namespace SistemaVentas
         private static Usuario usuarioLogged;
         private static IconMenuItem MenuActivo = null;
         private static Form formActivo = null;
-        public Inicio(Usuario objusuario)
+        public Inicio(Usuario objusuario = null)
         {
-            usuarioLogged = objusuario;
+            if (objusuario == null) 
+                usuarioLogged = new Usuario() { NombreCompleto= "ADMIN PREDEFINIDO", IdUsuario = 1};
+            else
+                usuarioLogged = objusuario;
+
             InitializeComponent();
         }
 
@@ -66,7 +70,7 @@ namespace SistemaVentas
             formulario.TopLevel = false;
             formulario.FormBorderStyle = FormBorderStyle.None;
             formulario.Dock = DockStyle.Fill;
-            formulario.BackColor = Color.SteelBlue;
+            formulario.BackColor = Color.White;
 
             Container.Controls.Add(formulario);
             formulario.Show();

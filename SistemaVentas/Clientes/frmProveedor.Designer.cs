@@ -28,34 +28,71 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.userlabel = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // userlabel
+            // dataGridView1
             // 
-            this.userlabel.AutoSize = true;
-            this.userlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userlabel.Location = new System.Drawing.Point(338, 210);
-            this.userlabel.Name = "userlabel";
-            this.userlabel.Size = new System.Drawing.Size(110, 31);
-            this.userlabel.TabIndex = 1;
-            this.userlabel.Text = "hola prv";
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 101);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(776, 337);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(12, 66);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(776, 32);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.SlateGray;
+            this.label2.Location = new System.Drawing.Point(12, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(776, 43);
+            this.label2.TabIndex = 2;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton1.IconColor = System.Drawing.Color.Black;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.Location = new System.Drawing.Point(700, 12);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(75, 31);
+            this.iconButton1.TabIndex = 3;
+            this.iconButton1.Text = "iconButton1";
+            this.iconButton1.UseVisualStyleBackColor = true;
             // 
             // frmProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.userlabel);
+            this.Controls.Add(this.iconButton1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dataGridView1);
             this.Name = "frmProveedor";
             this.Text = "frmProveedor";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label userlabel;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }

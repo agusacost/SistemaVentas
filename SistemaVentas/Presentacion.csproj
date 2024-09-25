@@ -92,6 +92,12 @@
     <Compile Include="LoginView.Designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Producto\frmAddProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Producto\frmAddProducto.Designer.cs">
+      <DependentUpon>frmAddProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Producto\frmCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Producto\frmAddProducto.resx">
+      <DependentUpon>frmAddProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\frmCategoria.resx">
       <DependentUpon>frmCategoria.cs</DependentUpon>

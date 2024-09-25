@@ -53,7 +53,7 @@
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(1202, 38);
             this.labelName.TabIndex = 14;
-            this.labelName.Text = "Listado de Ventas";
+            this.labelName.Text = "Agregar Venta";
             this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnEliminar

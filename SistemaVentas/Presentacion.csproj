@@ -56,11 +56,23 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clientes\frmAddCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\frmAddCliente.Designer.cs">
+      <DependentUpon>frmAddCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clientes\frmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Clientes\frmCliente.Designer.cs">
       <DependentUpon>frmCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\frmEditCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\frmEditCliente.Designer.cs">
+      <DependentUpon>frmEditCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Clientes\frmProveedor.cs">
       <SubType>Form</SubType>
@@ -142,8 +154,14 @@
     <Compile Include="Ventas\frmVentas.Designer.cs">
       <DependentUpon>frmVentas.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Clientes\frmAddCliente.resx">
+      <DependentUpon>frmAddCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clientes\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\frmEditCliente.resx">
+      <DependentUpon>frmEditCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Clientes\frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>

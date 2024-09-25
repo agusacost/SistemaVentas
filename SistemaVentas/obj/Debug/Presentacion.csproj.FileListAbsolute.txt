@@ -31,3 +31,36 @@ C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Deb
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Ventas.frmVentaDetalle.resources
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Usuarios.frmAddUsuario.resources
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Producto.frmAddProducto.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\bin\Debug\SistemaVentas.exe.config
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\bin\Debug\SistemaVentas.exe
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\bin\Debug\SistemaVentas.pdb
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\bin\Debug\Entidades.dll
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\bin\Debug\Negocio.dll
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\bin\Debug\Data.dll
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\bin\Debug\Entidades.pdb
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\bin\Debug\Negocio.pdb
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\bin\Debug\Data.pdb
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\Presentacion.csproj.AssemblyReference.cache
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.Clientes.frmAddCliente.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.Clientes.frmCliente.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.Clientes.frmEditCliente.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.Clientes.frmProveedor.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.Compras.frmCompraDetalle.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.Compras.frmCompras.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.Inicio.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.LoginView.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.Producto.frmAddProducto.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.Producto.frmCategoria.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.Producto.frmProducto.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.Properties.Resources.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.Reportes.frmReporte.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.Usuarios.frmAddUsuario.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.Usuarios.frmUsuario.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.Ventas.frmVentaDetalle.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.Ventas.frmVentas.resources
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\Presentacion.csproj.GenerateResource.cache
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\Presentacion.csproj.CoreCompileInputs.cache
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\Presenta.BC77CD05.Up2Date
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.exe
+C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.pdb

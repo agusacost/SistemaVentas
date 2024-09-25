@@ -32,8 +32,8 @@
             this.btnEliminar = new FontAwesome.Sharp.IconButton();
             this.btnEditar = new FontAwesome.Sharp.IconButton();
             this.btnAgregar = new FontAwesome.Sharp.IconButton();
-            this.labelName = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.labelName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,32 +107,35 @@
             this.btnAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAgregar.UseVisualStyleBackColor = false;
             // 
-            // labelName
-            // 
-            this.labelName.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelName.Location = new System.Drawing.Point(0, 76);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(1067, 38);
-            this.labelName.TabIndex = 4;
-            this.labelName.Text = "Lista de clientes";
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 131);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 131);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1209, 545);
+            this.dataGridView1.Size = new System.Drawing.Size(1195, 545);
             this.dataGridView1.TabIndex = 5;
+            // 
+            // labelName
+            // 
+            this.labelName.BackColor = System.Drawing.SystemColors.Control;
+            this.labelName.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelName.Location = new System.Drawing.Point(12, 76);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(1202, 38);
+            this.labelName.TabIndex = 13;
+            this.labelName.Text = "Lista de clientes";
+            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1411, 688);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.labelName);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnEliminar);
@@ -151,7 +154,7 @@
         private FontAwesome.Sharp.IconButton btnEliminar;
         private FontAwesome.Sharp.IconButton btnEditar;
         private FontAwesome.Sharp.IconButton btnAgregar;
-        private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label labelName;
     }
 }

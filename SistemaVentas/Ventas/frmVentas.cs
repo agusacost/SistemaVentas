@@ -16,5 +16,10 @@ namespace SistemaVentas.Ventas
         {
             InitializeComponent();
         }
+
+        private void userlabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

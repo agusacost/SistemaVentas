@@ -16,5 +16,12 @@ namespace SistemaVentas.Clientes
         {
             InitializeComponent();
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+      
     }
 }

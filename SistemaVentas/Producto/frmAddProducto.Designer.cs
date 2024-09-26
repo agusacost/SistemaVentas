@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.label3 = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.TDescripcion = new System.Windows.Forms.TextBox();
             this.lblNom = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.TCantidad = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.TCodigo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.CBCategoria = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.TPrecioCompra = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CBEstado = new System.Windows.Forms.ComboBox();
             this.btnAgregar = new FontAwesome.Sharp.IconButton();
             this.btnCancelar = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
@@ -57,15 +57,15 @@
             this.label3.TabIndex = 20;
             this.label3.Text = "Agregar Producto";
             // 
-            // txtNombre
+            // TDescripcion
             // 
-            this.txtNombre.BackColor = System.Drawing.SystemColors.Control;
-            this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNombre.Location = new System.Drawing.Point(159, 254);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(362, 22);
-            this.txtNombre.TabIndex = 22;
+            this.TDescripcion.BackColor = System.Drawing.SystemColors.Control;
+            this.TDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TDescripcion.Location = new System.Drawing.Point(159, 254);
+            this.TDescripcion.Margin = new System.Windows.Forms.Padding(4);
+            this.TDescripcion.Name = "TDescripcion";
+            this.TDescripcion.Size = new System.Drawing.Size(362, 22);
+            this.TDescripcion.TabIndex = 22;
             // 
             // lblNom
             // 
@@ -78,15 +78,15 @@
             this.lblNom.TabIndex = 21;
             this.lblNom.Text = "Descripcion:";
             // 
-            // textBox1
+            // TNombre
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(159, 196);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(362, 22);
-            this.textBox1.TabIndex = 24;
+            this.TNombre.BackColor = System.Drawing.SystemColors.Control;
+            this.TNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TNombre.Location = new System.Drawing.Point(159, 196);
+            this.TNombre.Margin = new System.Windows.Forms.Padding(4);
+            this.TNombre.Name = "TNombre";
+            this.TNombre.Size = new System.Drawing.Size(362, 22);
+            this.TNombre.TabIndex = 24;
             // 
             // label1
             // 
@@ -100,15 +100,15 @@
             this.label1.Text = "Cantidad:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox2
+            // TCantidad
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(158, 374);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(362, 22);
-            this.textBox2.TabIndex = 26;
+            this.TCantidad.BackColor = System.Drawing.SystemColors.Control;
+            this.TCantidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TCantidad.Location = new System.Drawing.Point(158, 374);
+            this.TCantidad.Margin = new System.Windows.Forms.Padding(4);
+            this.TCantidad.Name = "TCantidad";
+            this.TCantidad.Size = new System.Drawing.Size(362, 22);
+            this.TCantidad.TabIndex = 26;
             // 
             // label2
             // 
@@ -121,15 +121,15 @@
             this.label2.TabIndex = 25;
             this.label2.Text = "Nombre";
             // 
-            // textBox3
+            // TCodigo
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Location = new System.Drawing.Point(158, 138);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(362, 22);
-            this.textBox3.TabIndex = 28;
+            this.TCodigo.BackColor = System.Drawing.SystemColors.Control;
+            this.TCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TCodigo.Location = new System.Drawing.Point(158, 138);
+            this.TCodigo.Margin = new System.Windows.Forms.Padding(4);
+            this.TCodigo.Name = "TCodigo";
+            this.TCodigo.Size = new System.Drawing.Size(362, 22);
+            this.TCodigo.TabIndex = 28;
             // 
             // label4
             // 
@@ -142,16 +142,16 @@
             this.label4.TabIndex = 27;
             this.label4.Text = "Codigo:";
             // 
-            // comboBox2
+            // CBCategoria
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(159, 315);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(362, 24);
-            this.comboBox2.TabIndex = 29;
+            this.CBCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CBCategoria.FormattingEnabled = true;
+            this.CBCategoria.Location = new System.Drawing.Point(159, 315);
+            this.CBCategoria.Margin = new System.Windows.Forms.Padding(4);
+            this.CBCategoria.Name = "CBCategoria";
+            this.CBCategoria.Size = new System.Drawing.Size(362, 24);
+            this.CBCategoria.TabIndex = 29;
             // 
             // label5
             // 
@@ -164,15 +164,15 @@
             this.label5.TabIndex = 30;
             this.label5.Text = "Categoria";
             // 
-            // textBox4
+            // TPrecioCompra
             // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Location = new System.Drawing.Point(159, 432);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(362, 22);
-            this.textBox4.TabIndex = 32;
+            this.TPrecioCompra.BackColor = System.Drawing.SystemColors.Control;
+            this.TPrecioCompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TPrecioCompra.Location = new System.Drawing.Point(159, 432);
+            this.TPrecioCompra.Margin = new System.Windows.Forms.Padding(4);
+            this.TPrecioCompra.Name = "TPrecioCompra";
+            this.TPrecioCompra.Size = new System.Drawing.Size(362, 22);
+            this.TPrecioCompra.TabIndex = 32;
             // 
             // label6
             // 
@@ -196,16 +196,16 @@
             this.label7.TabIndex = 34;
             this.label7.Text = "Estado:";
             // 
-            // comboBox1
+            // CBEstado
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(158, 490);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(362, 24);
-            this.comboBox1.TabIndex = 33;
+            this.CBEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CBEstado.FormattingEnabled = true;
+            this.CBEstado.Location = new System.Drawing.Point(158, 490);
+            this.CBEstado.Margin = new System.Windows.Forms.Padding(4);
+            this.CBEstado.Name = "CBEstado";
+            this.CBEstado.Size = new System.Drawing.Size(362, 24);
+            this.CBEstado.TabIndex = 33;
             // 
             // btnAgregar
             // 
@@ -225,6 +225,7 @@
             this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnCancelar
             // 
@@ -243,6 +244,7 @@
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmAddProducto
             // 
@@ -253,18 +255,18 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.CBEstado);
+            this.Controls.Add(this.TPrecioCompra);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.CBCategoria);
+            this.Controls.Add(this.TCodigo);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.TCantidad);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TNombre);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.TDescripcion);
             this.Controls.Add(this.lblNom);
             this.Controls.Add(this.label3);
             this.Name = "frmAddProducto";
@@ -278,20 +280,20 @@
         #endregion
 
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox TDescripcion;
         private System.Windows.Forms.Label lblNom;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TNombre;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox TCantidad;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox TCodigo;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox CBCategoria;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox TPrecioCompra;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CBEstado;
         private FontAwesome.Sharp.IconButton btnAgregar;
         private FontAwesome.Sharp.IconButton btnCancelar;
     }

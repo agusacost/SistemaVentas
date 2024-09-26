@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,18 +11,13 @@ using System.Windows.Forms;
 
 namespace SistemaVentas.Producto
 {
-    public partial class frmAddProducto : Form
+    public partial class frmEditProducto : Form
     {
-        public frmAddProducto()
+        public frmEditProducto()
         {
             InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void TCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        private void TCantidadE_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Permitir solo números (caracteres entre '0' y '9') y el carácter de control (backspace)
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -30,7 +25,7 @@ namespace SistemaVentas.Producto
                 e.Handled = true; // Cancela el evento si no es número o backspace
             }
         }
-        private void TPrecioCompra_KeyPress(object sender, KeyPressEventArgs e)
+        private void TPrecioCompraE_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
@@ -44,7 +39,7 @@ namespace SistemaVentas.Producto
             }
         }
 
-        private void TNombre_KeyPress(object sender, KeyPressEventArgs e)
+        private void TNombreE_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Permitir solo letras, teclas de control (como Backspace) y espacio
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
@@ -52,23 +47,22 @@ namespace SistemaVentas.Producto
                 e.Handled = true;  // Bloquea el ingreso de la tecla
             }
         }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnAgregarE_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(TNombre.Text))
+            if (string.IsNullOrWhiteSpace(TNombreE.Text))
             {
                 MessageBox.Show("El campo Nombre es obligatorio.");
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(TDescripcion.Text))
+            if (string.IsNullOrWhiteSpace(TDescripcionE.Text))
             {
                 MessageBox.Show("El campo Descripción es obligatorio.");
                 return;
             }
 
             // Validación de Categoría
-            if (CBCategoria.SelectedIndex < 1)
+            if (CBCategoriaE.SelectedIndex < 1)
             {
                 MessageBox.Show("Debe seleccionar una categoría.");
                 return;
@@ -76,7 +70,7 @@ namespace SistemaVentas.Producto
 
             // Validación de Stock
             int stock;
-            if (!int.TryParse(TCantidad.Text, out stock) || stock < 0)
+            if (!int.TryParse(TCantidadE.Text, out stock) || stock < 0)
             {
                 MessageBox.Show("Ingrese un valor válido para el Stock (debe ser un número positivo).");
                 return;
@@ -84,37 +78,36 @@ namespace SistemaVentas.Producto
 
             // Validación de Precio
             decimal precio;
-            if (!decimal.TryParse(TPrecioCompra.Text, out precio) || precio <= 0)
+            if (!decimal.TryParse(TPrecioCompraE.Text, out precio) || precio <= 0)
             {
                 MessageBox.Show("Ingrese un valor válido para el Precio (debe ser mayor a cero).");
                 return;
             }
 
             // Validación de Estado
-            if (CBEstado.SelectedIndex < 1)
+            if (CBEstadoE.SelectedIndex < 1)
             {
                 MessageBox.Show("Debe seleccionar un estado (Activo o Inactivo).");
                 return;
             }
 
             //validaciones de longitudes
-            if (TNombre.Text.Length <= 5)
+            if (TNombreE.Text.Length <= 5)
             {
-                MessageBox.Show("El nombre debe tener al menos 5 caracteres.");
+                MessageBox.Show("La clave debe tener al menos 5 caracteres.");
                 return;
             }
-            if (TDescripcion.Text.Length >= 50)
+            if (TDescripcionE.Text.Length >= 50)
             {
-                MessageBox.Show("La descripcion no debe mas tener 50 caracteres.");
+                MessageBox.Show("La clave no debe tener 50 caracteres.");
                 return;
             }
 
             // Si todas las validaciones pasan, guarda el producto
-            MessageBox.Show("Producto guardado correctamente.");
-
+            MessageBox.Show("Producto editado correctamente.");
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnCancelarE_Click(object sender, EventArgs e)
         {
             this.Close();
         }

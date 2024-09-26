@@ -34,14 +34,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtDocumento = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtClave = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtClaveConf = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.CBRol = new System.Windows.Forms.ComboBox();
+            this.CBEstado = new System.Windows.Forms.ComboBox();
             this.btnAgregar = new FontAwesome.Sharp.IconButton();
             this.btnCancelar = new FontAwesome.Sharp.IconButton();
             this.label3 = new System.Windows.Forms.Label();
@@ -64,7 +64,7 @@
             this.txtNombre.BackColor = System.Drawing.SystemColors.Control;
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Location = new System.Drawing.Point(155, 145);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(362, 22);
             this.txtNombre.TabIndex = 1;
@@ -75,7 +75,7 @@
             this.txtCorreo.BackColor = System.Drawing.SystemColors.Control;
             this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCorreo.Location = new System.Drawing.Point(155, 276);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(362, 22);
             this.txtCorreo.TabIndex = 3;
@@ -96,7 +96,7 @@
             this.txtDocumento.BackColor = System.Drawing.SystemColors.Control;
             this.txtDocumento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDocumento.Location = new System.Drawing.Point(155, 213);
-            this.txtDocumento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDocumento.Margin = new System.Windows.Forms.Padding(4);
             this.txtDocumento.Name = "txtDocumento";
             this.txtDocumento.Size = new System.Drawing.Size(362, 22);
             this.txtDocumento.TabIndex = 5;
@@ -113,15 +113,15 @@
             this.label2.Text = "Numero de Documento:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // textBox4
+            // txtClave
             // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Location = new System.Drawing.Point(155, 340);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(362, 22);
-            this.textBox4.TabIndex = 9;
+            this.txtClave.BackColor = System.Drawing.SystemColors.Control;
+            this.txtClave.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtClave.Location = new System.Drawing.Point(155, 340);
+            this.txtClave.Margin = new System.Windows.Forms.Padding(4);
+            this.txtClave.Name = "txtClave";
+            this.txtClave.Size = new System.Drawing.Size(362, 22);
+            this.txtClave.TabIndex = 9;
             // 
             // label4
             // 
@@ -134,16 +134,16 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Clave:";
             // 
-            // textBox5
+            // txtClaveConf
             // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Location = new System.Drawing.Point(155, 404);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(362, 22);
-            this.textBox5.TabIndex = 11;
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            this.txtClaveConf.BackColor = System.Drawing.SystemColors.Control;
+            this.txtClaveConf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtClaveConf.Location = new System.Drawing.Point(155, 404);
+            this.txtClaveConf.Margin = new System.Windows.Forms.Padding(4);
+            this.txtClaveConf.Name = "txtClaveConf";
+            this.txtClaveConf.Size = new System.Drawing.Size(362, 22);
+            this.txtClaveConf.TabIndex = 11;
+            this.txtClaveConf.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // label5
             // 
@@ -181,27 +181,27 @@
             this.label7.Text = "Estado";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // comboBox1
+            // CBRol
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(155, 469);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 24);
-            this.comboBox1.TabIndex = 14;
+            this.CBRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CBRol.FormattingEnabled = true;
+            this.CBRol.Location = new System.Drawing.Point(155, 469);
+            this.CBRol.Margin = new System.Windows.Forms.Padding(4);
+            this.CBRol.Name = "CBRol";
+            this.CBRol.Size = new System.Drawing.Size(160, 24);
+            this.CBRol.TabIndex = 14;
             // 
-            // comboBox2
+            // CBEstado
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(356, 469);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(160, 24);
-            this.comboBox2.TabIndex = 15;
+            this.CBEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CBEstado.FormattingEnabled = true;
+            this.CBEstado.Location = new System.Drawing.Point(356, 469);
+            this.CBEstado.Margin = new System.Windows.Forms.Padding(4);
+            this.CBEstado.Name = "CBEstado";
+            this.CBEstado.Size = new System.Drawing.Size(160, 24);
+            this.CBEstado.TabIndex = 15;
             // 
             // btnAgregar
             // 
@@ -213,7 +213,7 @@
             this.btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAgregar.IconSize = 16;
             this.btnAgregar.Location = new System.Drawing.Point(155, 521);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(152, 39);
             this.btnAgregar.TabIndex = 16;
@@ -221,6 +221,7 @@
             this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnCancelar
             // 
@@ -231,7 +232,7 @@
             this.btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCancelar.IconSize = 16;
             this.btnCancelar.Location = new System.Drawing.Point(365, 521);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(152, 39);
             this.btnCancelar.TabIndex = 18;
@@ -239,6 +240,7 @@
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // label3
             // 
@@ -253,7 +255,7 @@
             // txtId
             // 
             this.txtId.Location = new System.Drawing.Point(476, 110);
-            this.txtId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtId.Margin = new System.Windows.Forms.Padding(4);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(39, 22);
             this.txtId.TabIndex = 20;
@@ -269,13 +271,13 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.CBEstado);
+            this.Controls.Add(this.CBRol);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtClaveConf);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtClave);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtDocumento);
             this.Controls.Add(this.label2);
@@ -283,7 +285,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblNom);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAddUsuario";
             this.Text = "frmAddUsuario";
             this.Load += new System.EventHandler(this.frmAddUsuario_Load);
@@ -300,14 +302,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDocumento;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtClave;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtClaveConf;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox CBRol;
+        private System.Windows.Forms.ComboBox CBEstado;
         private FontAwesome.Sharp.IconButton btnAgregar;
         private FontAwesome.Sharp.IconButton btnCancelar;
         private System.Windows.Forms.Label label3;

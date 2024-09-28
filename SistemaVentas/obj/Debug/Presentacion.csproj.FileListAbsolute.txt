@@ -64,3 +64,5 @@ C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj
 C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\Presenta.BC77CD05.Up2Date
 C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.exe
 C:\Users\54377\OneDrive\Desktop\Education\facu\Proyecto Taller\SistemaVentas\obj\Debug\SistemaVentas.pdb
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Clientes.frmAddCliente.resources
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Clientes.frmEditCliente.resources

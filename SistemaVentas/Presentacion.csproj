@@ -142,6 +142,7 @@
     <Compile Include="Usuarios\frmUsuario.Designer.cs">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\OpcionCombo.cs" />
     <Compile Include="Ventas\frmVentaDetalle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,6 +249,11 @@
       <Name>Negocio</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\5290058.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

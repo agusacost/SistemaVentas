@@ -7,14 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SistemaVentas.Utilities;
+using SistemaVentas.Usuarios;
+using Entidades;
+using Negocio;
 
 namespace SistemaVentas.Usuarios
 {
     public partial class frmAddUsuario : Form
     {
-        public frmAddUsuario()
+        private frmUsuario frmUsuario;
+        public frmAddUsuario(frmUsuario formUsuario)
         {
             InitializeComponent();
+            frmUsuario = formUsuario;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -49,7 +55,22 @@ namespace SistemaVentas.Usuarios
 
         private void frmAddUsuario_Load(object sender, EventArgs e)
         {
+            CBEstado.Items.Add(new OpcionCombo() { value = 1, Texto = "Activo" });
+            CBEstado.Items.Add(new OpcionCombo() { value = 2, Texto = "Inactivo" });
+            CBEstado.DisplayMember = "Texto";
+            CBEstado.ValueMember= "value";
+            CBEstado.SelectedIndex = 0;
 
+            List<Rol> listaRol = new N_Rol().Listar();
+
+            foreach(Rol item in listaRol)
+            {
+                CBRol.Items.Add(new OpcionCombo() { value = item.idRol, Texto = item.Descripcion });
+
+            }
+            CBRol.DisplayMember = "Texto";
+            CBRol.ValueMember = "value";
+            CBRol.SelectedIndex = 0;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -106,19 +127,27 @@ namespace SistemaVentas.Usuarios
                 MessageBox.Show("La contraseñas no coinciden.");
             }
 
-            // Validar que se seleccione un Estado
-            if (CBEstado.SelectedIndex == -1 || CBEstado.SelectedIndex == 0)
-            {
-                MessageBox.Show("Por favor, seleccione un estado.");
-                return;
-            }
 
-            // Validar que se seleccione un Rol
-            if (CBRol.SelectedIndex == -1 || CBRol.SelectedIndex == 0)
-            {
-                MessageBox.Show("Por favor, seleccione un rol.");
-                return;
-            }
+            frmUsuario.DgvData.Rows.Add(new object[] {"",txtId.Text,txtNombre.Text, txtDocumento.Text, txtCorreo.Text, txtClave.Text,
+                ((OpcionCombo)CBRol.SelectedItem).value.ToString(),
+                ((OpcionCombo)CBRol.SelectedItem).Texto.ToString(),
+                ((OpcionCombo)CBEstado.SelectedItem).Texto.ToString(),
+                ((OpcionCombo)CBEstado.SelectedItem).value.ToString(),
+            });
+            Limpiar();
+            
+        }
+
+        private void Limpiar()
+        {
+            txtId.Text = "0";
+            txtNombre.Text = "";
+            txtDocumento.Text = "";
+            txtCorreo.Text = "";
+            txtClave.Text = "";
+            txtClaveConf.Text = "";
+            CBEstado.SelectedIndex = 0;
+            CBRol.SelectedIndex = 0;
         }
         private void txtDocumento_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -149,6 +178,11 @@ namespace SistemaVentas.Usuarios
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void CBEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

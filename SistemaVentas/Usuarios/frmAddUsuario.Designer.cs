@@ -120,6 +120,7 @@
             this.txtClave.Location = new System.Drawing.Point(155, 340);
             this.txtClave.Margin = new System.Windows.Forms.Padding(4);
             this.txtClave.Name = "txtClave";
+            this.txtClave.PasswordChar = '*';
             this.txtClave.Size = new System.Drawing.Size(362, 22);
             this.txtClave.TabIndex = 9;
             // 
@@ -141,6 +142,7 @@
             this.txtClaveConf.Location = new System.Drawing.Point(155, 404);
             this.txtClaveConf.Margin = new System.Windows.Forms.Padding(4);
             this.txtClaveConf.Name = "txtClaveConf";
+            this.txtClaveConf.PasswordChar = '*';
             this.txtClaveConf.Size = new System.Drawing.Size(362, 22);
             this.txtClaveConf.TabIndex = 11;
             this.txtClaveConf.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
@@ -202,6 +204,7 @@
             this.CBEstado.Name = "CBEstado";
             this.CBEstado.Size = new System.Drawing.Size(160, 24);
             this.CBEstado.TabIndex = 15;
+            this.CBEstado.SelectedIndexChanged += new System.EventHandler(this.CBEstado_SelectedIndexChanged);
             // 
             // btnAgregar
             // 
@@ -259,7 +262,7 @@
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(39, 22);
             this.txtId.TabIndex = 20;
-            this.txtId.Visible = false;
+            this.txtId.Text = "0";
             // 
             // frmAddUsuario
             // 
@@ -267,6 +270,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ClientSize = new System.Drawing.Size(676, 630);
+            this.ControlBox = false;
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCancelar);
@@ -285,9 +289,13 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblNom);
+            this.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmAddUsuario";
-            this.Text = "frmAddUsuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Agregar Usuario";
             this.Load += new System.EventHandler(this.frmAddUsuario_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

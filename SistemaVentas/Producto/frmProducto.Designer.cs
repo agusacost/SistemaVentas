@@ -57,9 +57,9 @@
             this.btnAgregar.IconColor = System.Drawing.Color.White;
             this.btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAgregar.IconSize = 16;
-            this.btnAgregar.Location = new System.Drawing.Point(929, 12);
+            this.btnAgregar.Location = new System.Drawing.Point(871, 12);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(91, 44);
+            this.btnAgregar.Size = new System.Drawing.Size(106, 44);
             this.btnAgregar.TabIndex = 7;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -77,9 +77,9 @@
             this.btnEditar.IconColor = System.Drawing.Color.White;
             this.btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEditar.IconSize = 16;
-            this.btnEditar.Location = new System.Drawing.Point(1026, 12);
+            this.btnEditar.Location = new System.Drawing.Point(983, 12);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(91, 44);
+            this.btnEditar.Size = new System.Drawing.Size(106, 44);
             this.btnEditar.TabIndex = 6;
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -97,9 +97,9 @@
             this.btnEliminar.IconColor = System.Drawing.Color.White;
             this.btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEliminar.IconSize = 16;
-            this.btnEliminar.Location = new System.Drawing.Point(1123, 12);
+            this.btnEliminar.Location = new System.Drawing.Point(1095, 12);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(91, 44);
+            this.btnEliminar.Size = new System.Drawing.Size(106, 44);
             this.btnEliminar.TabIndex = 5;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -122,7 +122,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 76);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1202, 38);
+            this.label1.Size = new System.Drawing.Size(1195, 38);
             this.label1.TabIndex = 13;
             this.label1.Text = "Lista de productos";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

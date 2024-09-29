@@ -62,6 +62,12 @@
     <Compile Include="Clientes\frmAddCliente.Designer.cs">
       <DependentUpon>frmAddCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clientes\frmAddProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\frmAddProveedor.Designer.cs">
+      <DependentUpon>frmAddProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clientes\frmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,12 @@
     </Compile>
     <Compile Include="Clientes\frmEditCliente.Designer.cs">
       <DependentUpon>frmEditCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\frmEditProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\frmEditProveedor.Designer.cs">
+      <DependentUpon>frmEditProveedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Clientes\frmProveedor.cs">
       <SubType>Form</SubType>
@@ -158,11 +170,17 @@
     <EmbeddedResource Include="Clientes\frmAddCliente.resx">
       <DependentUpon>frmAddCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\frmAddProveedor.resx">
+      <DependentUpon>frmAddProveedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clientes\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Clientes\frmEditCliente.resx">
       <DependentUpon>frmEditCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\frmEditProveedor.resx">
+      <DependentUpon>frmEditProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Clientes\frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>

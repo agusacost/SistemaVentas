@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using Negocio;
+using SistemaVentas.Producto;
 using SistemaVentas.Utilities;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace SistemaVentas.Usuarios
     public partial class frmUsuario : Form
     {
         private frmAddUsuario frmAddUsuario;
+        private frmEditarUsuario frmEditarUsuario;
         public frmUsuario()
         {
             InitializeComponent();
@@ -112,18 +114,7 @@ namespace SistemaVentas.Usuarios
             get { return dgvdata; }
         }
 
-        private void btnAgregar_Click_1(object sender, EventArgs e)
-        {
-            if(frmAddUsuario == null || frmAddUsuario.IsDisposed)
-            {
-                frmAddUsuario = new frmAddUsuario(this);
-            frmAddUsuario.Show();
-            }
-            else
-            {
-                frmAddUsuario.Focus();
-            }
-        }
+        
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -210,6 +201,45 @@ namespace SistemaVentas.Usuarios
                 }
             }
 
+        }
+        private void btnAgregar_Click_1(object sender, EventArgs e)
+        {
+            if (frmEditarUsuario != null && !frmEditarUsuario.IsDisposed)
+            {
+                MessageBox.Show("No se puede abrir 'Agregar Usuario' mientras 'Editar Usuario' está abierto.");
+                frmEditarUsuario.Focus();
+                return;
+            }
+
+            if (frmAddUsuario == null || frmAddUsuario.IsDisposed)
+            {
+                frmAddUsuario = new frmAddUsuario(this);
+                frmAddUsuario.Show();
+            }
+            else
+            {
+                frmAddUsuario.Focus();
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (frmAddUsuario != null && !frmAddUsuario.IsDisposed)
+            {
+                MessageBox.Show("No se puede abrir 'Editar Usuario' mientras 'Agregar Usuario' está abierto.");
+                frmAddUsuario.Focus();
+                return;
+            }
+
+            if (frmEditarUsuario == null || frmEditarUsuario.IsDisposed)
+            {
+                frmEditarUsuario = new frmEditarUsuario();
+                frmEditarUsuario.Show();
+            }
+            else
+            {
+                frmEditarUsuario.Focus();
+            }
         }
     }
 }

@@ -68,3 +68,7 @@ C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Deb
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Clientes.frmEditCliente.resources
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Clientes.frmAddProveedor.resources
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Clientes.frmEditProveedor.resources
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Producto.frmEditarProducto.resources
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Producto.frmAddCategoria.resources
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Producto.frmEditarCategoria.resources
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Usuarios.frmEditarUsuario.resources

@@ -116,6 +116,12 @@
     <Compile Include="LoginView.Designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Producto\frmAddCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Producto\frmAddCategoria.Designer.cs">
+      <DependentUpon>frmAddCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="Producto\frmAddProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,18 @@
     </Compile>
     <Compile Include="Producto\frmCategoria.Designer.cs">
       <DependentUpon>frmCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Producto\frmEditarCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Producto\frmEditarCategoria.Designer.cs">
+      <DependentUpon>frmEditarCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Producto\frmEditarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Producto\frmEditarProducto.Designer.cs">
+      <DependentUpon>frmEditarProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="Producto\frmProducto.cs">
       <SubType>Form</SubType>
@@ -147,6 +165,12 @@
     </Compile>
     <Compile Include="Usuarios\frmAddUsuario.Designer.cs">
       <DependentUpon>frmAddUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\frmEditarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\frmEditarUsuario.Designer.cs">
+      <DependentUpon>frmEditarUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Usuarios\frmUsuario.cs">
       <SubType>Form</SubType>
@@ -197,11 +221,20 @@
     <EmbeddedResource Include="LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Producto\frmAddCategoria.resx">
+      <DependentUpon>frmAddCategoria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Producto\frmAddProducto.resx">
       <DependentUpon>frmAddProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\frmCategoria.resx">
       <DependentUpon>frmCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Producto\frmEditarCategoria.resx">
+      <DependentUpon>frmEditarCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Producto\frmEditarProducto.resx">
+      <DependentUpon>frmEditarProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\frmProducto.resx">
       <DependentUpon>frmProducto.cs</DependentUpon>
@@ -221,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\frmAddUsuario.resx">
       <DependentUpon>frmAddUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\frmEditarUsuario.resx">
+      <DependentUpon>frmEditarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>

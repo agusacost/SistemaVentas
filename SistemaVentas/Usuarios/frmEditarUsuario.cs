@@ -8,23 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SistemaVentas.Compras
+namespace SistemaVentas.Usuarios
 {
-    public partial class frmCompras : Form
+    public partial class frmEditarUsuario : Form
     {
-        public frmCompras()
+        public frmEditarUsuario()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

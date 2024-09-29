@@ -78,8 +78,7 @@
             this.Rol,
             this.Estado,
             this.EstadoValor});
-            this.dgvdata.Location = new System.Drawing.Point(16, 129);
-            this.dgvdata.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvdata.Location = new System.Drawing.Point(12, 105);
             this.dgvdata.MultiSelect = false;
             this.dgvdata.Name = "dgvdata";
             this.dgvdata.ReadOnly = true;
@@ -88,7 +87,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvdata.RowTemplate.Height = 28;
-            this.dgvdata.Size = new System.Drawing.Size(1184, 545);
+            this.dgvdata.Size = new System.Drawing.Size(888, 443);
             this.dgvdata.TabIndex = 2;
             this.dgvdata.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvdata_CellPainting);
             // 
@@ -180,10 +179,9 @@
             // 
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 77);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1184, 48);
+            this.label1.Size = new System.Drawing.Size(888, 39);
             this.label1.TabIndex = 3;
             this.label1.Text = "Lista de Usuarios";
             // 
@@ -192,8 +190,9 @@
             this.backLabel.BackColor = System.Drawing.Color.LightSlateGray;
             this.backLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.backLabel.Location = new System.Drawing.Point(0, 0);
+            this.backLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.backLabel.Name = "backLabel";
-            this.backLabel.Size = new System.Drawing.Size(1223, 67);
+            this.backLabel.Size = new System.Drawing.Size(917, 54);
             this.backLabel.TabIndex = 12;
             // 
             // label2
@@ -201,9 +200,10 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(577, 94);
+            this.label2.Location = new System.Drawing.Point(433, 76);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 16);
+            this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 16;
             this.label2.Text = "Buscar por:";
             this.label2.Click += new System.EventHandler(this.label2_Click_1);
@@ -213,10 +213,9 @@
             this.cbbusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbbusqueda.FormattingEnabled = true;
-            this.cbbusqueda.Location = new System.Drawing.Point(659, 90);
-            this.cbbusqueda.Margin = new System.Windows.Forms.Padding(4);
+            this.cbbusqueda.Location = new System.Drawing.Point(494, 73);
             this.cbbusqueda.Name = "cbbusqueda";
-            this.cbbusqueda.Size = new System.Drawing.Size(160, 24);
+            this.cbbusqueda.Size = new System.Drawing.Size(121, 21);
             this.cbbusqueda.TabIndex = 17;
             this.cbbusqueda.SelectedIndexChanged += new System.EventHandler(this.cbbusqueda_SelectedIndexChanged);
             // 
@@ -224,10 +223,9 @@
             // 
             this.txtBusqueda.BackColor = System.Drawing.Color.White;
             this.txtBusqueda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBusqueda.Location = new System.Drawing.Point(827, 90);
-            this.txtBusqueda.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBusqueda.Location = new System.Drawing.Point(620, 73);
             this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(243, 22);
+            this.txtBusqueda.Size = new System.Drawing.Size(183, 20);
             this.txtBusqueda.TabIndex = 18;
             this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
@@ -242,9 +240,10 @@
             this.btnLimpiar.IconColor = System.Drawing.Color.Black;
             this.btnLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLimpiar.IconSize = 16;
-            this.btnLimpiar.Location = new System.Drawing.Point(1138, 90);
+            this.btnLimpiar.Location = new System.Drawing.Point(854, 73);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(55, 22);
+            this.btnLimpiar.Size = new System.Drawing.Size(41, 18);
             this.btnLimpiar.TabIndex = 20;
             this.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -262,9 +261,10 @@
             this.btnBuscar.IconColor = System.Drawing.Color.Black;
             this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscar.IconSize = 16;
-            this.btnBuscar.Location = new System.Drawing.Point(1077, 89);
+            this.btnBuscar.Location = new System.Drawing.Point(808, 72);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(55, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(41, 19);
             this.btnBuscar.TabIndex = 19;
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -282,9 +282,10 @@
             this.btnAgregar.IconColor = System.Drawing.Color.White;
             this.btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAgregar.IconSize = 16;
-            this.btnAgregar.Location = new System.Drawing.Point(867, 12);
+            this.btnAgregar.Location = new System.Drawing.Point(650, 10);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(107, 44);
+            this.btnAgregar.Size = new System.Drawing.Size(80, 36);
             this.btnAgregar.TabIndex = 15;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -303,14 +304,16 @@
             this.btnEditar.IconColor = System.Drawing.Color.White;
             this.btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEditar.IconSize = 16;
-            this.btnEditar.Location = new System.Drawing.Point(980, 12);
+            this.btnEditar.Location = new System.Drawing.Point(735, 10);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(107, 44);
+            this.btnEditar.Size = new System.Drawing.Size(80, 36);
             this.btnEditar.TabIndex = 14;
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnEliminar
             // 
@@ -323,9 +326,10 @@
             this.btnEliminar.IconColor = System.Drawing.Color.White;
             this.btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEliminar.IconSize = 16;
-            this.btnEliminar.Location = new System.Drawing.Point(1093, 12);
+            this.btnEliminar.Location = new System.Drawing.Point(820, 10);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(107, 44);
+            this.btnEliminar.Size = new System.Drawing.Size(80, 36);
             this.btnEliminar.TabIndex = 13;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -334,10 +338,10 @@
             // 
             // frmUsuario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlText;
-            this.ClientSize = new System.Drawing.Size(1223, 688);
+            this.ClientSize = new System.Drawing.Size(917, 559);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBusqueda);
@@ -349,7 +353,6 @@
             this.Controls.Add(this.backLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvdata);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmUsuario";
             this.Text = " ";
             this.Load += new System.EventHandler(this.frmUsuario_Load);

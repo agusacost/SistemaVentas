@@ -15,6 +15,19 @@ namespace SistemaVentas.Reportes
         public frmReporte()
         {
             InitializeComponent();
+            ConfigurarDateTimePicker();
+        }
+
+        private void DateFechaFinC_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void ConfigurarDateTimePicker()
+        {
+            DateFechaInicioC.Format = DateTimePickerFormat.Custom;
+            DateFechaInicioC.CustomFormat = "yyyy-MM-dd";
+            DateFechaFinC.Format = DateTimePickerFormat.Custom;
+            DateFechaFinC.CustomFormat = "yyyy-MM-dd";
         }
     }
 }

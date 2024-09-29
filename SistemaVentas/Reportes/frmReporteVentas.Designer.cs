@@ -1,6 +1,6 @@
 ﻿namespace SistemaVentas.Reportes
 {
-    partial class frmReporte
+    partial class frmReporteVentas
     {
         /// <summary>
         /// Required designer variable.
@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CBBuscar = new System.Windows.Forms.ComboBox();
+            this.CBBuscarV = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.DataCompras = new System.Windows.Forms.DataGridView();
+            this.DataVentas = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
-            this.CBProveedorC = new System.Windows.Forms.ComboBox();
+            this.CBClientesV = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.DateFechaFinC = new System.Windows.Forms.DateTimePicker();
-            this.DateFechaInicioC = new System.Windows.Forms.DateTimePicker();
+            this.DateFechaFinV = new System.Windows.Forms.DateTimePicker();
+            this.DateFechaInicioV = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.IconoExcelC = new FontAwesome.Sharp.IconButton();
-            this.IconoBusquedaC = new FontAwesome.Sharp.IconButton();
-            this.IconoLimpiarC = new FontAwesome.Sharp.IconButton();
-            ((System.ComponentModel.ISupportInitialize)(this.DataCompras)).BeginInit();
+            this.IconoBusquedaV = new FontAwesome.Sharp.IconButton();
+            this.IconoLimpiarV = new FontAwesome.Sharp.IconButton();
+            ((System.ComponentModel.ISupportInitialize)(this.DataVentas)).BeginInit();
             this.SuspendLayout();
             // 
-            // CBBuscar
+            // CBBuscarV
             // 
-            this.CBBuscar.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.CBBuscar.FormattingEnabled = true;
-            this.CBBuscar.Location = new System.Drawing.Point(836, 151);
-            this.CBBuscar.Name = "CBBuscar";
-            this.CBBuscar.Size = new System.Drawing.Size(161, 24);
-            this.CBBuscar.TabIndex = 25;
+            this.CBBuscarV.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.CBBuscarV.FormattingEnabled = true;
+            this.CBBuscarV.Location = new System.Drawing.Point(836, 151);
+            this.CBBuscarV.Name = "CBBuscarV";
+            this.CBBuscarV.Size = new System.Drawing.Size(161, 24);
+            this.CBBuscarV.TabIndex = 25;
             // 
             // label6
             // 
@@ -65,15 +65,15 @@
             this.label6.TabIndex = 24;
             this.label6.Text = "Buscar por:";
             // 
-            // DataCompras
+            // DataVentas
             // 
-            this.DataCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataCompras.Location = new System.Drawing.Point(20, 181);
-            this.DataCompras.Name = "DataCompras";
-            this.DataCompras.RowHeadersWidth = 51;
-            this.DataCompras.RowTemplate.Height = 24;
-            this.DataCompras.Size = new System.Drawing.Size(1143, 294);
-            this.DataCompras.TabIndex = 23;
+            this.DataVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataVentas.Location = new System.Drawing.Point(20, 181);
+            this.DataVentas.Name = "DataVentas";
+            this.DataVentas.RowHeadersWidth = 51;
+            this.DataVentas.RowTemplate.Height = 24;
+            this.DataVentas.Size = new System.Drawing.Size(1143, 294);
+            this.DataVentas.TabIndex = 23;
             // 
             // label5
             // 
@@ -85,32 +85,32 @@
             this.label5.Size = new System.Drawing.Size(1162, 368);
             this.label5.TabIndex = 22;
             // 
-            // CBProveedorC
+            // CBClientesV
             // 
-            this.CBProveedorC.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.CBProveedorC.FormattingEnabled = true;
-            this.CBProveedorC.Location = new System.Drawing.Point(836, 69);
-            this.CBProveedorC.Name = "CBProveedorC";
-            this.CBProveedorC.Size = new System.Drawing.Size(161, 24);
-            this.CBProveedorC.TabIndex = 21;
+            this.CBClientesV.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.CBClientesV.FormattingEnabled = true;
+            this.CBClientesV.Location = new System.Drawing.Point(836, 66);
+            this.CBClientesV.Name = "CBClientesV";
+            this.CBClientesV.Size = new System.Drawing.Size(161, 24);
+            this.CBClientesV.TabIndex = 21;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(739, 71);
+            this.label4.Location = new System.Drawing.Point(753, 68);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 19);
+            this.label4.Size = new System.Drawing.Size(54, 19);
             this.label4.TabIndex = 20;
-            this.label4.Text = "Proveedor:";
+            this.label4.Text = "Cliente:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(397, 69);
+            this.label3.Location = new System.Drawing.Point(402, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 19);
             this.label3.TabIndex = 19;
@@ -127,22 +127,22 @@
             this.label2.TabIndex = 18;
             this.label2.Text = "Fecha Inicio:";
             // 
-            // DateFechaFinC
+            // DateFechaFinV
             // 
-            this.DateFechaFinC.Location = new System.Drawing.Point(472, 69);
-            this.DateFechaFinC.Name = "DateFechaFinC";
-            this.DateFechaFinC.Size = new System.Drawing.Size(245, 22);
-            this.DateFechaFinC.TabIndex = 17;
-            this.DateFechaFinC.ValueChanged += new System.EventHandler(this.DateFechaFinC_ValueChanged);
+            this.DateFechaFinV.Location = new System.Drawing.Point(500, 68);
+            this.DateFechaFinV.Name = "DateFechaFinV";
+            this.DateFechaFinV.Size = new System.Drawing.Size(247, 22);
+            this.DateFechaFinV.TabIndex = 17;
             // 
-            // DateFechaInicioC
+            // DateFechaInicioV
             // 
-            this.DateFechaInicioC.CustomFormat = "";
-            this.DateFechaInicioC.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.DateFechaInicioC.Location = new System.Drawing.Point(131, 71);
-            this.DateFechaInicioC.Name = "DateFechaInicioC";
-            this.DateFechaInicioC.Size = new System.Drawing.Size(246, 22);
-            this.DateFechaInicioC.TabIndex = 16;
+            this.DateFechaInicioV.CustomFormat = "";
+            this.DateFechaInicioV.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.DateFechaInicioV.Location = new System.Drawing.Point(144, 71);
+            this.DateFechaInicioV.Name = "DateFechaInicioV";
+            this.DateFechaInicioV.Size = new System.Drawing.Size(252, 22);
+            this.DateFechaInicioV.TabIndex = 16;
+            this.DateFechaInicioV.ValueChanged += new System.EventHandler(this.DateFechaInicioV_ValueChanged);
             // 
             // label1
             // 
@@ -153,7 +153,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1162, 99);
             this.label1.TabIndex = 15;
-            this.label1.Text = "Reporte Compras";
+            this.label1.Text = "Reporte Ventas";
             // 
             // IconoExcelC
             // 
@@ -169,55 +169,55 @@
             this.IconoExcelC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.IconoExcelC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.IconoExcelC.UseVisualStyleBackColor = true;
+            this.IconoExcelC.Click += new System.EventHandler(this.IconoExcelC_Click);
             // 
-            // IconoBusquedaC
+            // IconoBusquedaV
             // 
-            this.IconoBusquedaC.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.IconoBusquedaC.IconColor = System.Drawing.Color.Black;
-            this.IconoBusquedaC.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.IconoBusquedaC.IconSize = 35;
-            this.IconoBusquedaC.Location = new System.Drawing.Point(1003, 140);
-            this.IconoBusquedaC.Name = "IconoBusquedaC";
-            this.IconoBusquedaC.Size = new System.Drawing.Size(49, 41);
-            this.IconoBusquedaC.TabIndex = 27;
-            this.IconoBusquedaC.UseVisualStyleBackColor = true;
+            this.IconoBusquedaV.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.IconoBusquedaV.IconColor = System.Drawing.Color.Black;
+            this.IconoBusquedaV.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.IconoBusquedaV.IconSize = 35;
+            this.IconoBusquedaV.Location = new System.Drawing.Point(1003, 140);
+            this.IconoBusquedaV.Name = "IconoBusquedaV";
+            this.IconoBusquedaV.Size = new System.Drawing.Size(49, 41);
+            this.IconoBusquedaV.TabIndex = 27;
+            this.IconoBusquedaV.UseVisualStyleBackColor = true;
             // 
-            // IconoLimpiarC
+            // IconoLimpiarV
             // 
-            this.IconoLimpiarC.IconChar = FontAwesome.Sharp.IconChar.PaintBrush;
-            this.IconoLimpiarC.IconColor = System.Drawing.Color.Black;
-            this.IconoLimpiarC.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.IconoLimpiarC.IconSize = 35;
-            this.IconoLimpiarC.Location = new System.Drawing.Point(1079, 138);
-            this.IconoLimpiarC.Name = "IconoLimpiarC";
-            this.IconoLimpiarC.Size = new System.Drawing.Size(49, 41);
-            this.IconoLimpiarC.TabIndex = 26;
-            this.IconoLimpiarC.UseVisualStyleBackColor = true;
+            this.IconoLimpiarV.IconChar = FontAwesome.Sharp.IconChar.PaintBrush;
+            this.IconoLimpiarV.IconColor = System.Drawing.Color.Black;
+            this.IconoLimpiarV.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.IconoLimpiarV.IconSize = 35;
+            this.IconoLimpiarV.Location = new System.Drawing.Point(1079, 138);
+            this.IconoLimpiarV.Name = "IconoLimpiarV";
+            this.IconoLimpiarV.Size = new System.Drawing.Size(49, 41);
+            this.IconoLimpiarV.TabIndex = 26;
+            this.IconoLimpiarV.UseVisualStyleBackColor = true;
             // 
-            // frmReporte
+            // frmReporteVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(1411, 688);
             this.Controls.Add(this.IconoExcelC);
-            this.Controls.Add(this.IconoBusquedaC);
-            this.Controls.Add(this.IconoLimpiarC);
-            this.Controls.Add(this.CBBuscar);
+            this.Controls.Add(this.IconoBusquedaV);
+            this.Controls.Add(this.IconoLimpiarV);
+            this.Controls.Add(this.CBBuscarV);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.DataCompras);
+            this.Controls.Add(this.DataVentas);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.CBProveedorC);
+            this.Controls.Add(this.CBClientesV);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.DateFechaFinC);
-            this.Controls.Add(this.DateFechaInicioC);
+            this.Controls.Add(this.DateFechaFinV);
+            this.Controls.Add(this.DateFechaInicioV);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "frmReporte";
-            this.Text = "frmReporte";
-            ((System.ComponentModel.ISupportInitialize)(this.DataCompras)).EndInit();
+            this.Name = "frmReporteVentas";
+            this.Text = "frmReporteVentas";
+            ((System.ComponentModel.ISupportInitialize)(this.DataVentas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,18 +226,18 @@
         #endregion
 
         private FontAwesome.Sharp.IconButton IconoExcelC;
-        private FontAwesome.Sharp.IconButton IconoBusquedaC;
-        private FontAwesome.Sharp.IconButton IconoLimpiarC;
-        private System.Windows.Forms.ComboBox CBBuscar;
+        private FontAwesome.Sharp.IconButton IconoBusquedaV;
+        private FontAwesome.Sharp.IconButton IconoLimpiarV;
+        private System.Windows.Forms.ComboBox CBBuscarV;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView DataCompras;
+        private System.Windows.Forms.DataGridView DataVentas;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox CBProveedorC;
+        private System.Windows.Forms.ComboBox CBClientesV;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker DateFechaFinC;
-        private System.Windows.Forms.DateTimePicker DateFechaInicioC;
+        private System.Windows.Forms.DateTimePicker DateFechaFinV;
+        private System.Windows.Forms.DateTimePicker DateFechaInicioV;
         private System.Windows.Forms.Label label1;
     }
 }

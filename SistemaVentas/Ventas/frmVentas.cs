@@ -164,5 +164,26 @@ namespace SistemaVentas.Ventas
             MessageBox.Show("Venta registrada con éxito.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            TDNICliente.Clear();
+            TNombreCliente.Clear();
+            TProd.Clear();
+            TCodProd.Clear();
+            TPrecio.Clear();
+            TStock.Clear();
+            TCantidadProd.Value= 0;
+            TTotal.Clear();
+            TPaga.Clear();
+            TCambio.Clear();
+
+            
+            CBTipoDoc.SelectedIndex = -1; // Si no tienes un valor predeterminado
+
+            // Restablecer a la fecha actual
+            DateFecha.Value = DateTime.Now; // O establece otra fecha si lo prefieres
+
+        }
     }
 }

@@ -117,4 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>Nuestro Gestor de Ventas está diseñado para hacer más fácil la vida de quienes trabajan en la industria de la construcción. Algunas de sus funciones clave incluyen:
+
+Registro de Ventas: Facilita el registro de cada venta de forma rápida y sencilla, ayudando a mantener un control claro de las transacciones.
+
+Gestión de Productos: Permite acceder a un inventario detallado, con información sobre precios, disponibilidad y categorías de productos.
+
+Reportes Estadísticos: Ofrece gráficos y reportes visuales que permiten a los usuarios analizar las ventas y las compras, ayudando a identificar tendencias.
+
+Validación de Datos: Incluye controles para asegurar que toda la información ingresada sea correcta, reduciendo el riesgo de errores.
+
+Interfaz Amigable: Su diseño intuitivo hace que cualquier persona pueda adaptarse fácilmente al sistema, sin complicaciones.</value>
+  </data>
 </root>

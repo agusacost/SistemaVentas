@@ -110,7 +110,7 @@
             // TCambio
             // 
             this.TCambio.Location = new System.Drawing.Point(1017, 524);
-            this.TCambio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TCambio.Margin = new System.Windows.Forms.Padding(4);
             this.TCambio.Name = "TCambio";
             this.TCambio.Size = new System.Drawing.Size(115, 22);
             this.TCambio.TabIndex = 35;
@@ -131,9 +131,9 @@
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Location = new System.Drawing.Point(57, 286);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(1104, 95);
             this.groupBox3.TabIndex = 33;
             this.groupBox3.TabStop = false;
@@ -142,7 +142,7 @@
             // TCantidadProd
             // 
             this.TCantidadProd.Location = new System.Drawing.Point(804, 63);
-            this.TCantidadProd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TCantidadProd.Margin = new System.Windows.Forms.Padding(4);
             this.TCantidadProd.Name = "TCantidadProd";
             this.TCantidadProd.Size = new System.Drawing.Size(131, 22);
             this.TCantidadProd.TabIndex = 32;
@@ -160,7 +160,7 @@
             // TStock
             // 
             this.TStock.Location = new System.Drawing.Point(676, 63);
-            this.TStock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TStock.Margin = new System.Windows.Forms.Padding(4);
             this.TStock.Name = "TStock";
             this.TStock.Size = new System.Drawing.Size(119, 22);
             this.TStock.TabIndex = 29;
@@ -178,7 +178,7 @@
             // TPrecio
             // 
             this.TPrecio.Location = new System.Drawing.Point(548, 63);
-            this.TPrecio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TPrecio.Margin = new System.Windows.Forms.Padding(4);
             this.TPrecio.Name = "TPrecio";
             this.TPrecio.Size = new System.Drawing.Size(119, 22);
             this.TPrecio.TabIndex = 27;
@@ -196,7 +196,7 @@
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(147, 37);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(47, 22);
             this.textBox5.TabIndex = 25;
@@ -204,7 +204,7 @@
             // TProd
             // 
             this.TProd.Location = new System.Drawing.Point(263, 63);
-            this.TProd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TProd.Margin = new System.Windows.Forms.Padding(4);
             this.TProd.Name = "TProd";
             this.TProd.Size = new System.Drawing.Size(276, 22);
             this.TProd.TabIndex = 23;
@@ -212,7 +212,7 @@
             // TCodProd
             // 
             this.TCodProd.Location = new System.Drawing.Point(8, 63);
-            this.TCodProd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TCodProd.Margin = new System.Windows.Forms.Padding(4);
             this.TCodProd.Name = "TCodProd";
             this.TCodProd.Size = new System.Drawing.Size(185, 22);
             this.TCodProd.TabIndex = 22;
@@ -267,9 +267,9 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(613, 203);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(548, 75);
             this.groupBox2.TabIndex = 32;
             this.groupBox2.TabStop = false;
@@ -278,7 +278,7 @@
             // textBox8
             // 
             this.textBox8.Location = new System.Drawing.Point(492, 11);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(4);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(47, 22);
             this.textBox8.TabIndex = 33;
@@ -286,7 +286,7 @@
             // TNombreCliente
             // 
             this.TNombreCliente.Location = new System.Drawing.Point(263, 41);
-            this.TNombreCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TNombreCliente.Margin = new System.Windows.Forms.Padding(4);
             this.TNombreCliente.Name = "TNombreCliente";
             this.TNombreCliente.Size = new System.Drawing.Size(276, 22);
             this.TNombreCliente.TabIndex = 23;
@@ -294,7 +294,7 @@
             // TDNICliente
             // 
             this.TDNICliente.Location = new System.Drawing.Point(8, 39);
-            this.TDNICliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TDNICliente.Margin = new System.Windows.Forms.Padding(4);
             this.TDNICliente.Name = "TDNICliente";
             this.TDNICliente.Size = new System.Drawing.Size(185, 22);
             this.TDNICliente.TabIndex = 22;
@@ -347,9 +347,9 @@
             this.groupBox1.Controls.Add(this.DateFecha);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(57, 203);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(548, 75);
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
@@ -361,7 +361,7 @@
             this.CBTipoDoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CBTipoDoc.FormattingEnabled = true;
             this.CBTipoDoc.Location = new System.Drawing.Point(300, 38);
-            this.CBTipoDoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CBTipoDoc.Margin = new System.Windows.Forms.Padding(4);
             this.CBTipoDoc.Name = "CBTipoDoc";
             this.CBTipoDoc.Size = new System.Drawing.Size(239, 24);
             this.CBTipoDoc.TabIndex = 20;
@@ -379,7 +379,7 @@
             // DateFecha
             // 
             this.DateFecha.Location = new System.Drawing.Point(12, 39);
-            this.DateFecha.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DateFecha.Margin = new System.Windows.Forms.Padding(4);
             this.DateFecha.Name = "DateFecha";
             this.DateFecha.Size = new System.Drawing.Size(279, 22);
             this.DateFecha.TabIndex = 1;
@@ -426,6 +426,7 @@
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // BRegistrar
             // 
@@ -463,7 +464,7 @@
             // TPaga
             // 
             this.TPaga.Location = new System.Drawing.Point(1017, 476);
-            this.TPaga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TPaga.Margin = new System.Windows.Forms.Padding(4);
             this.TPaga.Name = "TPaga";
             this.TPaga.Size = new System.Drawing.Size(115, 22);
             this.TPaga.TabIndex = 37;
@@ -482,7 +483,7 @@
             // TTotal
             // 
             this.TTotal.Location = new System.Drawing.Point(1017, 407);
-            this.TTotal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TTotal.Margin = new System.Windows.Forms.Padding(4);
             this.TTotal.Name = "TTotal";
             this.TTotal.Size = new System.Drawing.Size(115, 22);
             this.TTotal.TabIndex = 39;
@@ -498,7 +499,7 @@
             this.Cantidad,
             this.SubTotal});
             this.dataGridView1.Location = new System.Drawing.Point(57, 388);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(935, 212);
@@ -561,7 +562,7 @@
             this.Controls.Add(this.BRegistrar);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.backLabel);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmVentas";
             this.Text = "frmVentas";
             this.groupBox3.ResumeLayout(false);

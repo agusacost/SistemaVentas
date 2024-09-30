@@ -75,68 +75,96 @@ namespace SistemaVentas.Usuarios
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            try
             {
-                MessageBox.Show("Por favor, ingrese el nombre y apellido.");
-                return;
-            }
-            if (ContieneNumeros(txtNombre.Text))
-            {
-                MessageBox.Show("El Nombre no puede contener números.");
-                return;
-            }
+                if (string.IsNullOrWhiteSpace(txtNombre.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese el nombre y apellido.");
+                    return;
+                }
+                if (ContieneNumeros(txtNombre.Text))
+                {
+                    MessageBox.Show("El Nombre no puede contener números.");
+                    return;
+                }
 
-            // Validar DNI
-            if (string.IsNullOrWhiteSpace(txtDocumento.Text) || !int.TryParse(txtDocumento.Text, out _))
-            {
-                MessageBox.Show("Por favor, ingrese un DNI válido.");
-                return;
-            }
+                // Validar DNI
+                if (string.IsNullOrWhiteSpace(txtDocumento.Text) || !int.TryParse(txtDocumento.Text, out _))
+                {
+                    MessageBox.Show("Por favor, ingrese un DNI válido.");
+                    return;
+                }
 
-            // **Aquí se usa la función EsEmailValido para validar el email**
-            if (string.IsNullOrWhiteSpace(txtCorreo.Text) || !EsEmailValido(txtCorreo.Text))
-            {
-                MessageBox.Show("Por favor, ingrese un correo electrónico válido.");
-                return;
-            }
+                // Validar email
+                if (string.IsNullOrWhiteSpace(txtCorreo.Text) || !EsEmailValido(txtCorreo.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese un correo electrónico válido.");
+                    return;
+                }
 
-            // Validacion Longitudes
-            if (txtClave.Text.Length <= 5)
-            {
-                MessageBox.Show("La clave debe tener al menos 5 caracteres.");
-                return;
-            }
-            if (txtClave.Text.Length >= 50)
-            {
-                MessageBox.Show("La clave no debe tener 50 caracteres.");
-                return;
-            }
-            if (txtClave.Text.Length >= 50)
-            {
-                MessageBox.Show("El Nombre y apellido no puede ser mayor a 50.");
-                return;
-            }
-            if (txtCorreo.Text.Length >= 50)
-            {
-                MessageBox.Show("El email no puede ser mayor a 50.");
-                return;
-            }
+                // Validar longitudes
+                if (txtClave.Text.Length <= 5 || txtClave.Text.Length >= 50)
+                {
+                    MessageBox.Show("La clave debe tener entre 5 y 50 caracteres.");
+                    return;
+                }
+                if (txtNombre.Text.Length >= 50)
+                {
+                    MessageBox.Show("El nombre y apellido no puede ser mayor a 50 caracteres.");
+                    return;
+                }
+                if (txtCorreo.Text.Length >= 50)
+                {
+                    MessageBox.Show("El email no puede ser mayor a 50 caracteres.");
+                    return;
+                }
+                if (txtClave.Text != txtClaveConf.Text)
+                {
+                    MessageBox.Show("La clave y la confirmación de clave deben ser iguales.");
+                    return;
+                }
 
-            if (txtClave != txtClaveConf)
-            {
-                MessageBox.Show("La contraseñas no coinciden.");
-            }
+                Usuario objUsuario = new Usuario()
+                {
+                    Documento = txtDocumento.Text,
+                    NombreCompleto = txtNombre.Text,
+                    Correo = txtCorreo.Text,
+                    Clave = txtClave.Text,
+                    oRol = new Rol() { idRol = Convert.ToInt32(((OpcionCombo)CBRol.SelectedItem).value) },
+                    Estado = Convert.ToInt32(((OpcionCombo)CBEstado.SelectedItem).value) == 1
+                };
 
-
-            frmUsuario.DgvData.Rows.Add(new object[] {"",txtId.Text,txtNombre.Text, txtDocumento.Text, txtCorreo.Text, txtClave.Text,
+                bool registro = new N_User().Registrar(objUsuario);
+                if (registro)
+                {
+                    frmUsuario.DgvData.Rows.Add(new object[]
+                    {
+                "",
+                txtId.Text,
+                txtNombre.Text,
+                txtDocumento.Text,
+                txtCorreo.Text,
+                txtClave.Text,
                 ((OpcionCombo)CBRol.SelectedItem).value.ToString(),
                 ((OpcionCombo)CBRol.SelectedItem).Texto.ToString(),
                 ((OpcionCombo)CBEstado.SelectedItem).Texto.ToString(),
                 ((OpcionCombo)CBEstado.SelectedItem).value.ToString(),
-            });
-            Limpiar();
-            
+                    });
+                    Limpiar();
+                    MessageBox.Show("Usuario agregado con éxito");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Error al registrar el usuario. Por favor, intente nuevamente.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Se produjo un error: " + ex.Message);
+            }
         }
+
 
         private void Limpiar()
         {

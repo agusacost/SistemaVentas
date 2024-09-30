@@ -16,5 +16,11 @@ namespace Negocio
         {
             return objd_usuario.Listar();
         }
+
+        public bool Registrar(Usuario obj)
+        {
+            
+            return objd_usuario.Registrar(obj);
+        }
     }
 }

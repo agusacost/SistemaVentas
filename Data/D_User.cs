@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Entidades;
 using System.Reflection;
+using System.Collections;
 
 namespace Data
 {
@@ -16,20 +17,22 @@ namespace Data
         {
             List<Usuario> lista = new List<Usuario>();
 
-            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena)) {
-                try {
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
                     StringBuilder query = new StringBuilder();
                     query.AppendLine("select u.IdUsuario,u.Documento,u.NombreCompleto,u.Correo,u.Clave,u.Estado, r.IdRol, r.Descripcion from USUARIO u");
                     query.AppendLine("inner join rol r on r.IdRol = u.IdRol");
-                        
+
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
-                    oconexion.Open(); 
+                    oconexion.Open();
 
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
-                        while(dr.Read())
+                        while (dr.Read())
                         {
                             lista.Add(new Usuario()
                             {
@@ -44,12 +47,48 @@ namespace Data
                         }
                     }
 
-                } catch(Exception ex) {
+                }
+                catch (Exception ex)
+                {
                     lista = new List<Usuario>();
                 }
-                
+
             }
             return lista;
+        }
+
+        public bool Registrar(Usuario obj)
+        {
+            bool resultado = false;
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    oconexion.Open();
+                    using (SqlCommand comando = new SqlCommand("INSERT INTO USUARIO (Documento, NombreCompleto, Correo, Clave, IdRol, Estado) VALUES (@Documento, @NombreCompleto, @Correo, @Clave, @IdRol, @Estado)", oconexion))
+                    {
+                        comando.Parameters.AddWithValue("@Documento", obj.Documento);
+                        comando.Parameters.AddWithValue("@NombreCompleto", obj.NombreCompleto);
+                        comando.Parameters.AddWithValue("@Correo", obj.Correo);
+                        comando.Parameters.AddWithValue("@Clave", obj.Clave);
+                        comando.Parameters.AddWithValue("@IdRol", obj.oRol.idRol);
+                        comando.Parameters.AddWithValue("@Estado", obj.Estado);
+
+                        int filasAfectadas = comando.ExecuteNonQuery();
+                        resultado = filasAfectadas > 0;
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                resultado = false;
+            }
+
+            return resultado;
+
         }
     }
 }

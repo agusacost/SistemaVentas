@@ -309,7 +309,6 @@
             this.IdRol.MinimumWidth = 6;
             this.IdRol.Name = "IdRol";
             this.IdRol.ReadOnly = true;
-            this.IdRol.Visible = false;
             this.IdRol.Width = 125;
             // 
             // Rol

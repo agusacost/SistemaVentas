@@ -20,6 +20,7 @@ namespace SistemaVentas.Usuarios
         private frmEditarUsuario frmEditarUsuario;
         private int selectedRowIndex = -1;
         private Usuario selectedUser = null;
+        private int selectedIdComboRol = 0;
         public frmUsuario()
         {
             InitializeComponent();
@@ -237,6 +238,8 @@ namespace SistemaVentas.Usuarios
                 frmEditarUsuario.TextCorreoData.Text = selectedUser.Correo;
                 frmEditarUsuario.TextClaveData.Text = selectedUser.Clave;
                 frmEditarUsuario.TextConfirmarClaveData.Text = selectedUser.Clave;
+                frmEditarUsuario.TextIndice.Text = selectedRowIndex.ToString();
+                //TODO: Setear combobox con valores del usuario que voy a editar
                 frmEditarUsuario.Show();
             }
             else
@@ -253,10 +256,6 @@ namespace SistemaVentas.Usuarios
 
                 if (selectedRowIndex >= 0)
                 {
-                    foreach (OpcionCombo oc in frmEditarUsuario.ComboRol.Items)
-                    {
-
-                    }
                     selectedUser = new Usuario
                     {
                         IdUsuario = Convert.ToInt32(dgvdata.Rows[selectedRowIndex].Cells["IdUsuario"].Value),
@@ -265,7 +264,7 @@ namespace SistemaVentas.Usuarios
                         Correo = dgvdata.Rows[selectedRowIndex].Cells["Correo"].Value.ToString(),
                         Clave = dgvdata.Rows[selectedRowIndex].Cells["Clave"].Value.ToString(),
                     };
-
+                    selectedIdComboRol = Convert.ToInt32(dgvdata.Rows[selectedRowIndex].Cells["IdRol"].Value);
                 }
             }
         }

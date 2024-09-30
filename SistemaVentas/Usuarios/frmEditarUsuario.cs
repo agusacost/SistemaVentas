@@ -28,6 +28,10 @@ namespace SistemaVentas.Usuarios
             this.Close();
         }
 
+        public TextBox TextIndice
+        {
+            get { return txtIndice; }
+        }
         public TextBox TextIdData
         {
             get { return txtId; }
@@ -182,5 +186,7 @@ namespace SistemaVentas.Usuarios
         {
             return texto.Any(char.IsDigit);
         }
+
+
     }
 }

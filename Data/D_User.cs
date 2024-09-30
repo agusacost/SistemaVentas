@@ -90,5 +90,30 @@ namespace Data
             return resultado;
 
         }
+
+        public bool Baja(int IdUsuario, int nuevoEstado)
+        {
+            bool resultado = false;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    oconexion.Open();
+                    using (SqlCommand comando = new SqlCommand("UPDATE USUARIO SET Estado = @Estado WHERE IdUsuario = @IdUsuario", oconexion))
+                    {
+                        comando.Parameters.AddWithValue("@Estado", nuevoEstado);
+                        comando.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+
+                        int filasAfectadas = comando.ExecuteNonQuery();
+                        resultado = filasAfectadas > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                resultado = false;
+            }
+            return resultado;
+        }
     }
 }

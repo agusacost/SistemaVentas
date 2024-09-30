@@ -24,13 +24,9 @@ namespace SistemaVentas
         private static Usuario usuarioLogged;
         private static IconMenuItem MenuActivo = null;
         private static Form formActivo = null;
-        public Inicio(Usuario objusuario = null)
+        public Inicio(Usuario objusuario)
         {
-            if (objusuario == null) 
-                usuarioLogged = new Usuario() { NombreCompleto= "ADMIN PREDEFINIDO", IdUsuario = 1};
-            else
-                usuarioLogged = objusuario;
-
+           usuarioLogged = objusuario;
             InitializeComponent();
         }
 
@@ -186,5 +182,9 @@ namespace SistemaVentas
 
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

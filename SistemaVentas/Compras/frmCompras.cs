@@ -177,7 +177,9 @@ namespace SistemaVentas.Compras
             // Restablecer a la fecha actual
             DateFechaCompra.Value = DateTime.Now; 
         }
+
+        
     }
 
-    }
 }
+

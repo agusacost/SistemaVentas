@@ -124,7 +124,7 @@ namespace SistemaVentas
 
         private void AcercaLabel_Click(object sender, EventArgs e)
         {
-
+            openForm((IconMenuItem)sender, new frmAcercaDe());
         }
         private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {

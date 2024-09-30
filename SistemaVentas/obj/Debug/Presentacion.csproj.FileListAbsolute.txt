@@ -72,3 +72,4 @@ C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Deb
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Producto.frmAddCategoria.resources
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Producto.frmEditarCategoria.resources
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Usuarios.frmEditarUsuario.resources
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.frmAcercaDe.resources

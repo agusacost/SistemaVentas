@@ -1,6 +1,6 @@
-﻿namespace SistemaVentas.Reportes
+﻿namespace SistemaVentas
 {
-    partial class frmReporte
+    partial class frmAcercaDe
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // frmReporte
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(217, 146);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "AAAAAAAAAAAAA";
+            // 
+            // frmAcercaDe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(1058, 559);
-            this.Name = "frmReporte";
-            this.Text = "frmReporte";
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Name = "frmAcercaDe";
+            this.Text = "frmAcercaDe";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
     }
 }

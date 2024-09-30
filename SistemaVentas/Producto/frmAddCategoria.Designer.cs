@@ -45,10 +45,9 @@
             this.btnCancelarCat.IconColor = System.Drawing.Color.White;
             this.btnCancelarCat.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCancelarCat.IconSize = 16;
-            this.btnCancelarCat.Location = new System.Drawing.Point(352, 295);
-            this.btnCancelarCat.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelarCat.Location = new System.Drawing.Point(260, 240);
             this.btnCancelarCat.Name = "btnCancelarCat";
-            this.btnCancelarCat.Size = new System.Drawing.Size(152, 39);
+            this.btnCancelarCat.Size = new System.Drawing.Size(114, 32);
             this.btnCancelarCat.TabIndex = 49;
             this.btnCancelarCat.Text = "Cancelar";
             this.btnCancelarCat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -65,10 +64,9 @@
             this.btnAgregarCat.IconColor = System.Drawing.Color.White;
             this.btnAgregarCat.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAgregarCat.IconSize = 16;
-            this.btnAgregarCat.Location = new System.Drawing.Point(157, 295);
-            this.btnAgregarCat.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregarCat.Location = new System.Drawing.Point(118, 240);
             this.btnAgregarCat.Name = "btnAgregarCat";
-            this.btnAgregarCat.Size = new System.Drawing.Size(152, 39);
+            this.btnAgregarCat.Size = new System.Drawing.Size(114, 32);
             this.btnAgregarCat.TabIndex = 48;
             this.btnAgregarCat.Text = "Agregar";
             this.btnAgregarCat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -80,20 +78,18 @@
             // 
             this.TDescripcionCat.BackColor = System.Drawing.SystemColors.Control;
             this.TDescripcionCat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TDescripcionCat.Location = new System.Drawing.Point(157, 232);
-            this.TDescripcionCat.Margin = new System.Windows.Forms.Padding(4);
+            this.TDescripcionCat.Location = new System.Drawing.Point(118, 193);
             this.TDescripcionCat.Name = "TDescripcionCat";
-            this.TDescripcionCat.Size = new System.Drawing.Size(362, 22);
+            this.TDescripcionCat.Size = new System.Drawing.Size(272, 20);
             this.TDescripcionCat.TabIndex = 47;
             // 
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(160, 142);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(120, 120);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(311, 28);
+            this.label5.Size = new System.Drawing.Size(233, 18);
             this.label5.TabIndex = 46;
             this.label5.Text = "Nombre:";
             // 
@@ -101,39 +97,36 @@
             // 
             this.TNombreCat.BackColor = System.Drawing.SystemColors.Control;
             this.TNombreCat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TNombreCat.Location = new System.Drawing.Point(157, 174);
-            this.TNombreCat.Margin = new System.Windows.Forms.Padding(4);
+            this.TNombreCat.Location = new System.Drawing.Point(118, 141);
             this.TNombreCat.Name = "TNombreCat";
-            this.TNombreCat.Size = new System.Drawing.Size(362, 22);
+            this.TNombreCat.Size = new System.Drawing.Size(272, 20);
             this.TNombreCat.TabIndex = 45;
             // 
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(160, 200);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(120, 172);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(311, 28);
+            this.label4.Size = new System.Drawing.Size(233, 18);
             this.label4.TabIndex = 44;
             this.label4.Text = "Descripcion:";
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(220, 77);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(165, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(251, 47);
+            this.label3.Size = new System.Drawing.Size(209, 38);
             this.label3.TabIndex = 43;
             this.label3.Text = "Agregar Categoria";
             // 
             // frmAddCategoria
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.ClientSize = new System.Drawing.Size(676, 630);
+            this.ClientSize = new System.Drawing.Size(507, 512);
             this.ControlBox = false;
             this.Controls.Add(this.btnCancelarCat);
             this.Controls.Add(this.btnAgregarCat);
@@ -142,7 +135,6 @@
             this.Controls.Add(this.TNombreCat);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddCategoria";

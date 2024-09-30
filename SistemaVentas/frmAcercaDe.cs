@@ -8,15 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SistemaVentas.Reportes
+namespace SistemaVentas
 {
-    public partial class frmReporte : Form
+    public partial class frmAcercaDe : Form
     {
-        public frmReporte()
+        public frmAcercaDe()
         {
             InitializeComponent();
         }
-
-        
     }
 }

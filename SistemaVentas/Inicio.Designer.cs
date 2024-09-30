@@ -282,11 +282,11 @@
             // 
             this.labelTag.AutoSize = true;
             this.labelTag.BackColor = System.Drawing.Color.LightSlateGray;
-            this.labelTag.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTag.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTag.ForeColor = System.Drawing.Color.White;
             this.labelTag.Location = new System.Drawing.Point(12, 504);
             this.labelTag.Name = "labelTag";
-            this.labelTag.Size = new System.Drawing.Size(57, 16);
+            this.labelTag.Size = new System.Drawing.Size(56, 17);
             this.labelTag.TabIndex = 3;
             this.labelTag.Text = "Usuario:";
             // 
@@ -294,11 +294,11 @@
             // 
             this.lbUsuario.AutoSize = true;
             this.lbUsuario.BackColor = System.Drawing.Color.LightSlateGray;
-            this.lbUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUsuario.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUsuario.ForeColor = System.Drawing.Color.White;
             this.lbUsuario.Location = new System.Drawing.Point(12, 520);
             this.lbUsuario.Name = "lbUsuario";
-            this.lbUsuario.Size = new System.Drawing.Size(57, 16);
+            this.lbUsuario.Size = new System.Drawing.Size(50, 13);
             this.lbUsuario.TabIndex = 4;
             this.lbUsuario.Text = "Usuario:";
             // 

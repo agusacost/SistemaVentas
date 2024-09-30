@@ -18,6 +18,8 @@ namespace SistemaVentas.Usuarios
     {
         private frmAddUsuario frmAddUsuario;
         private frmEditarUsuario frmEditarUsuario;
+        private int selectedRowIndex = -1;
+        private Usuario selectedUser = null;
         public frmUsuario()
         {
             InitializeComponent();
@@ -189,19 +191,7 @@ namespace SistemaVentas.Usuarios
             }
         }
 
-        private void dgvdata_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-
-            if (dgvdata.Columns[e.ColumnIndex].Name == "btnSeleccionar")
-            {
-                int index = e.RowIndex;
-
-                if(index >= 0)
-                {
-                    
-                }
-            }
-
-        }
+        
         private void btnAgregar_Click_1(object sender, EventArgs e)
         {
             if (frmEditarUsuario != null && !frmEditarUsuario.IsDisposed)
@@ -224,6 +214,13 @@ namespace SistemaVentas.Usuarios
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if (selectedUser == null)
+            {
+                
+                MessageBox.Show("Por favor, selecciona un usuario para Editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (frmAddUsuario != null && !frmAddUsuario.IsDisposed)
             {
                 MessageBox.Show("No se puede abrir 'Editar Usuario' mientras 'Agregar Usuario' está abierto.");
@@ -234,11 +231,42 @@ namespace SistemaVentas.Usuarios
             if (frmEditarUsuario == null || frmEditarUsuario.IsDisposed)
             {
                 frmEditarUsuario = new frmEditarUsuario();
+                frmEditarUsuario.TextIdData.Text = selectedUser.IdUsuario.ToString();
+                frmEditarUsuario.TextDocumentoData.Text = selectedUser.Documento;
+                frmEditarUsuario.TextNameData.Text = selectedUser.NombreCompleto;
+                frmEditarUsuario.TextCorreoData.Text = selectedUser.Correo;
+                frmEditarUsuario.TextClaveData.Text = selectedUser.Clave;
+                frmEditarUsuario.TextConfirmarClaveData.Text = selectedUser.Clave;
                 frmEditarUsuario.Show();
             }
             else
             {
                 frmEditarUsuario.Focus();
+            }
+        }
+
+        private void dgvdata_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvdata.Columns[e.ColumnIndex].Name == "btnSeleccionar")
+            {
+                 selectedRowIndex = e.RowIndex;
+
+                if (selectedRowIndex >= 0)
+                {
+                    foreach (OpcionCombo oc in frmEditarUsuario.ComboRol.Items)
+                    {
+
+                    }
+                    selectedUser = new Usuario
+                    {
+                        IdUsuario = Convert.ToInt32(dgvdata.Rows[selectedRowIndex].Cells["IdUsuario"].Value),
+                        Documento = dgvdata.Rows[selectedRowIndex].Cells["Documento"].Value.ToString(),
+                        NombreCompleto = dgvdata.Rows[selectedRowIndex].Cells["NombreCompleto"].Value.ToString(),
+                        Correo = dgvdata.Rows[selectedRowIndex].Cells["Correo"].Value.ToString(),
+                        Clave = dgvdata.Rows[selectedRowIndex].Cells["Clave"].Value.ToString(),
+                    };
+
+                }
             }
         }
     }

@@ -114,5 +114,10 @@ namespace SistemaVentas.Producto
         {
             this.Close();
         }
+
+        private void btnCancelarProdE_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

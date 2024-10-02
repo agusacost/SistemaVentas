@@ -50,7 +50,7 @@ namespace SistemaVentas
             List<Usuario> TEST = new N_User().Listar();
             Usuario ousuario = new N_User().Listar().Where(u => (u.Documento == txtDocumento.Text) && (u.Clave == txtClave.Text)).FirstOrDefault();
             
-            if (ousuario != null)
+            if (ousuario != null && ousuario.Estado)
             {
 
                 Inicio form = new Inicio(ousuario);
@@ -59,6 +59,10 @@ namespace SistemaVentas
                 this.Hide();
 
                 form.FormClosing += frm_closing;
+            }
+            else if(ousuario != null && !ousuario.Estado) 
+            {
+                MessageBox.Show("Este usuario está inactivo. No puede iniciar sesión.", "Usuario Inactivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {

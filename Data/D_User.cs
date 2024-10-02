@@ -91,7 +91,7 @@ namespace Data
 
         }
 
-        public bool Baja(int IdUsuario, int nuevoEstado)
+        public bool Baja(int IdUsuario, bool nuevoEstado)
         {
             bool resultado = false;
             try

@@ -268,5 +268,36 @@ namespace SistemaVentas.Usuarios
                 }
             }
         }
-    }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if(selectedUser == null)
+            {
+                MessageBox.Show("Por favor, selecciona un usuario para Editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+            bool nuevoEstado = false;
+            DialogResult dialogResult = MessageBox.Show($"¿Estás seguro de que deseas dar de baja al usuario '{selectedUser.NombreCompleto}'", "Confirmar cambio de estado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes) {
+                bool resultado = new N_User().Baja(selectedUser.IdUsuario, nuevoEstado);
+                if (resultado)
+                {
+                    selectedUser.Estado = nuevoEstado;
+                    dgvdata.Rows[selectedRowIndex].Cells["Estado"].Value = "Inactivo";
+
+                    MessageBox.Show("Usuario dado de baja");
+
+                }
+                else
+                {
+                    MessageBox.Show("Error al cambiar el estado del usuario. Por favor, intente nuevamente.");
+                }
+            }
+           
+
+            }
+
+        }
 }
+

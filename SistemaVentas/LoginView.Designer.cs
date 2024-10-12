@@ -149,7 +149,7 @@
             this.label5.BackColor = System.Drawing.Color.LightSlateGray;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(42, 153);
+            this.label5.Location = new System.Drawing.Point(40, 153);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(193, 31);
             this.label5.TabIndex = 9;

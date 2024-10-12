@@ -217,6 +217,12 @@
     <Compile Include="Ventas\frmVentas.Designer.cs">
       <DependentUpon>frmVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventas\frmVtasGral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmVtasGral.Designer.cs">
+      <DependentUpon>frmVtasGral.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Clientes\frmAddCliente.resx">
       <DependentUpon>frmAddCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas\frmVentas.resx">
       <DependentUpon>frmVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\frmVtasGral.resx">
+      <DependentUpon>frmVtasGral.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

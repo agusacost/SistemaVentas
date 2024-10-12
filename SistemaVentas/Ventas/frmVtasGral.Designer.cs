@@ -1,6 +1,6 @@
 ﻿namespace SistemaVentas.Ventas
 {
-    partial class frmVentaDetalle
+    partial class frmVtasGral
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.backLabel = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.IdVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,16 +42,24 @@
             this.MontoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaRegistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelName = new System.Windows.Forms.Label();
-            this.btnEliminar = new FontAwesome.Sharp.IconButton();
-            this.backLabel = new System.Windows.Forms.Label();
+            this.btnDescargar = new FontAwesome.Sharp.IconButton();
             this.btnLimpiar = new FontAwesome.Sharp.IconButton();
             this.btnBuscar = new FontAwesome.Sharp.IconButton();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.cbbusqueda = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnDescargar = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // backLabel
+            // 
+            this.backLabel.BackColor = System.Drawing.Color.LightSlateGray;
+            this.backLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.backLabel.Location = new System.Drawing.Point(0, 0);
+            this.backLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.backLabel.Name = "backLabel";
+            this.backLabel.Size = new System.Drawing.Size(1058, 54);
+            this.backLabel.TabIndex = 19;
             // 
             // dataGridView1
             // 
@@ -67,13 +76,13 @@
             this.MontoCambio,
             this.MontoTotal,
             this.FechaRegistro});
-            this.dataGridView1.Location = new System.Drawing.Point(9, 106);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 105);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(896, 443);
-            this.dataGridView1.TabIndex = 17;
+            this.dataGridView1.Size = new System.Drawing.Size(900, 443);
+            this.dataGridView1.TabIndex = 21;
             // 
             // IdVenta
             // 
@@ -136,44 +145,33 @@
             // 
             this.labelName.BackColor = System.Drawing.SystemColors.Control;
             this.labelName.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelName.Location = new System.Drawing.Point(9, 62);
+            this.labelName.Location = new System.Drawing.Point(11, 63);
             this.labelName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(902, 31);
-            this.labelName.TabIndex = 16;
+            this.labelName.TabIndex = 20;
             this.labelName.Text = "Listado de Ventas";
             this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnEliminar
+            // btnDescargar
             // 
-            this.btnEliminar.BackColor = System.Drawing.Color.LightCoral;
-            this.btnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            this.btnEliminar.IconColor = System.Drawing.Color.White;
-            this.btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnEliminar.IconSize = 16;
-            this.btnEliminar.Location = new System.Drawing.Point(814, 11);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(91, 36);
-            this.btnEliminar.TabIndex = 19;
-            this.btnEliminar.Text = "Baja";
-            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEliminar.UseVisualStyleBackColor = false;
-            // 
-            // backLabel
-            // 
-            this.backLabel.BackColor = System.Drawing.Color.LightSlateGray;
-            this.backLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.backLabel.Location = new System.Drawing.Point(0, 0);
-            this.backLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.backLabel.Name = "backLabel";
-            this.backLabel.Size = new System.Drawing.Size(1058, 54);
-            this.backLabel.TabIndex = 18;
+            this.btnDescargar.BackColor = System.Drawing.Color.White;
+            this.btnDescargar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnDescargar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDescargar.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDescargar.ForeColor = System.Drawing.Color.Black;
+            this.btnDescargar.IconChar = FontAwesome.Sharp.IconChar.FileExcel;
+            this.btnDescargar.IconColor = System.Drawing.Color.Green;
+            this.btnDescargar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnDescargar.IconSize = 14;
+            this.btnDescargar.Location = new System.Drawing.Point(207, 68);
+            this.btnDescargar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDescargar.Name = "btnDescargar";
+            this.btnDescargar.Size = new System.Drawing.Size(113, 21);
+            this.btnDescargar.TabIndex = 37;
+            this.btnDescargar.Text = "Descargar Excel";
+            this.btnDescargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDescargar.UseVisualStyleBackColor = false;
             // 
             // btnLimpiar
             // 
@@ -186,11 +184,11 @@
             this.btnLimpiar.IconColor = System.Drawing.Color.Black;
             this.btnLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLimpiar.IconSize = 16;
-            this.btnLimpiar.Location = new System.Drawing.Point(864, 69);
+            this.btnLimpiar.Location = new System.Drawing.Point(870, 69);
             this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(41, 18);
-            this.btnLimpiar.TabIndex = 30;
+            this.btnLimpiar.TabIndex = 36;
             this.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpiar.UseVisualStyleBackColor = false;
@@ -206,11 +204,11 @@
             this.btnBuscar.IconColor = System.Drawing.Color.Black;
             this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscar.IconSize = 16;
-            this.btnBuscar.Location = new System.Drawing.Point(818, 68);
+            this.btnBuscar.Location = new System.Drawing.Point(824, 68);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(41, 19);
-            this.btnBuscar.TabIndex = 29;
+            this.btnBuscar.TabIndex = 35;
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuscar.UseVisualStyleBackColor = false;
@@ -219,54 +217,34 @@
             // 
             this.txtBusqueda.BackColor = System.Drawing.Color.White;
             this.txtBusqueda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBusqueda.Location = new System.Drawing.Point(630, 67);
+            this.txtBusqueda.Location = new System.Drawing.Point(636, 67);
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(183, 20);
-            this.txtBusqueda.TabIndex = 28;
+            this.txtBusqueda.TabIndex = 34;
             // 
             // cbbusqueda
             // 
             this.cbbusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbbusqueda.FormattingEnabled = true;
-            this.cbbusqueda.Location = new System.Drawing.Point(504, 67);
+            this.cbbusqueda.Location = new System.Drawing.Point(510, 67);
             this.cbbusqueda.Name = "cbbusqueda";
             this.cbbusqueda.Size = new System.Drawing.Size(121, 21);
-            this.cbbusqueda.TabIndex = 27;
+            this.cbbusqueda.TabIndex = 33;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(443, 70);
+            this.label2.Location = new System.Drawing.Point(449, 70);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.TabIndex = 26;
+            this.label2.TabIndex = 32;
             this.label2.Text = "Buscar por:";
             // 
-            // btnDescargar
-            // 
-            this.btnDescargar.BackColor = System.Drawing.Color.White;
-            this.btnDescargar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnDescargar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDescargar.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDescargar.ForeColor = System.Drawing.Color.Black;
-            this.btnDescargar.IconChar = FontAwesome.Sharp.IconChar.FileExcel;
-            this.btnDescargar.IconColor = System.Drawing.Color.Green;
-            this.btnDescargar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnDescargar.IconSize = 14;
-            this.btnDescargar.Location = new System.Drawing.Point(201, 68);
-            this.btnDescargar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDescargar.Name = "btnDescargar";
-            this.btnDescargar.Size = new System.Drawing.Size(113, 21);
-            this.btnDescargar.TabIndex = 31;
-            this.btnDescargar.Text = "Descargar Excel";
-            this.btnDescargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDescargar.UseVisualStyleBackColor = false;
-            // 
-            // frmVentaDetalle
+            // frmVtasGral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -278,12 +256,11 @@
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.cbbusqueda);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.backLabel);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.labelName);
-            this.Name = "frmVentaDetalle";
-            this.Text = "frmVentaDetalle";
+            this.Controls.Add(this.backLabel);
+            this.Name = "frmVtasGral";
+            this.Text = "frmVtasGral";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -292,10 +269,8 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label labelName;
-        private FontAwesome.Sharp.IconButton btnEliminar;
         private System.Windows.Forms.Label backLabel;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
@@ -307,11 +282,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MontoCambio;
         private System.Windows.Forms.DataGridViewTextBoxColumn MontoTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaRegistro;
+        private System.Windows.Forms.Label labelName;
+        private FontAwesome.Sharp.IconButton btnDescargar;
         private FontAwesome.Sharp.IconButton btnLimpiar;
         private FontAwesome.Sharp.IconButton btnBuscar;
         private System.Windows.Forms.TextBox txtBusqueda;
         private System.Windows.Forms.ComboBox cbbusqueda;
         private System.Windows.Forms.Label label2;
-        private FontAwesome.Sharp.IconButton btnDescargar;
     }
 }

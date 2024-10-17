@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="D_Categoria.cs" />
     <Compile Include="D_PERMISO.cs" />
     <Compile Include="D_Producto.cs" />
     <Compile Include="D_Rol.cs" />

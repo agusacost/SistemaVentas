@@ -158,7 +158,8 @@ namespace SistemaVentas.Usuarios
             List<Usuario> listaUsers = new N_User().Listar();
             foreach(Usuario item in listaUsers)
             {
-                dgvdata.Rows.Add(new object[] {"",item.IdUsuario,item.Documento, item.NombreCompleto, item.Correo, item.Clave,
+                dgvdata.Rows.Add(new object[] {"",item.IdUsuario,item.Documento, item.NombreCompleto, item.Correo,item.Nacionalidad,item.Ciudad,item.Direccion,item.Telefono,
+                item.Clave,
                 item.oRol.idRol,
                 item.oRol.Descripcion,
                 //item.Estado == true ? 1:0,
@@ -262,7 +263,12 @@ namespace SistemaVentas.Usuarios
                         Documento = dgvdata.Rows[selectedRowIndex].Cells["Documento"].Value.ToString(),
                         NombreCompleto = dgvdata.Rows[selectedRowIndex].Cells["NombreCompleto"].Value.ToString(),
                         Correo = dgvdata.Rows[selectedRowIndex].Cells["Correo"].Value.ToString(),
+                        Telefono = dgvdata.Rows[selectedRowIndex].Cells["Telefono"].Value.ToString(),
+                        Nacionalidad = dgvdata.Rows[selectedRowIndex].Cells["Nacionalidad"].Value.ToString(),
+                        Ciudad = dgvdata.Rows[selectedRowIndex].Cells["Ciudad"].Value.ToString(),
+                        Direccion = dgvdata.Rows[selectedRowIndex].Cells["Direccion"].Value.ToString(),
                         Clave = dgvdata.Rows[selectedRowIndex].Cells["Clave"].Value.ToString(),
+
                     };
                     selectedIdComboRol = Convert.ToInt32(dgvdata.Rows[selectedRowIndex].Cells["IdRol"].Value);
                 }

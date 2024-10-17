@@ -22,7 +22,7 @@ namespace Data
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("select u.IdUsuario,u.Documento,u.NombreCompleto,u.Correo,u.Clave,u.Estado, r.IdRol, r.Descripcion from USUARIO u");
+                    query.AppendLine("select u.IdUsuario,u.Documento,u.NombreCompleto,u.Correo,u.Clave,u.Estado, r.IdRol, r.Descripcion, u.Nacionalidad, u.Ciudad, u.Direccion, u.Telefono from USUARIO u");
                     query.AppendLine("inner join rol r on r.IdRol = u.IdRol");
 
 
@@ -42,7 +42,11 @@ namespace Data
                                 Correo = dr["Correo"].ToString(),
                                 Clave = dr["Clave"].ToString(),
                                 Estado = Convert.ToBoolean(dr["Estado"]),
-                                oRol = new Rol() { idRol = Convert.ToInt32(dr["IdRol"]), Descripcion = dr["Descripcion"].ToString() }
+                                oRol = new Rol() { idRol = Convert.ToInt32(dr["IdRol"]), Descripcion = dr["Descripcion"].ToString() },
+                                Nacionalidad = dr["Nacionalidad"].ToString(),
+                                Ciudad = dr["Ciudad"].ToString(),
+                                Direccion = dr["Direccion"].ToString(),
+                                Telefono = dr["Telefono"].ToString()
                             });
                         }
                     }
@@ -66,7 +70,7 @@ namespace Data
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
                     oconexion.Open();
-                    using (SqlCommand comando = new SqlCommand("INSERT INTO USUARIO (Documento, NombreCompleto, Correo, Clave, IdRol, Estado) VALUES (@Documento, @NombreCompleto, @Correo, @Clave, @IdRol, @Estado)", oconexion))
+                    using (SqlCommand comando = new SqlCommand("INSERT INTO USUARIO (Documento, NombreCompleto, Correo, Clave, IdRol, Estado, Nacionalidad,Ciudad,Direccion,Telefono ) VALUES (@Documento, @NombreCompleto, @Correo, @Clave, @IdRol, @Estado, @Nacionalidad, @Ciudad, @Direccion, @Telefono)", oconexion))
                     {
                         comando.Parameters.AddWithValue("@Documento", obj.Documento);
                         comando.Parameters.AddWithValue("@NombreCompleto", obj.NombreCompleto);
@@ -74,6 +78,10 @@ namespace Data
                         comando.Parameters.AddWithValue("@Clave", obj.Clave);
                         comando.Parameters.AddWithValue("@IdRol", obj.oRol.idRol);
                         comando.Parameters.AddWithValue("@Estado", obj.Estado);
+                        comando.Parameters.AddWithValue("@Nacionalidad", obj.Nacionalidad);
+                        comando.Parameters.AddWithValue("@Ciudad", obj.Ciudad);
+                        comando.Parameters.AddWithValue("@Direccion", obj.Direccion);
+                        comando.Parameters.AddWithValue("@Telefono", obj.Telefono);
 
                         int filasAfectadas = comando.ExecuteNonQuery();
                         resultado = filasAfectadas > 0;

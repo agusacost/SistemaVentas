@@ -87,7 +87,40 @@ namespace SistemaVentas.Usuarios
                     MessageBox.Show("El Nombre no puede contener números.");
                     return;
                 }
-
+                //Validar nac
+                if (string.IsNullOrWhiteSpace(txtNac.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese la Nacionalidad.");
+                    return;
+                }
+                if (ContieneNumeros(txtNac.Text))
+                {
+                    MessageBox.Show("La nacionalidad no puede contener números.");
+                    return;
+                }
+                //Validar ciudad
+                if (string.IsNullOrWhiteSpace(txtCiud.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese la ciudad.");
+                    return;
+                }
+                if (ContieneNumeros(txtCiud.Text))
+                {
+                    MessageBox.Show("La ciudad no puede contener números.");
+                    return;
+                }
+                //Validar direccion
+                if (string.IsNullOrWhiteSpace(textBoxDir.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese la direccion.");
+                    return;
+                }
+                //Validar telefono
+                if (string.IsNullOrWhiteSpace(txtTel.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese el telefono.");
+                    return;
+                }
                 // Validar DNI
                 if (string.IsNullOrWhiteSpace(txtDocumento.Text) || !int.TryParse(txtDocumento.Text, out _))
                 {
@@ -130,6 +163,10 @@ namespace SistemaVentas.Usuarios
                     NombreCompleto = txtNombre.Text,
                     Correo = txtCorreo.Text,
                     Clave = txtClave.Text,
+                    Telefono= txtTel.Text,
+                    Nacionalidad=txtNac.Text,
+                    Ciudad=txtCiud.Text,
+                    Direccion=textBoxDir.Text,
                     oRol = new Rol() { idRol = Convert.ToInt32(((OpcionCombo)CBRol.SelectedItem).value) },
                     Estado = Convert.ToInt32(((OpcionCombo)CBEstado.SelectedItem).value) == 1
                 };
@@ -139,17 +176,21 @@ namespace SistemaVentas.Usuarios
                 {
                     frmUsuario.DgvData.Rows.Add(new object[]
                     {
-                "",
-                txtId.Text,
-                txtNombre.Text,
-                txtDocumento.Text,
-                txtCorreo.Text,
-                txtClave.Text,
-                ((OpcionCombo)CBRol.SelectedItem).value.ToString(),
-                ((OpcionCombo)CBRol.SelectedItem).Texto.ToString(),
-                ((OpcionCombo)CBEstado.SelectedItem).Texto.ToString(),
-                ((OpcionCombo)CBEstado.SelectedItem).value.ToString(),
-                    });
+                        "",
+                        txtId.Text,
+                        txtNombre.Text,
+                        txtDocumento.Text,
+                        txtCorreo.Text,
+                        txtNac.Text,
+                        txtCiud.Text,
+                        textBoxDir.Text,
+                        txtTel.Text,
+                        txtClave.Text,
+                        ((OpcionCombo)CBRol.SelectedItem).value.ToString(),
+                        ((OpcionCombo)CBRol.SelectedItem).Texto.ToString(),
+                        ((OpcionCombo)CBEstado.SelectedItem).Texto.ToString(),
+                        ((OpcionCombo)CBEstado.SelectedItem).value.ToString(),
+                            });
                     Limpiar();
                     MessageBox.Show("Usuario agregado con éxito");
                     this.Close();
@@ -174,6 +215,10 @@ namespace SistemaVentas.Usuarios
             txtCorreo.Text = "";
             txtClave.Text = "";
             txtClaveConf.Text = "";
+            txtNac.Text = "";
+            txtCiud.Text = "";
+            textBoxDir.Text = "";
+            txtTel.Text = "";
             CBEstado.SelectedIndex = 0;
             CBRol.SelectedIndex = 0;
         }
@@ -213,6 +258,14 @@ namespace SistemaVentas.Usuarios
 
         }
 
-        
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

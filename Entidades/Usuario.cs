@@ -16,6 +16,9 @@ namespace Entidades
         public Rol oRol { get; set; }
         public bool Estado { get; set; }
         public string FechaCreacion { get; set; }
-
+        public string Nacionalidad { get; set; }
+        public string Ciudad { get; set; }
+        public string Direccion {get; set;}
+        public string Telefono { get; set; }
     }
 }

@@ -15,9 +15,10 @@ namespace Data
         {
             List<Categoria> lista = new List<Categoria>();
 
-            using(SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
             {
-                try {
+                try
+                {
                     StringBuilder query = new StringBuilder();
                     query.AppendLine("Select IdCategoria,Descripcion,Estado,FechaCreacion from CATEGORIA");
 
@@ -38,12 +39,63 @@ namespace Data
                         }
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     lista = new List<Categoria>();
                 }
                 return lista;
             }
+        }
+
+        public bool addCategoria(Categoria obj)
+        {
+            bool resultado = false;
+            string query = "INSERT INTO CATEGORIA (Descripcion, Estado ) VALUES (@Descripcion, @Estado)";
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    oconexion.Open();
+                    using(SqlCommand cmd = new SqlCommand(query, oconexion))
+                    {
+                        cmd.Parameters.AddWithValue("@Descripcion", obj.Descripcion);
+                        cmd.Parameters.AddWithValue("@Estado", obj.Estado);
+
+                        int rowsaffected = cmd.ExecuteNonQuery();
+                        resultado = rowsaffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                resultado = false;
+            }
+            return resultado;
+        }
+
+        public bool bajaCategoria(int IdCategoria, bool nuevoEstado)
+        {
+            bool resultado = false;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    oconexion.Open();
+                    using (SqlCommand comando = new SqlCommand("UPDATE CATEGORIA SET Estado = @Estado WHERE IdCategoria = @IdCategoria", oconexion))
+                    {
+                        comando.Parameters.AddWithValue("@Estado", nuevoEstado);
+                        comando.Parameters.AddWithValue("@IdCategoria", IdCategoria);
+
+                        int filasAfectadas = comando.ExecuteNonQuery();
+                        resultado = filasAfectadas > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                resultado = false;
+            }
+            return resultado;
         }
     }
 }

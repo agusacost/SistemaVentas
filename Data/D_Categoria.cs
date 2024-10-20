@@ -41,6 +41,7 @@ namespace Data
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
                     lista = new List<Categoria>();
                 }
                 return lista;

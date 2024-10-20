@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entidades;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,7 +32,7 @@ namespace SistemaVentas.Producto
 
             if (frmAddCategoria == null || frmAddCategoria.IsDisposed)
             {
-                frmAddCategoria = new frmAddCategoria();
+                frmAddCategoria = new frmAddCategoria(this);
                 frmAddCategoria.Show();
             }
             else
@@ -58,5 +60,24 @@ namespace SistemaVentas.Producto
                 frmEditarCategoria.Focus();
             }
         }
+
+        private void frmCategoria_Load(object sender, EventArgs e)
+        {
+            //Fetch usuarios
+            List<Categoria> listaCat = new N_Categoria().Listar();
+            foreach(Categoria item in listaCat)
+            {
+                dgvdata.Rows.Add(new object[] {"",item.IdCategoria,item.Descripcion,
+                //item.Estado == true ? 1:0,
+                item.Estado == true ? "Activo" : "Inactivo",
+            });
+            }
+        }
+
+        public DataGridView DgvData
+        {
+            get { return dgvdata; }
+        }
+
     }
 }

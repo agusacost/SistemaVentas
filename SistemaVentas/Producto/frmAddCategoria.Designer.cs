@@ -30,11 +30,12 @@
         {
             this.btnCancelarCat = new FontAwesome.Sharp.IconButton();
             this.btnAgregarCat = new FontAwesome.Sharp.IconButton();
-            this.TDescripcionCat = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.TNombreCat = new System.Windows.Forms.TextBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.CBEstado = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnCancelarCat
@@ -74,39 +75,20 @@
             this.btnAgregarCat.UseVisualStyleBackColor = false;
             this.btnAgregarCat.Click += new System.EventHandler(this.btnAgregarCat_Click);
             // 
-            // TDescripcionCat
+            // txtDescripcion
             // 
-            this.TDescripcionCat.BackColor = System.Drawing.SystemColors.Control;
-            this.TDescripcionCat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TDescripcionCat.Location = new System.Drawing.Point(118, 193);
-            this.TDescripcionCat.Name = "TDescripcionCat";
-            this.TDescripcionCat.Size = new System.Drawing.Size(272, 20);
-            this.TDescripcionCat.TabIndex = 47;
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(120, 120);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(233, 18);
-            this.label5.TabIndex = 46;
-            this.label5.Text = "Nombre:";
-            // 
-            // TNombreCat
-            // 
-            this.TNombreCat.BackColor = System.Drawing.SystemColors.Control;
-            this.TNombreCat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TNombreCat.Location = new System.Drawing.Point(118, 141);
-            this.TNombreCat.Name = "TNombreCat";
-            this.TNombreCat.Size = new System.Drawing.Size(272, 20);
-            this.TNombreCat.TabIndex = 45;
+            this.txtDescripcion.BackColor = System.Drawing.SystemColors.Control;
+            this.txtDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescripcion.Location = new System.Drawing.Point(118, 146);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(272, 20);
+            this.txtDescripcion.TabIndex = 47;
             // 
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(120, 172);
+            this.label4.Location = new System.Drawing.Point(115, 125);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(233, 18);
             this.label4.TabIndex = 44;
@@ -121,6 +103,35 @@
             this.label3.TabIndex = 43;
             this.label3.Text = "Agregar Categoria";
             // 
+            // CBEstado
+            // 
+            this.CBEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CBEstado.FormattingEnabled = true;
+            this.CBEstado.Location = new System.Drawing.Point(194, 202);
+            this.CBEstado.Name = "CBEstado";
+            this.CBEstado.Size = new System.Drawing.Size(121, 21);
+            this.CBEstado.TabIndex = 51;
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(194, 176);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(121, 23);
+            this.label7.TabIndex = 50;
+            this.label7.Text = "Estado";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(354, 120);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(36, 20);
+            this.txtId.TabIndex = 52;
+            this.txtId.Visible = false;
+            // 
             // frmAddCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,11 +139,12 @@
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ClientSize = new System.Drawing.Size(507, 512);
             this.ControlBox = false;
+            this.Controls.Add(this.txtId);
+            this.Controls.Add(this.CBEstado);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnCancelarCat);
             this.Controls.Add(this.btnAgregarCat);
-            this.Controls.Add(this.TDescripcionCat);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.TNombreCat);
+            this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.MaximizeBox = false;
@@ -140,6 +152,7 @@
             this.Name = "frmAddCategoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddCategoria";
+            this.Load += new System.EventHandler(this.frmAddCategoria_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,10 +162,11 @@
 
         private FontAwesome.Sharp.IconButton btnCancelarCat;
         private FontAwesome.Sharp.IconButton btnAgregarCat;
-        private System.Windows.Forms.TextBox TDescripcionCat;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox TNombreCat;
+        private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox CBEstado;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtId;
     }
 }

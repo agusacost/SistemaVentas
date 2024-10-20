@@ -15,5 +15,10 @@ namespace Negocio
         {
             return objCategoria.Listar();
         }
+
+        public bool AddCat(Categoria objCat)
+        {
+            return objCategoria.addCategoria(objCat);
+        }
     }
 }

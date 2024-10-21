@@ -17,6 +17,7 @@ namespace Entidades
         public decimal PrecioCompra { get; set; }
         public decimal PrecioVenta { get; set; }
         public bool Estado { get; set; }
+        public Proveedor oProveedor { get; set; }
         public string FechaCreacion { get; set; }
     }
 }

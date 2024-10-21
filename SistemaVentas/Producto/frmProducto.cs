@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio;
+using Entidades;
 
 namespace SistemaVentas.Producto
 {
@@ -65,7 +67,27 @@ namespace SistemaVentas.Producto
             }
         }
 
-
-        
+        private void frmProducto_Load(object sender, EventArgs e)
+        {
+            //fetch de productos
+            List<Entidades.Producto> listaProd = new N_Producto().listar();
+            foreach (Entidades.Producto item in listaProd)
+            {
+                dgvdata.Rows.Add(new object[]
+                {
+                    "",
+                    item.IdProducto,
+                    item.Codigo,
+                    item.Nombre,
+                    item.Descripcion,
+                    item.oCategoria.Descripcion,
+                    item.Stock,
+                    item.PrecioCompra,
+                    item.PrecioVenta,
+                    item.oProveedor.Documento,
+                    item.Estado == true ? "Activo" : "Inactivo",
+                });
+            }
+        }
     }
 }

@@ -63,7 +63,7 @@ namespace SistemaVentas.Producto
 
         private void frmCategoria_Load(object sender, EventArgs e)
         {
-            //Fetch usuarios
+            //Fetch Categoria
             List<Categoria> listaCat = new N_Categoria().Listar();
             foreach(Categoria item in listaCat)
             {

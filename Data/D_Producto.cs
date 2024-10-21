@@ -64,6 +64,41 @@ namespace Data
             }
         }
 
+        public bool Registrar(Producto obj)
+        {
+            bool resultado = false;
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    oconexion.Open();
+                    using (SqlCommand comando = new SqlCommand("INSERT INTO PRODUCTO(Codigo,Nombre,Descripcion,IdCategoria,Stock,PrecioCompra,PrecioVenta,Estado,IdProveedor) VALUES (@Codigo, @Nombre, @Descripcion,@IdCategoria,@Stock ,@PrecioCompra, @PrecioVenta, @Estado, @IdProveedor)", oconexion))
+                    {
+                        comando.Parameters.AddWithValue("@Codigo", obj.Codigo);
+                        comando.Parameters.AddWithValue("@Nombre", obj.Nombre);
+                        comando.Parameters.AddWithValue("@Descripcion", obj.Descripcion);
+                        comando.Parameters.AddWithValue("@IdCategoria", obj.oCategoria.IdCategoria);
+                        comando.Parameters.AddWithValue("@Stock", obj.Stock);
+                        comando.Parameters.AddWithValue("@PrecioCompra", obj.PrecioCompra);
+                        comando.Parameters.AddWithValue("@PrecioVenta", obj.PrecioVenta);
+                        comando.Parameters.AddWithValue("@Estado", obj.Estado);
+                        comando.Parameters.AddWithValue("@IdProveedor", obj.oProveedor.IdProveedor);
+
+                        int filasAfectadas = comando.ExecuteNonQuery();
+                        resultado = filasAfectadas > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                resultado = false;
+            }
+
+            return resultado;
+
+        }
         public bool Baja(int IdProducto, bool nuevoEstado)
         {
             bool resultado = false;
@@ -89,5 +124,7 @@ namespace Data
             }
             return resultado;
         }
+
+
     }
 }

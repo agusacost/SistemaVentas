@@ -16,5 +16,10 @@ namespace Negocio
         {
             return objProducto.Listar();
         }
+
+        public bool Registrar(Producto objProd)
+        {
+            return objProducto.Registrar(objProd);
+        }
     }
 }

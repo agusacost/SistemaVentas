@@ -67,6 +67,9 @@ namespace SistemaVentas.Producto
             }
         }
 
+        public DataGridView DgvData { 
+            get { return dgvdata; }
+        }
         private void frmProducto_Load(object sender, EventArgs e)
         {
             //fetch de productos

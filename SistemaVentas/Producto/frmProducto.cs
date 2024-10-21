@@ -25,7 +25,50 @@ namespace SistemaVentas.Producto
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                // Configurar las propiedades del SaveFileDialog
+                saveFileDialog.Filter = "Excel Files|*.xlsx"; // Solo mostrar archivos .xlsx
+                saveFileDialog.Title = "Guardar archivo Excel";
+                saveFileDialog.FileName = "Productos.xlsx"; // Nombre sugerido por defecto
 
+                // Si el usuario selecciona una ubicación y da clic en Guardar
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Crear el archivo Excel
+                    using (var workbook = new ClosedXML.Excel.XLWorkbook())
+                    {
+                        // Crear una hoja de cálculo
+                        var worksheet = workbook.Worksheets.Add("Productos");
+
+                        // Agregar el encabezado de las columnas (basado en las columnas de tu DataGridView)
+                        for (int i = 0; i < dgvdata.Columns.Count; i++)
+                        {
+                            worksheet.Cell(1, i + 1).Value = dgvdata.Columns[i].HeaderText;
+                        }
+
+                        // Agregar los datos de las filas del DataGridView al archivo Excel
+                        for (int i = 0; i < dgvdata.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < dgvdata.Columns.Count; j++)
+                            {
+                                worksheet.Cell(i + 2, j + 1).Value = dgvdata.Rows[i].Cells[j].Value?.ToString() ?? string.Empty;
+                            }
+                        }
+
+                        // Guardar el archivo Excel en la ubicación seleccionada por el usuario
+                        try
+                        {
+                            workbook.SaveAs(saveFileDialog.FileName);
+                            MessageBox.Show("Archivo Excel descargado con éxito en " + saveFileDialog.FileName);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error al guardar el archivo: " + ex.Message);
+                        }
+                    }
+                }
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)

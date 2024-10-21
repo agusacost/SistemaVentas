@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio;
+using Entidades;
 
 namespace SistemaVentas.Clientes
 {
@@ -65,5 +67,22 @@ namespace SistemaVentas.Clientes
             }
         }
 
+        private void frmCliente_Load(object sender, EventArgs e)
+        {
+            List<Cliente> listCliente = new N_Cliente().Listar();
+            foreach(Cliente item in listCliente)
+            {
+                dgvdata.Rows.Add(new object[]
+                {
+                    "",
+                    item.IdCliente,
+                    item.Documento,
+                    item.NombreCompleto,
+                    item.Correo,
+                    item.Telefono,
+                    item.Estado == true ? "Activo" : "Inactivo",
+                });
+            }
+        }
     }
 }

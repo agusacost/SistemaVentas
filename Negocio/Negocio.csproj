@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="N_Categoria.cs" />
+    <Compile Include="N_Cliente.cs" />
     <Compile Include="N_Permiso.cs" />
     <Compile Include="N_Producto.cs" />
     <Compile Include="N_Proveedor.cs" />

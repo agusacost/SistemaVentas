@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio;
 
 namespace SistemaVentas.Clientes
 {
@@ -66,6 +68,24 @@ namespace SistemaVentas.Clientes
             else
             {
                 frmEditProveedor.Focus();
+            }
+        }
+
+        private void frmProveedor_Load(object sender, EventArgs e)
+        {
+            List<Proveedor> listProv = new N_Proveedor().Listar();
+            foreach(Proveedor item in listProv)
+            {
+                dgvdata.Rows.Add(new object[]
+                {
+                    "",
+                    item.IdProveedor,
+                    item.Documento,
+                    item.RazonSocial,
+                    item.Correo,
+                    item.Telefono,
+                    item.Estado == true ? "Activo" : "Inactivo",
+                });
             }
         }
     }

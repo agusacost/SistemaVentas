@@ -304,6 +304,10 @@ namespace SistemaVentas.Usuarios
 
             }
 
+        private void backLabel_Click(object sender, EventArgs e)
+        {
+
         }
+    }
 }
 

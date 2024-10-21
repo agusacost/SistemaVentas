@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="N_Categoria.cs" />
     <Compile Include="N_Permiso.cs" />
+    <Compile Include="N_Proveedor.cs" />
     <Compile Include="N_Rol.cs" />
     <Compile Include="N_User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

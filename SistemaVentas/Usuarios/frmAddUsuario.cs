@@ -20,6 +20,7 @@ namespace SistemaVentas.Usuarios
         public frmAddUsuario(frmUsuario formUsuario)
         {
             InitializeComponent();
+            frmUsuario = formUsuario;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

@@ -16,9 +16,11 @@ namespace SistemaVentas.Producto
 {
     public partial class frmAddProducto : Form
     {
-        public frmAddProducto()
+        private frmProducto frmProducto;
+        public frmAddProducto(frmProducto formProducto)
         {
             InitializeComponent();
+            frmProducto = formProducto;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -90,7 +92,7 @@ namespace SistemaVentas.Producto
 
 
                 //validaciones de longitudes
-                if (TNombre.Text.Length <= 5)
+                if (TNombre.Text.Length >= 5)
                 {
                     MessageBox.Show("El nombre debe tener al menos 5 caracteres.");
                     return;
@@ -100,9 +102,6 @@ namespace SistemaVentas.Producto
                     MessageBox.Show("La descripcion no debe mas tener 50 caracteres.");
                     return;
                 }
-
-                // Si todas las validaciones pasan, guarda el producto
-                MessageBox.Show("Producto guardado correctamente.");
 
                 Entidades.Producto objProducto = new Entidades.Producto()
                 {
@@ -119,7 +118,7 @@ namespace SistemaVentas.Producto
                 };
 
                 bool registro = new N_Producto().Registrar(objProducto);
-                frmProducto frmProducto = new frmProducto();
+                
                 //arreglar
                 if (registro)
                 {
@@ -130,12 +129,12 @@ namespace SistemaVentas.Producto
                     objProducto.Codigo,
                     objProducto.Nombre,
                     objProducto.Descripcion,
-                    ((OpcionCombo)CBCategoria.SelectedItem).value.ToString(),
+                    ((OpcionCombo)CBCategoria.SelectedItem).Texto.ToString(),
                     objProducto.Stock,
                     objProducto.PrecioCompra,
                     objProducto.PrecioVenta,
-                    ((OpcionCombo)cbProveedor.SelectedItem).value.ToString(),
-                    ((OpcionCombo)CBEstado.SelectedItem).value.ToString(),
+                    ((OpcionCombo)cbProveedor.SelectedItem).Texto.ToString(),
+                    ((OpcionCombo)CBEstado.SelectedItem).Texto.ToString(),
 
                     });
                     limpiar();
@@ -212,7 +211,6 @@ namespace SistemaVentas.Producto
             cbProveedor.ValueMember = "value";
             cbProveedor.SelectedIndex = 0;
         }
-
 
     }
 }

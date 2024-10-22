@@ -50,5 +50,39 @@ namespace Data
                 return lista;
             }
         }
+
+        public bool Registrar(Cliente obj)
+        {
+            bool resultado = false;
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    oconexion.Open();
+                    using (SqlCommand comando = new SqlCommand("INSERT INTO CLIENTE (Documento, Nombre, Correo, Telefono, Estado) VALUES (@Documento, @Nombre, @Correo, @Telefono, @Estado)", oconexion))
+                    {
+                        comando.Parameters.AddWithValue("@Documento", obj.Documento);
+                        comando.Parameters.AddWithValue("@Nombre", obj.NombreCompleto);
+                        comando.Parameters.AddWithValue("@Correo", obj.Correo);
+                        comando.Parameters.AddWithValue("@Telefono", obj.Telefono);
+                        comando.Parameters.AddWithValue("@Estado", obj.Estado);
+
+                        int filasAfectadas = comando.ExecuteNonQuery();
+                        resultado = filasAfectadas > 0;
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                resultado = false;
+            }
+
+            return resultado;
+
+        }
     }
 }

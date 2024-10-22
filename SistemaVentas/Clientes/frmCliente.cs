@@ -38,7 +38,7 @@ namespace SistemaVentas.Clientes
 
             if (frmAddCliente == null || frmAddCliente.IsDisposed)
             {
-                frmAddCliente = new frmAddCliente();
+                frmAddCliente = new frmAddCliente(this);
                 frmAddCliente.Show();
             }
             else
@@ -47,6 +47,10 @@ namespace SistemaVentas.Clientes
             }
         }
 
+        public DataGridView DgvData
+        {
+            get { return dgvdata; }
+        }
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (frmAddCliente != null && !frmAddCliente.IsDisposed)

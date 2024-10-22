@@ -29,19 +29,18 @@
         private void InitializeComponent()
         {
             this.label3 = new System.Windows.Forms.Label();
-            this.TDNICliente = new System.Windows.Forms.TextBox();
+            this.txtDocumento = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.TTelefonoCliente = new System.Windows.Forms.TextBox();
-            this.TCorreoCliente = new System.Windows.Forms.TextBox();
-            this.TNombreCliente = new System.Windows.Forms.TextBox();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.RBActivoCliente = new System.Windows.Forms.RadioButton();
-            this.RBInactivoCliente = new System.Windows.Forms.RadioButton();
             this.btnCancelar = new FontAwesome.Sharp.IconButton();
             this.btnAgregar = new FontAwesome.Sharp.IconButton();
+            this.CBEstado = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label3
@@ -53,14 +52,15 @@
             this.label3.TabIndex = 21;
             this.label3.Text = "Agregar Cliente";
             // 
-            // TDNICliente
+            // txtDocumento
             // 
-            this.TDNICliente.BackColor = System.Drawing.SystemColors.Control;
-            this.TDNICliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TDNICliente.Location = new System.Drawing.Point(118, 127);
-            this.TDNICliente.Name = "TDNICliente";
-            this.TDNICliente.Size = new System.Drawing.Size(272, 20);
-            this.TDNICliente.TabIndex = 30;
+            this.txtDocumento.BackColor = System.Drawing.SystemColors.Control;
+            this.txtDocumento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDocumento.Location = new System.Drawing.Point(118, 127);
+            this.txtDocumento.MaxLength = 8;
+            this.txtDocumento.Name = "txtDocumento";
+            this.txtDocumento.Size = new System.Drawing.Size(272, 20);
+            this.txtDocumento.TabIndex = 30;
             // 
             // label4
             // 
@@ -102,32 +102,32 @@
             this.label5.TabIndex = 33;
             this.label5.Text = "Nombre:";
             // 
-            // TTelefonoCliente
+            // txtTelefono
             // 
-            this.TTelefonoCliente.BackColor = System.Drawing.SystemColors.Control;
-            this.TTelefonoCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TTelefonoCliente.Location = new System.Drawing.Point(118, 288);
-            this.TTelefonoCliente.Name = "TTelefonoCliente";
-            this.TTelefonoCliente.Size = new System.Drawing.Size(272, 20);
-            this.TTelefonoCliente.TabIndex = 34;
+            this.txtTelefono.BackColor = System.Drawing.SystemColors.Control;
+            this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTelefono.Location = new System.Drawing.Point(118, 288);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(272, 20);
+            this.txtTelefono.TabIndex = 34;
             // 
-            // TCorreoCliente
+            // txtCorreo
             // 
-            this.TCorreoCliente.BackColor = System.Drawing.SystemColors.Control;
-            this.TCorreoCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TCorreoCliente.Location = new System.Drawing.Point(118, 230);
-            this.TCorreoCliente.Name = "TCorreoCliente";
-            this.TCorreoCliente.Size = new System.Drawing.Size(272, 20);
-            this.TCorreoCliente.TabIndex = 36;
+            this.txtCorreo.BackColor = System.Drawing.SystemColors.Control;
+            this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCorreo.Location = new System.Drawing.Point(118, 230);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(272, 20);
+            this.txtCorreo.TabIndex = 36;
             // 
-            // TNombreCliente
+            // txtNombre
             // 
-            this.TNombreCliente.BackColor = System.Drawing.SystemColors.Control;
-            this.TNombreCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TNombreCliente.Location = new System.Drawing.Point(118, 174);
-            this.TNombreCliente.Name = "TNombreCliente";
-            this.TNombreCliente.Size = new System.Drawing.Size(272, 20);
-            this.TNombreCliente.TabIndex = 37;
+            this.txtNombre.BackColor = System.Drawing.SystemColors.Control;
+            this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNombre.Location = new System.Drawing.Point(118, 174);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(272, 20);
+            this.txtNombre.TabIndex = 37;
             // 
             // label6
             // 
@@ -138,32 +138,6 @@
             this.label6.Size = new System.Drawing.Size(233, 23);
             this.label6.TabIndex = 38;
             this.label6.Text = "Estado:";
-            // 
-            // RBActivoCliente
-            // 
-            this.RBActivoCliente.AutoSize = true;
-            this.RBActivoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.RBActivoCliente.Location = new System.Drawing.Point(158, 358);
-            this.RBActivoCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.RBActivoCliente.Name = "RBActivoCliente";
-            this.RBActivoCliente.Size = new System.Drawing.Size(64, 21);
-            this.RBActivoCliente.TabIndex = 39;
-            this.RBActivoCliente.TabStop = true;
-            this.RBActivoCliente.Text = "Activo";
-            this.RBActivoCliente.UseVisualStyleBackColor = true;
-            // 
-            // RBInactivoCliente
-            // 
-            this.RBInactivoCliente.AutoSize = true;
-            this.RBInactivoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.RBInactivoCliente.Location = new System.Drawing.Point(274, 358);
-            this.RBInactivoCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.RBInactivoCliente.Name = "RBInactivoCliente";
-            this.RBInactivoCliente.Size = new System.Drawing.Size(74, 21);
-            this.RBInactivoCliente.TabIndex = 40;
-            this.RBInactivoCliente.TabStop = true;
-            this.RBInactivoCliente.Text = "Inactivo";
-            this.RBInactivoCliente.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
@@ -202,6 +176,16 @@
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
+            // CBEstado
+            // 
+            this.CBEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CBEstado.FormattingEnabled = true;
+            this.CBEstado.Location = new System.Drawing.Point(118, 335);
+            this.CBEstado.Name = "CBEstado";
+            this.CBEstado.Size = new System.Drawing.Size(121, 21);
+            this.CBEstado.TabIndex = 59;
+            // 
             // frmAddCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,27 +193,27 @@
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ClientSize = new System.Drawing.Size(507, 512);
             this.ControlBox = false;
+            this.Controls.Add(this.CBEstado);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.RBInactivoCliente);
-            this.Controls.Add(this.RBActivoCliente);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.TNombreCliente);
-            this.Controls.Add(this.TCorreoCliente);
-            this.Controls.Add(this.TTelefonoCliente);
+            this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.txtCorreo);
+            this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.TDNICliente);
+            this.Controls.Add(this.txtDocumento);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddCliente";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Cliente";
+            this.Load += new System.EventHandler(this.frmAddCliente_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,18 +222,17 @@
         #endregion
 
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox TDNICliente;
+        private System.Windows.Forms.TextBox txtDocumento;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox TTelefonoCliente;
-        private System.Windows.Forms.TextBox TCorreoCliente;
-        private System.Windows.Forms.TextBox TNombreCliente;
+        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.RadioButton RBActivoCliente;
-        private System.Windows.Forms.RadioButton RBInactivoCliente;
         private FontAwesome.Sharp.IconButton btnCancelar;
         private FontAwesome.Sharp.IconButton btnAgregar;
+        private System.Windows.Forms.ComboBox CBEstado;
     }
 }

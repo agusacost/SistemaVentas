@@ -16,5 +16,10 @@ namespace Negocio
         {
             return objCliente.Listar();
         }
+
+        public bool Registro(Cliente oCliente)
+        {
+            return objCliente.Registrar(oCliente);
+        }
     }
 }

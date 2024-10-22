@@ -50,5 +50,65 @@ namespace Data
                 return lista;
             }
         }
+
+        public bool Registrar(Proveedor obj)
+        {
+            bool resultado = false;
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    oconexion.Open();
+                    using (SqlCommand comando = new SqlCommand("INSERT INTO PROVEEDOR (Documento, RazonSocial, Correo, Telefono, Estado) VALUES (@Documento, @RazonSocial, @Correo, @Telefono, @Estado)", oconexion))
+                    {
+                        comando.Parameters.AddWithValue("@Documento", obj.Documento);
+                        comando.Parameters.AddWithValue("@RazonSocial", obj.RazonSocial);
+                        comando.Parameters.AddWithValue("@Correo", obj.Correo);
+                        comando.Parameters.AddWithValue("@Telefono", obj.Telefono);
+                        comando.Parameters.AddWithValue("@Estado", obj.Estado);
+
+                        int filasAfectadas = comando.ExecuteNonQuery();
+                        resultado = filasAfectadas > 0;
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                resultado = false;
+            }
+
+            return resultado;
+
+        }
+
+        public bool Baja(int IdProveedor, bool nuevoEstado)
+        {
+            bool resultado = false;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    oconexion.Open();
+                    using (SqlCommand comando = new SqlCommand("UPDATE PROVEEDOR SET Estado = @Estado WHERE IdProveedor = @IdProveedor", oconexion))
+                    {
+                        comando.Parameters.AddWithValue("@Estado", nuevoEstado);
+                        comando.Parameters.AddWithValue("@IdProveedor", IdProveedor);
+
+                        int filasAfectadas = comando.ExecuteNonQuery();
+                        resultado = filasAfectadas > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                resultado = false;
+            }
+            return resultado;
+        }
     }
 }

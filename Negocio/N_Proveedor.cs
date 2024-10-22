@@ -16,5 +16,10 @@ namespace Negocio
         {
             return objProveedor.Listar();
         }
+
+        public bool Registro(Proveedor oproveedor)
+        {
+            return objProveedor.Registrar(oproveedor);
+        }
     }
 }

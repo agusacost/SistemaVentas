@@ -69,6 +69,7 @@ namespace Data
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 resultado = false;
             }
             return resultado;
@@ -94,6 +95,7 @@ namespace Data
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 resultado = false;
             }
             return resultado;

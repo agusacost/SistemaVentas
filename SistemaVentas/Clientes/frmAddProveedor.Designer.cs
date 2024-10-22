@@ -30,18 +30,18 @@
         {
             this.btnCancelarProv = new FontAwesome.Sharp.IconButton();
             this.btnAgregarProv = new FontAwesome.Sharp.IconButton();
-            this.RBInactivoProv = new System.Windows.Forms.RadioButton();
-            this.RBActivoProv = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
-            this.TRazonSocial = new System.Windows.Forms.TextBox();
-            this.TCorreoProv = new System.Windows.Forms.TextBox();
-            this.TTelefonoProv = new System.Windows.Forms.TextBox();
+            this.txtRSocial = new System.Windows.Forms.TextBox();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.TDNIProv = new System.Windows.Forms.TextBox();
+            this.txtDoc = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.CBEstado = new System.Windows.Forms.ComboBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnCancelarProv
@@ -52,10 +52,9 @@
             this.btnCancelarProv.IconColor = System.Drawing.Color.White;
             this.btnCancelarProv.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCancelarProv.IconSize = 16;
-            this.btnCancelarProv.Location = new System.Drawing.Point(367, 514);
-            this.btnCancelarProv.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelarProv.Location = new System.Drawing.Point(261, 391);
             this.btnCancelarProv.Name = "btnCancelarProv";
-            this.btnCancelarProv.Size = new System.Drawing.Size(152, 39);
+            this.btnCancelarProv.Size = new System.Drawing.Size(114, 32);
             this.btnCancelarProv.TabIndex = 56;
             this.btnCancelarProv.Text = "Cancelar";
             this.btnCancelarProv.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -72,10 +71,9 @@
             this.btnAgregarProv.IconColor = System.Drawing.Color.White;
             this.btnAgregarProv.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAgregarProv.IconSize = 16;
-            this.btnAgregarProv.Location = new System.Drawing.Point(157, 514);
-            this.btnAgregarProv.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregarProv.Location = new System.Drawing.Point(118, 391);
             this.btnAgregarProv.Name = "btnAgregarProv";
-            this.btnAgregarProv.Size = new System.Drawing.Size(152, 39);
+            this.btnAgregarProv.Size = new System.Drawing.Size(114, 32);
             this.btnAgregarProv.TabIndex = 55;
             this.btnAgregarProv.Text = "Agregar";
             this.btnAgregarProv.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -83,164 +81,150 @@
             this.btnAgregarProv.UseVisualStyleBackColor = false;
             this.btnAgregarProv.Click += new System.EventHandler(this.btnAgregarProv_Click);
             // 
-            // RBInactivoProv
-            // 
-            this.RBInactivoProv.AutoSize = true;
-            this.RBInactivoProv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.RBInactivoProv.Location = new System.Drawing.Point(365, 459);
-            this.RBInactivoProv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.RBInactivoProv.Name = "RBInactivoProv";
-            this.RBInactivoProv.Size = new System.Drawing.Size(87, 24);
-            this.RBInactivoProv.TabIndex = 54;
-            this.RBInactivoProv.TabStop = true;
-            this.RBInactivoProv.Text = "Inactivo";
-            this.RBInactivoProv.UseVisualStyleBackColor = true;
-            // 
-            // RBActivoProv
-            // 
-            this.RBActivoProv.AutoSize = true;
-            this.RBActivoProv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.RBActivoProv.Location = new System.Drawing.Point(211, 459);
-            this.RBActivoProv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.RBActivoProv.Name = "RBActivoProv";
-            this.RBActivoProv.Size = new System.Drawing.Size(76, 24);
-            this.RBActivoProv.TabIndex = 53;
-            this.RBActivoProv.TabStop = true;
-            this.RBActivoProv.Text = "Activo";
-            this.RBActivoProv.UseVisualStyleBackColor = true;
-            // 
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(160, 409);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(115, 309);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(311, 28);
+            this.label6.Size = new System.Drawing.Size(233, 23);
             this.label6.TabIndex = 52;
             this.label6.Text = "Estado:";
             // 
-            // TRazonSocial
+            // txtRSocial
             // 
-            this.TRazonSocial.BackColor = System.Drawing.SystemColors.Control;
-            this.TRazonSocial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TRazonSocial.Location = new System.Drawing.Point(157, 232);
-            this.TRazonSocial.Margin = new System.Windows.Forms.Padding(4);
-            this.TRazonSocial.Name = "TRazonSocial";
-            this.TRazonSocial.Size = new System.Drawing.Size(362, 22);
-            this.TRazonSocial.TabIndex = 51;
+            this.txtRSocial.BackColor = System.Drawing.SystemColors.Control;
+            this.txtRSocial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRSocial.Location = new System.Drawing.Point(118, 188);
+            this.txtRSocial.Name = "txtRSocial";
+            this.txtRSocial.Size = new System.Drawing.Size(272, 20);
+            this.txtRSocial.TabIndex = 51;
             // 
-            // TCorreoProv
+            // txtCorreo
             // 
-            this.TCorreoProv.BackColor = System.Drawing.SystemColors.Control;
-            this.TCorreoProv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TCorreoProv.Location = new System.Drawing.Point(157, 301);
-            this.TCorreoProv.Margin = new System.Windows.Forms.Padding(4);
-            this.TCorreoProv.Name = "TCorreoProv";
-            this.TCorreoProv.Size = new System.Drawing.Size(362, 22);
-            this.TCorreoProv.TabIndex = 50;
+            this.txtCorreo.BackColor = System.Drawing.SystemColors.Control;
+            this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCorreo.Location = new System.Drawing.Point(118, 237);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(272, 20);
+            this.txtCorreo.TabIndex = 50;
             // 
-            // TTelefonoProv
+            // txtTelefono
             // 
-            this.TTelefonoProv.BackColor = System.Drawing.SystemColors.Control;
-            this.TTelefonoProv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TTelefonoProv.Location = new System.Drawing.Point(157, 372);
-            this.TTelefonoProv.Margin = new System.Windows.Forms.Padding(4);
-            this.TTelefonoProv.Name = "TTelefonoProv";
-            this.TTelefonoProv.Size = new System.Drawing.Size(362, 22);
-            this.TTelefonoProv.TabIndex = 49;
+            this.txtTelefono.BackColor = System.Drawing.SystemColors.Control;
+            this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTelefono.Location = new System.Drawing.Point(118, 286);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(272, 20);
+            this.txtTelefono.TabIndex = 49;
             // 
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(160, 200);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(115, 162);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(311, 28);
+            this.label5.Size = new System.Drawing.Size(233, 23);
             this.label5.TabIndex = 48;
             this.label5.Text = "RazonSocial:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(160, 269);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(115, 211);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(311, 28);
+            this.label2.Size = new System.Drawing.Size(233, 23);
             this.label2.TabIndex = 47;
             this.label2.Text = "Correo:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(160, 340);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(115, 260);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(311, 28);
+            this.label1.Size = new System.Drawing.Size(233, 23);
             this.label1.TabIndex = 46;
             this.label1.Text = "Telefono:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // TDNIProv
+            // txtDoc
             // 
-            this.TDNIProv.BackColor = System.Drawing.SystemColors.Control;
-            this.TDNIProv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TDNIProv.Location = new System.Drawing.Point(157, 174);
-            this.TDNIProv.Margin = new System.Windows.Forms.Padding(4);
-            this.TDNIProv.Name = "TDNIProv";
-            this.TDNIProv.Size = new System.Drawing.Size(362, 22);
-            this.TDNIProv.TabIndex = 45;
+            this.txtDoc.BackColor = System.Drawing.SystemColors.Control;
+            this.txtDoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDoc.Location = new System.Drawing.Point(118, 141);
+            this.txtDoc.MaxLength = 8;
+            this.txtDoc.Name = "txtDoc";
+            this.txtDoc.Size = new System.Drawing.Size(272, 20);
+            this.txtDoc.TabIndex = 45;
             // 
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(160, 142);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(115, 115);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(311, 28);
+            this.label4.Size = new System.Drawing.Size(233, 23);
             this.label4.TabIndex = 44;
             this.label4.Text = "Documento:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(205, 83);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(154, 67);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(295, 47);
+            this.label3.Size = new System.Drawing.Size(221, 38);
             this.label3.TabIndex = 43;
             this.label3.Text = "Agregar Proovedor";
             // 
+            // CBEstado
+            // 
+            this.CBEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CBEstado.FormattingEnabled = true;
+            this.CBEstado.Location = new System.Drawing.Point(118, 335);
+            this.CBEstado.Name = "CBEstado";
+            this.CBEstado.Size = new System.Drawing.Size(121, 21);
+            this.CBEstado.TabIndex = 58;
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(341, 76);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(49, 20);
+            this.txtId.TabIndex = 59;
+            // 
             // frmAddProveedor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.ClientSize = new System.Drawing.Size(676, 630);
+            this.ClientSize = new System.Drawing.Size(507, 512);
             this.ControlBox = false;
+            this.Controls.Add(this.txtId);
+            this.Controls.Add(this.CBEstado);
             this.Controls.Add(this.btnCancelarProv);
             this.Controls.Add(this.btnAgregarProv);
-            this.Controls.Add(this.RBInactivoProv);
-            this.Controls.Add(this.RBActivoProv);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.TRazonSocial);
-            this.Controls.Add(this.TCorreoProv);
-            this.Controls.Add(this.TTelefonoProv);
+            this.Controls.Add(this.txtRSocial);
+            this.Controls.Add(this.txtCorreo);
+            this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.TDNIProv);
+            this.Controls.Add(this.txtDoc);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddProveedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Proveedor";
+            this.Load += new System.EventHandler(this.frmAddProveedor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,17 +234,17 @@
 
         private FontAwesome.Sharp.IconButton btnCancelarProv;
         private FontAwesome.Sharp.IconButton btnAgregarProv;
-        private System.Windows.Forms.RadioButton RBInactivoProv;
-        private System.Windows.Forms.RadioButton RBActivoProv;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox TRazonSocial;
-        private System.Windows.Forms.TextBox TCorreoProv;
-        private System.Windows.Forms.TextBox TTelefonoProv;
+        private System.Windows.Forms.TextBox txtRSocial;
+        private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TDNIProv;
+        private System.Windows.Forms.TextBox txtDoc;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox CBEstado;
+        private System.Windows.Forms.TextBox txtId;
     }
 }

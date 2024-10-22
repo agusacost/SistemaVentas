@@ -42,7 +42,7 @@ namespace SistemaVentas.Clientes
 
             if(frmAddProveedor == null || frmAddProveedor.IsDisposed)
             {
-                frmAddProveedor = new frmAddProveedor();
+                frmAddProveedor = new frmAddProveedor(this);
                 frmAddProveedor.Show();
             }
             else 
@@ -71,6 +71,10 @@ namespace SistemaVentas.Clientes
             }
         }
 
+        public DataGridView DgvData
+        {
+            get { return dgvdata; }
+        }
         private void frmProveedor_Load(object sender, EventArgs e)
         {
             List<Proveedor> listProv = new N_Proveedor().Listar();

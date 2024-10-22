@@ -54,6 +54,7 @@ namespace Data
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
                     lista = new List<Usuario>();
                 }
 
@@ -92,6 +93,7 @@ namespace Data
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 resultado = false;
             }
 
@@ -119,6 +121,7 @@ namespace Data
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message.ToString());
                 resultado = false;
             }
             return resultado;

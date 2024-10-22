@@ -189,7 +189,6 @@ namespace SistemaVentas.Usuarios
                         ((OpcionCombo)CBRol.SelectedItem).value.ToString(),
                         ((OpcionCombo)CBRol.SelectedItem).Texto.ToString(),
                         ((OpcionCombo)CBEstado.SelectedItem).Texto.ToString(),
-                        ((OpcionCombo)CBEstado.SelectedItem).value.ToString(),
                             });
                     Limpiar();
                     MessageBox.Show("Usuario agregado con éxito");

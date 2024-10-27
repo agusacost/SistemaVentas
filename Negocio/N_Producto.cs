@@ -19,6 +19,22 @@ namespace Negocio
 
         public bool Registrar(Producto objProd)
         {
+            if (string.IsNullOrWhiteSpace(objProd.Codigo))
+            {
+                throw new ArgumentException("El código del producto es obligatorio.");
+            }
+            if (string.IsNullOrWhiteSpace(objProd.Nombre))
+            {
+                throw new ArgumentException("El nombre del producto es obligatorio.");
+            }
+            if (string.IsNullOrWhiteSpace(objProd.Descripcion))
+            {
+                throw new ArgumentException("La descripción del producto es obligatoria.");
+            }
+            if (objProd.oCategoria == null || objProd.oCategoria.IdCategoria == 0)
+            {
+                throw new ArgumentException("La categoría del producto es obligatoria.");
+            }
             return objProducto.Registrar(objProd);
         }
     }

@@ -24,13 +24,13 @@ namespace Data
                     query.AppendLine("u.IdCategoria, u.Stock, u.PrecioCompra, u.PrecioVenta, u.Estado, u.IdProveedor, ");
                     query.AppendLine("p.Documento, c.Descripcion AS CategoriaDescripcion ");
                     query.AppendLine("FROM PRODUCTO u ");
-                    query.AppendLine("INNER JOIN PROVEEDOR p ON p.IdProveedor = u.IdProveedor ");
-                    query.AppendLine("INNER JOIN CATEGORIA c ON c.IdCategoria = u.IdCategoria");
+                    query.AppendLine("LEFT JOIN PROVEEDOR p ON p.IdProveedor = u.IdProveedor ");
+                    query.AppendLine("LEFT JOIN CATEGORIA c ON c.IdCategoria = u.IdCategoria");
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
                     oconexion.Open();
 
-                    using(SqlDataReader reader = cmd.ExecuteReader())
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -40,22 +40,26 @@ namespace Data
                                 Codigo = reader["Codigo"].ToString(),
                                 Nombre = reader["Nombre"].ToString(),
                                 Descripcion = reader["ProductoDescripcion"].ToString(),
-                                oCategoria = new Categoria() { IdCategoria = Convert.ToInt32(reader["IdCategoria"]), Descripcion = reader["CategoriaDescripcion"].ToString() },
-                                Stock = Convert.ToInt32(reader["Stock"]),
-                                PrecioCompra = Convert.ToDecimal(reader["PrecioCompra"]),
-                                PrecioVenta = Convert.ToDecimal(reader["PrecioVenta"]),
+                                oCategoria = new Categoria()
+                                {
+                                    IdCategoria = (int)(reader["IdCategoria"] != DBNull.Value ? Convert.ToInt32(reader["IdCategoria"]) : (int?)null),
+                                    Descripcion = reader["CategoriaDescripcion"] != DBNull.Value ? reader["CategoriaDescripcion"].ToString() : null
+                                },
+                                Stock = reader["Stock"] != DBNull.Value ? Convert.ToInt32(reader["Stock"]) : (int?)null,
+                                PrecioCompra = reader["PrecioCompra"] != DBNull.Value ? Convert.ToDecimal(reader["PrecioCompra"]) : (decimal?)null,
+                                PrecioVenta = reader["PrecioVenta"] != DBNull.Value ? Convert.ToDecimal(reader["PrecioVenta"]) : (decimal?)null,
                                 Estado = Convert.ToBoolean(reader["Estado"]),
-                                oProveedor = new Proveedor()
+                                oProveedor = reader["IdProveedor"] != DBNull.Value ? new Proveedor()
                                 {
                                     IdProveedor = Convert.ToInt32(reader["IdProveedor"]),
-                                    Documento = reader["Documento"].ToString(),
-                                }
-
+                                    Documento = reader["Documento"].ToString()
+                                } : null
                             });
                         }
                     }
 
-                }catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                     lista = new List<Producto>();
@@ -64,26 +68,26 @@ namespace Data
             }
         }
 
+
         public bool Registrar(Producto obj)
         {
             bool resultado = false;
 
             try
             {
+                StringBuilder query = new StringBuilder();
+                query.AppendLine("INSERT INTO PRODUCTO (Codigo, Nombre, Descripcion, IdCategoria, Estado)");
+                query.AppendLine("VALUES (@Codigo, @Nombre, @Descripcion, @IdCategoria, @Estado);");
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
                     oconexion.Open();
-                    using (SqlCommand comando = new SqlCommand("INSERT INTO PRODUCTO(Codigo,Nombre,Descripcion,IdCategoria,Stock,PrecioCompra,PrecioVenta,Estado,IdProveedor) VALUES (@Codigo, @Nombre, @Descripcion,@IdCategoria,@Stock ,@PrecioCompra, @PrecioVenta, @Estado, @IdProveedor)", oconexion))
+                    using (SqlCommand comando = new SqlCommand(query.ToString(), oconexion))
                     {
                         comando.Parameters.AddWithValue("@Codigo", obj.Codigo);
                         comando.Parameters.AddWithValue("@Nombre", obj.Nombre);
                         comando.Parameters.AddWithValue("@Descripcion", obj.Descripcion);
                         comando.Parameters.AddWithValue("@IdCategoria", obj.oCategoria.IdCategoria);
-                        comando.Parameters.AddWithValue("@Stock", obj.Stock);
-                        comando.Parameters.AddWithValue("@PrecioCompra", obj.PrecioCompra);
-                        comando.Parameters.AddWithValue("@PrecioVenta", obj.PrecioVenta);
                         comando.Parameters.AddWithValue("@Estado", obj.Estado);
-                        comando.Parameters.AddWithValue("@IdProveedor", obj.oProveedor.IdProveedor);
 
                         int filasAfectadas = comando.ExecuteNonQuery();
                         resultado = filasAfectadas > 0;

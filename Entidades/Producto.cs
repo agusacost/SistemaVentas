@@ -13,11 +13,11 @@ namespace Entidades
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public Categoria oCategoria { get; set; }
-        public int Stock { get; set; }
-        public decimal PrecioCompra { get; set; }
-        public decimal PrecioVenta { get; set; }
+        public int? Stock { get; set; }
+        public decimal? PrecioCompra { get; set; }
+        public decimal? PrecioVenta { get; set; }
         public bool Estado { get; set; }
-        public Proveedor oProveedor { get; set; }
+        public Proveedor oProveedor { get; set; } = null;
         public string FechaCreacion { get; set; }
     }
 }

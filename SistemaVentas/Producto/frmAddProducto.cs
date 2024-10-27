@@ -62,46 +62,6 @@ namespace SistemaVentas.Producto
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(TNombre.Text))
-                {
-                    MessageBox.Show("El campo Nombre es obligatorio.");
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(TDescripcion.Text))
-                {
-                    MessageBox.Show("El campo Descripción es obligatorio.");
-                    return;
-                }
-
-                // Validación de Stock
-                int stock;
-                if (!int.TryParse(TCantidad.Text, out stock) || stock < 0)
-                {
-                    MessageBox.Show("Ingrese un valor válido para el Stock (debe ser un número positivo).");
-                    return;
-                }
-
-                // Validación de Precio
-                decimal precio;
-                if (!decimal.TryParse(TPrecioCompra.Text, out precio) || precio <= 0)
-                {
-                    MessageBox.Show("Ingrese un valor válido para el Precio (debe ser mayor a cero).");
-                    return;
-                }
-
-
-                //validaciones de longitudes
-                if (TNombre.Text.Length >= 5)
-                {
-                    MessageBox.Show("El nombre debe tener al menos 5 caracteres.");
-                    return;
-                }
-                if (TDescripcion.Text.Length >= 50)
-                {
-                    MessageBox.Show("La descripcion no debe mas tener 50 caracteres.");
-                    return;
-                }
 
                 Entidades.Producto objProducto = new Entidades.Producto()
                 {
@@ -109,10 +69,6 @@ namespace SistemaVentas.Producto
                     Nombre = TNombre.Text,
                     Descripcion = TDescripcion.Text,
                     oCategoria = new Categoria() { IdCategoria = Convert.ToInt32(((OpcionCombo)CBCategoria.SelectedItem).value) },
-                    Stock = Convert.ToInt32(TCantidad.Text),
-                    PrecioCompra = Convert.ToDecimal(TPrecioCompra.Text),
-                    PrecioVenta = Convert.ToDecimal(TPrecioCompra.Text) + (Convert.ToDecimal(TPrecioCompra.Text) * Convert.ToDecimal(TPorcentaje.Text) / 100),
-                    oProveedor = new Proveedor() { IdProveedor = Convert.ToInt32(((OpcionCombo)cbProveedor.SelectedItem).value) },
                     Estado = Convert.ToInt32(((OpcionCombo)CBEstado.SelectedItem).value) == 1,
 
                 };
@@ -130,12 +86,11 @@ namespace SistemaVentas.Producto
                     objProducto.Nombre,
                     objProducto.Descripcion,
                     ((OpcionCombo)CBCategoria.SelectedItem).Texto.ToString(),
-                    objProducto.Stock,
-                    objProducto.PrecioCompra,
-                    objProducto.PrecioVenta,
-                    ((OpcionCombo)cbProveedor.SelectedItem).Texto.ToString(),
-                    ((OpcionCombo)CBEstado.SelectedItem).Texto.ToString(),
-
+                    objProducto.Stock.HasValue? objProducto.Stock.Value.ToString() : "N/A",
+                    objProducto.PrecioCompra.HasValue? objProducto.PrecioCompra.Value.ToString() : "N/A",
+                    objProducto.PrecioVenta.HasValue? objProducto.PrecioVenta.Value.ToString("C") : "N/A",
+                    objProducto.oProveedor != null ? objProducto.oProveedor.Documento : "Sin Proveedor",
+                    ((OpcionCombo)CBEstado.SelectedItem).Texto.ToString()
                     });
                     limpiar();
                     MessageBox.Show("Producto agregado correctamente");
@@ -143,10 +98,16 @@ namespace SistemaVentas.Producto
                 }
                 else
                 {
-                    MessageBox.Show("Error al intentar agregar el producto, intente nuevamente");
+                    MessageBox.Show("Error ");
+                    limpiar();
                 }
             }
-            catch(Exception ex)
+            catch (ArgumentException ex)
+            {
+                // Muestra el mensaje de error en la interfaz de usuario
+                MessageBox.Show(ex.Message, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Se produjo un error" + ex.Message);
             }
@@ -159,9 +120,6 @@ namespace SistemaVentas.Producto
             TNombre.Text = "";
             TDescripcion.Text = "";
             CBCategoria.SelectedIndex = 0;
-            TCantidad.Text = "0";
-            TPrecioCompra.Text = "0";
-            cbProveedor.SelectedIndex = 0;
             CBEstado.SelectedIndex = 0;
         }
 
@@ -198,18 +156,6 @@ namespace SistemaVentas.Producto
             CBCategoria.ValueMember = "value";
             CBCategoria.SelectedIndex = 0;
 
-            List<Proveedor> listaProv = new N_Proveedor().Listar();
-            foreach(Proveedor prov in listaProv)
-            {
-                cbProveedor.Items.Add(new OpcionCombo()
-                {
-                    value = prov.IdProveedor,
-                    Texto = prov.Documento,
-                });
-            }
-            cbProveedor.DisplayMember = "Texto";
-            cbProveedor.ValueMember = "value";
-            cbProveedor.SelectedIndex = 0;
         }
 
     }

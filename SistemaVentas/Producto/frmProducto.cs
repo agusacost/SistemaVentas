@@ -147,10 +147,10 @@ namespace SistemaVentas.Producto
                     item.Nombre,
                     item.Descripcion,
                     item.oCategoria.Descripcion,
-                    item.Stock,
-                    item.PrecioCompra,
-                    item.PrecioVenta,
-                    item.oProveedor.Documento,
+                    item.Stock.HasValue ? item.Stock.Value.ToString() : "N/A",
+                    item.PrecioCompra.HasValue ? item.PrecioCompra.Value.ToString() : "N/A",
+                    item.PrecioVenta.HasValue ? item.PrecioVenta.Value.ToString("C") : "N/A",
+                    item.oProveedor != null ? item.oProveedor.Documento : "Sin Proveedor",
                     item.Estado == true ? "Activo" : "Inactivo",
                 });
             }
@@ -158,7 +158,7 @@ namespace SistemaVentas.Producto
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if(cbbusqueda.SelectedItem != null)
+            if (cbbusqueda.SelectedItem != null)
             {
                 int catSelected = Convert.ToInt32(((OpcionCombo)cbbusqueda.SelectedItem).value);
                 string searchText = txtBusqueda.Text.Trim().ToLower();
@@ -166,37 +166,36 @@ namespace SistemaVentas.Producto
                 List<Entidades.Producto> listaProd = new N_Producto().listar();
 
                 var filteredProd = listaProd
-                .Where(p =>
-                    (catSelected == 0 || p.oCategoria.IdCategoria == catSelected) && // Filtrar por categoría si no es "Todos"
-                    (string.IsNullOrEmpty(searchText) || // Si no hay texto de búsqueda, no filtrar por texto
-                     p.Codigo.ToLower().Contains(searchText) ||
-                     p.Nombre.ToLower().Contains(searchText) ||
-                     p.Descripcion.ToLower().Contains(searchText) ||
-                     p.oCategoria.Descripcion.ToLower().Contains(searchText) ||
-                     p.oProveedor.Documento.ToLower().Contains(searchText))
-                ).ToList();
-
+                    .Where(p =>
+                        (catSelected == 0 || (p.oCategoria != null && p.oCategoria.IdCategoria == catSelected)) && // Filtrar por categoría si no es "Todos"
+                        (string.IsNullOrEmpty(searchText) || // Si no hay texto de búsqueda, no filtrar por texto
+                         (p.Codigo != null && p.Codigo.ToLower().Contains(searchText)) ||
+                         (p.Nombre != null && p.Nombre.ToLower().Contains(searchText)) ||
+                         (p.Descripcion != null && p.Descripcion.ToLower().Contains(searchText)) ||
+                         (p.oCategoria != null && p.oCategoria.Descripcion.ToLower().Contains(searchText)) ||
+                         (p.oProveedor != null && p.oProveedor.Documento != null && p.oProveedor.Documento.ToLower().Contains(searchText)))
+                    ).ToList();
 
                 foreach (Entidades.Producto item in filteredProd)
                 {
                     dgvdata.Rows.Add(new object[]
                     {
-                        "",
-                        item.IdProducto,
-                        item.Codigo,
-                        item.Nombre,
-                        item.Descripcion,
-                        item.oCategoria.Descripcion,
-                        item.Stock,
-                        item.PrecioCompra,
-                        item.PrecioVenta,
-                        item.oProveedor.Documento,
-                        item.Estado == true ? "Activo" : "Inactivo",
+                "",
+                item.IdProducto,
+                item.Codigo,
+                item.Nombre,
+                item.Descripcion,
+                item.oCategoria != null ? item.oCategoria.Descripcion : "Sin Categoría",
+                item.Stock.HasValue ? item.Stock.Value.ToString() : "N/A",
+                item.PrecioCompra.HasValue ? item.PrecioCompra.Value.ToString("C") : "N/A",
+                item.PrecioVenta.HasValue ? item.PrecioVenta.Value.ToString("C") : "N/A",
+                item.oProveedor != null ? item.oProveedor.Documento : "Sin Proveedor",
+                item.Estado ? "Activo" : "Inactivo",
                     });
                 }
             }
-            
         }
+
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
@@ -215,10 +214,10 @@ namespace SistemaVentas.Producto
                         item.Nombre,
                         item.Descripcion,
                         item.oCategoria.Descripcion,
-                        item.Stock,
-                        item.PrecioCompra,
-                        item.PrecioVenta,
-                        item.oProveedor.Documento,
+                        item.Stock.HasValue ? item.Stock.Value.ToString() : "N/A",
+                        item.PrecioCompra.HasValue ? item.PrecioCompra.Value.ToString() : "N/A",
+                        item.PrecioVenta.HasValue ? item.PrecioVenta.Value.ToString("C") : "N/A",
+                        item.oProveedor != null ? item.oProveedor.Documento : "Sin Proveedor",
                         item.Estado == true ? "Activo" : "Inactivo",
                 });
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaVentas.Utilities;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio;
+using Entidades;
 
 namespace SistemaVentas.Compras
 {
@@ -39,27 +42,14 @@ namespace SistemaVentas.Compras
         }
         private bool ValidarTipoDocumento()
         {
-            if (string.IsNullOrEmpty(CBDocumentoC.Text))
+            if (string.IsNullOrEmpty(CBFactura.Text))
             {
                 MessageBox.Show("Debe seleccionar un tipo de documento.", "Tipo de documento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
         }
-        private bool ValidarNumeroDocumento()
-        {
-            if (string.IsNullOrWhiteSpace(TNumeroDocumentoC.Text))
-            {
-                MessageBox.Show("Debe ingresar el número de documento.", "Número de documento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            else if (!long.TryParse(TNumeroDocumentoC.Text, out _) || TNumeroDocumentoC.Text.Length != 8)
-            {
-                MessageBox.Show("El número de documento debe ser numérico y debe tener 8 digitos.", "Número de documento inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            return true;
-        }
+        
         private bool ValidarRazonSocial()
         {
             // Verifica que no esté vacío ni solo con espacios
@@ -144,7 +134,6 @@ namespace SistemaVentas.Compras
         {
             if (!ValidarFecha() ||
            !ValidarTipoDocumento() ||
-           !ValidarNumeroDocumento() ||
            !ValidarRazonSocial() ||
            !ValidarCodigoProducto() ||
            !ValidarProducto() ||
@@ -162,7 +151,7 @@ namespace SistemaVentas.Compras
 
         private void BLimpiarCompra_Click(object sender, EventArgs e)
         {
-            TNumeroDocumentoC.Clear();
+            
             TRazonSocialC.Clear();
             TProductoC.Clear();
             TCodProdC.Clear();
@@ -170,7 +159,7 @@ namespace SistemaVentas.Compras
             TTotalAPagar.Clear();
 
             // Restablecer los ComboBox
-            CBDocumentoC.SelectedIndex = -1; // Si no tienes un valor predeterminado, utiliza -1
+            CBFactura.SelectedIndex = -1; // Si no tienes un valor predeterminado, utiliza -1
                                              // Agrega aquí otros ComboBox que necesiten ser limpiados, si los hay
             CantidadC.Value= 0;
 
@@ -178,7 +167,28 @@ namespace SistemaVentas.Compras
             DateFechaCompra.Value = DateTime.Now; 
         }
 
-        
+        private void frmCompras_Load(object sender, EventArgs e)
+        {
+            CBFactura.Items.Add(new OpcionCombo() { value = 1, Texto = "Factura A" });
+            CBFactura.Items.Add(new OpcionCombo() { value = 2, Texto = "Factura B" });
+            CBFactura.Items.Add(new OpcionCombo() { value = 3, Texto = "Factura C" });
+            CBFactura.DisplayMember = "Texto";
+            CBFactura.ValueMember = "value";
+            CBFactura.SelectedIndex = 2;
+
+            List<Proveedor> listaprov = new N_Proveedor().Listar();
+            foreach(Proveedor prov in listaprov)
+            {
+                CbProveedor.Items.Add(new OpcionCombo()
+                {
+                    value = prov.IdProveedor,
+                    Texto = prov.Documento,
+                });
+            }
+            CbProveedor.DisplayMember = "Texto";
+            CbProveedor.ValueMember = "value";
+            CbProveedor.SelectedIndex = 0;
+        }
     }
 
 }

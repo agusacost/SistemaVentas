@@ -51,28 +51,96 @@ namespace Data
             }
         }
 
-        public bool Registrar(Cliente obj)
+        public int Registrar(Cliente obj, out string Mensaje)
         {
-            bool resultado = false;
+            int idClientegenerado = 0;
+            Mensaje = string.Empty;
 
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
+                    SqlCommand comando = new SqlCommand("sp_RegistrarCliente", oconexion);
+                    comando.Parameters.AddWithValue("Documento", obj.Documento);
+                    comando.Parameters.AddWithValue("Nombre", obj.NombreCompleto);
+                    comando.Parameters.AddWithValue("Correo", obj.Correo);
+                    comando.Parameters.AddWithValue("Telefono", obj.Telefono);
+                    comando.Parameters.AddWithValue("Estado", obj.Estado);
+                    comando.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    comando.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
+                    comando.CommandType = CommandType.StoredProcedure;
+                  
                     oconexion.Open();
-                    using (SqlCommand comando = new SqlCommand("INSERT INTO CLIENTE (Documento, Nombre, Correo, Telefono, Estado) VALUES (@Documento, @Nombre, @Correo, @Telefono, @Estado)", oconexion))
+                    comando.ExecuteNonQuery();
+
+                    idClientegenerado = Convert.ToInt32(comando.Parameters["Resultado"].Value);
+                    Mensaje = comando.Parameters["Mensaje"].Value.ToString();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                idClientegenerado = 0;
+            }
+
+            return idClientegenerado;
+
+        }
+
+        public bool Editar(Cliente obj, out string Mensaje)
+        {
+            bool respuesta = false; 
+            Mensaje = string.Empty;
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    SqlCommand comando = new SqlCommand("sp_ModificarCliente", oconexion);
+                    comando.Parameters.AddWithValue("IdCliente", obj.IdCliente);
+                    comando.Parameters.AddWithValue("Documento", obj.Documento);
+                    comando.Parameters.AddWithValue("Nombre", obj.NombreCompleto);
+                    comando.Parameters.AddWithValue("Correo", obj.Correo);
+                    comando.Parameters.AddWithValue("Telefono", obj.Telefono);
+                    comando.Parameters.AddWithValue("Estado", obj.Estado);
+                    comando.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    comando.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    oconexion.Open();
+
+                    respuesta = Convert.ToBoolean(comando.Parameters["Resultado"].Value);
+                    Mensaje = comando.Parameters["Mensaje"].Value.ToString();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                respuesta = false;
+            }
+
+            return respuesta;
+
+        }
+
+        public bool Baja(int IdCliente, bool nuevoEstado)
+        {
+            bool resultado = false;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    oconexion.Open();
+                    using (SqlCommand comando = new SqlCommand("UPDATE CLIENTE SET Estado = @Estado WHERE IdCliente = @IdCliente", oconexion))
                     {
-                        comando.Parameters.AddWithValue("@Documento", obj.Documento);
-                        comando.Parameters.AddWithValue("@Nombre", obj.NombreCompleto);
-                        comando.Parameters.AddWithValue("@Correo", obj.Correo);
-                        comando.Parameters.AddWithValue("@Telefono", obj.Telefono);
-                        comando.Parameters.AddWithValue("@Estado", obj.Estado);
+                        comando.Parameters.AddWithValue("@Estado", nuevoEstado);
+                        comando.Parameters.AddWithValue("@IdCliente", IdCliente);
 
                         int filasAfectadas = comando.ExecuteNonQuery();
                         resultado = filasAfectadas > 0;
                     }
-
-
                 }
             }
             catch (Exception ex)
@@ -80,9 +148,7 @@ namespace Data
                 Console.WriteLine(ex.Message);
                 resultado = false;
             }
-
             return resultado;
-
         }
     }
 }

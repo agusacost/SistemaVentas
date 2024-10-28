@@ -162,7 +162,7 @@ namespace SistemaVentas.Usuarios
                 item.Clave,
                 item.oRol.idRol,
                 item.oRol.Descripcion,
-                //item.Estado == true ? 1:0,
+                item.Estado == true ? 1:0,
                 item.Estado == true ? "Activo" : "Inactivo",
             });
             }
@@ -237,10 +237,11 @@ namespace SistemaVentas.Usuarios
                 frmEditarUsuario.TextDocumentoData.Text = selectedUser.Documento;
                 frmEditarUsuario.TextNameData.Text = selectedUser.NombreCompleto;
                 frmEditarUsuario.TextCorreoData.Text = selectedUser.Correo;
-                frmEditarUsuario.TextClaveData.Text = selectedUser.Clave;
-                frmEditarUsuario.TextConfirmarClaveData.Text = selectedUser.Clave;
+                frmEditarUsuario.TextNac.Text = selectedUser.Nacionalidad;
+                frmEditarUsuario.TextCiud.Text = selectedUser.Ciudad;
+                frmEditarUsuario.TextDir.Text = selectedUser.Direccion;
+                frmEditarUsuario.TextTel.Text = selectedUser.Telefono;
                 frmEditarUsuario.TextIndice.Text = selectedRowIndex.ToString();
-                //TODO: Setear combobox con valores del usuario que voy a editar
                 frmEditarUsuario.Show();
             }
             else
@@ -268,9 +269,8 @@ namespace SistemaVentas.Usuarios
                         Ciudad = dgvdata.Rows[selectedRowIndex].Cells["Ciudad"].Value.ToString(),
                         Direccion = dgvdata.Rows[selectedRowIndex].Cells["Direccion"].Value.ToString(),
                         Clave = dgvdata.Rows[selectedRowIndex].Cells["Clave"].Value.ToString(),
-
+                        Estado = Convert.ToInt32(dgvdata.Rows[selectedRowIndex].Cells["EstadoValor"].Value) == 1
                     };
-                    selectedIdComboRol = Convert.ToInt32(dgvdata.Rows[selectedRowIndex].Cells["IdRol"].Value);
                 }
             }
         }

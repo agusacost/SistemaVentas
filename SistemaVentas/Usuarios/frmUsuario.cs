@@ -20,7 +20,6 @@ namespace SistemaVentas.Usuarios
         private frmEditarUsuario frmEditarUsuario;
         private int selectedRowIndex = -1;
         private Usuario selectedUser = null;
-        private int selectedIdComboRol = 0;
         public frmUsuario()
         {
             InitializeComponent();

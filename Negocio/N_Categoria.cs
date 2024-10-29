@@ -20,5 +20,15 @@ namespace Negocio
         {
             return objCategoria.addCategoria(objCat);
         }
+
+        public bool editCat(Categoria objCat)
+        {
+            return objCategoria.editCategoria(objCat);
+        }
+
+        public bool bajaCat(int idCategoria, bool nuevoEstado)
+        {
+            return objCategoria.bajaCategoria(idCategoria, nuevoEstado);
+        }
     }
 }

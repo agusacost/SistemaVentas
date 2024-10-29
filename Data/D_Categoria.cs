@@ -75,6 +75,40 @@ namespace Data
             return resultado;
         }
 
+        public bool editCategoria(Categoria obj)
+        {
+            bool resultado = false;
+
+            try
+            {
+                StringBuilder query = new StringBuilder();
+                query.AppendLine("UPDATE CATEGORIA SET Descripcion = @Descripcion,");
+                query.AppendLine("Estado = @Estado");
+                query.AppendLine("Where IdCategoria = @IdCategoria");
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    oconexion.Open();
+                    using (SqlCommand comando = new SqlCommand(query.ToString(), oconexion))
+                    {
+                        comando.Parameters.AddWithValue("@IdCategoria", obj.IdCategoria);
+                        comando.Parameters.AddWithValue("@Descripcion", obj.Descripcion);
+                        comando.Parameters.AddWithValue("@Estado", obj.Estado);
+
+                        int filasAfectadas = comando.ExecuteNonQuery();
+                        resultado = filasAfectadas > 0;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                resultado = false;
+            }
+
+            return resultado;
+        }
+
         public bool bajaCategoria(int IdCategoria, bool nuevoEstado)
         {
             bool resultado = false;

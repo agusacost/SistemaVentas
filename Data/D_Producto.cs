@@ -37,32 +37,30 @@ namespace Data
                             lista.Add(new Producto()
                             {
                                 IdProducto = Convert.ToInt32(reader["IdProducto"]),
-                                Codigo = reader["Codigo"].ToString(),
-                                Nombre = reader["Nombre"].ToString(),
-                                Descripcion = reader["ProductoDescripcion"].ToString(),
-                                oCategoria = new Categoria()
+                                Codigo = reader["Codigo"]?.ToString(),
+                                Nombre = reader["Nombre"]?.ToString(),
+                                Descripcion = reader["ProductoDescripcion"]?.ToString(),
+                                oCategoria = reader["IdCategoria"] != DBNull.Value ? new Categoria()
                                 {
-                                    IdCategoria = (int)(reader["IdCategoria"] != DBNull.Value ? Convert.ToInt32(reader["IdCategoria"]) : (int?)null),
-                                    Descripcion = reader["CategoriaDescripcion"] != DBNull.Value ? reader["CategoriaDescripcion"].ToString() : null
-                                },
+                                    IdCategoria = Convert.ToInt32(reader["IdCategoria"]),
+                                    Descripcion = reader["CategoriaDescripcion"]?.ToString()
+                                } : null,
                                 Stock = reader["Stock"] != DBNull.Value ? Convert.ToInt32(reader["Stock"]) : (int?)null,
                                 PrecioCompra = reader["PrecioCompra"] != DBNull.Value ? Convert.ToDecimal(reader["PrecioCompra"]) : (decimal?)null,
                                 PrecioVenta = reader["PrecioVenta"] != DBNull.Value ? Convert.ToDecimal(reader["PrecioVenta"]) : (decimal?)null,
-                                Estado = Convert.ToBoolean(reader["Estado"]),
+                                Estado = reader["Estado"] != DBNull.Value && Convert.ToBoolean(reader["Estado"]),
                                 oProveedor = reader["IdProveedor"] != DBNull.Value ? new Proveedor()
                                 {
                                     IdProveedor = Convert.ToInt32(reader["IdProveedor"]),
-                                    Documento = reader["Documento"].ToString()
+                                    Documento = reader["Documento"]?.ToString()
                                 } : null
                             });
                         }
                     }
-
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    lista = new List<Producto>();
+                    Console.WriteLine($"Error al listar productos: {ex.Message}");
                 }
                 return lista;
             }
@@ -103,6 +101,43 @@ namespace Data
             return resultado;
 
         }
+        public bool Editar(Producto obj)
+        {
+            bool resultado = false;
+
+            try
+            {
+                StringBuilder query = new StringBuilder();
+                query.AppendLine("UPDATE Producto SET Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion,IdCategoria = @IdCategoria,");
+                query.AppendLine("IdProveedor = @IdProveedor, Estado = @Estado");
+                query.AppendLine("Where IdProducto = @IdProducto");
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    oconexion.Open();
+                    using (SqlCommand comando = new SqlCommand(query.ToString(), oconexion))
+                    {
+                        comando.Parameters.AddWithValue("@IdProducto", obj.IdProducto);
+                        comando.Parameters.AddWithValue("@Codigo", obj.Codigo);
+                        comando.Parameters.AddWithValue("@Nombre", obj.Nombre);
+                        comando.Parameters.AddWithValue("@Descripcion", obj.Descripcion);
+                        comando.Parameters.AddWithValue("@IdCategoria", obj.oCategoria.IdCategoria);
+                        comando.Parameters.AddWithValue("@IdProveedor", obj.oProveedor.IdProveedor);
+                        comando.Parameters.AddWithValue("@Estado", obj.Estado);
+
+                        int filasAfectadas = comando.ExecuteNonQuery();
+                        resultado = filasAfectadas > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                resultado = false;
+            }
+
+            return resultado;
+
+        }
         public bool Baja(int IdProducto, bool nuevoEstado)
         {
             bool resultado = false;
@@ -114,7 +149,7 @@ namespace Data
                     using (SqlCommand comando = new SqlCommand("UPDATE PRODUCTO SET Estado = @Estado WHERE IdProducto = @IdProducto", oconexion))
                     {
                         comando.Parameters.AddWithValue("@Estado", nuevoEstado);
-                        comando.Parameters.AddWithValue("@IdUsuario", IdProducto);
+                        comando.Parameters.AddWithValue("@IdProducto", IdProducto);
 
                         int filasAfectadas = comando.ExecuteNonQuery();
                         resultado = filasAfectadas > 0;

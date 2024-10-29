@@ -75,7 +75,6 @@ namespace SistemaVentas.Producto
 
                 bool registro = new N_Producto().Registrar(objProducto);
                 
-                //arreglar
                 if (registro)
                 {
                     frmProducto.DgvData.Rows.Add(new object[]
@@ -85,11 +84,14 @@ namespace SistemaVentas.Producto
                     objProducto.Codigo,
                     objProducto.Nombre,
                     objProducto.Descripcion,
+                    ((OpcionCombo)CBCategoria.SelectedItem).value.ToString(),
                     ((OpcionCombo)CBCategoria.SelectedItem).Texto.ToString(),
                     objProducto.Stock.HasValue? objProducto.Stock.Value.ToString() : "N/A",
                     objProducto.PrecioCompra.HasValue? objProducto.PrecioCompra.Value.ToString() : "N/A",
                     objProducto.PrecioVenta.HasValue? objProducto.PrecioVenta.Value.ToString("C") : "N/A",
+                    objProducto.oProveedor != null ? objProducto.oProveedor.IdProveedor : 0,
                     objProducto.oProveedor != null ? objProducto.oProveedor.Documento : "Sin Proveedor",
+                    ((OpcionCombo)CBEstado.SelectedItem).value,
                     ((OpcionCombo)CBEstado.SelectedItem).Texto.ToString()
                     });
                     limpiar();

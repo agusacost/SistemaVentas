@@ -1,4 +1,8 @@
-﻿using Entidades;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using Entidades;
+using Negocio;
+using SistemaVentas.Usuarios;
+using SistemaVentas.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,8 +17,14 @@ namespace SistemaVentas.Producto
 {
     public partial class frmEditarProducto : Form
     {
-        public frmEditarProducto()
+        private Entidades.Producto selectedProducto;
+        private frmProducto frmProducto;
+        private int selectedRowIndex;
+        public frmEditarProducto(frmProducto formProducto, Entidades.Producto selectedProd, int RowIndex)
         {
+            this.selectedProducto = selectedProd;
+            frmProducto = formProducto;
+            selectedRowIndex = RowIndex;
             InitializeComponent();
         }
 
@@ -49,64 +59,67 @@ namespace SistemaVentas.Producto
             }
         }
 
-        private void btnAgregarProdE_Click(object sender, EventArgs e)
+
+        private void frmEditarProducto_Load(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(TNombreE.Text))
-            {
-                MessageBox.Show("El campo Nombre es obligatorio.");
-                return;
-            }
+            CBEstadoE.Items.Add(new OpcionCombo() { value = 1, Texto = "Activo" });
+            CBEstadoE.Items.Add(new OpcionCombo() { value = 2, Texto = "Inactivo" });
+            CBEstadoE.DisplayMember = "Texto";
+            CBEstadoE.ValueMember = "value";
+            List<Categoria> listaCat = new N_Categoria().Listar();
 
-            if (string.IsNullOrWhiteSpace(TDescripcionE.Text))
+            foreach (Categoria cat in listaCat)
             {
-                MessageBox.Show("El campo Descripción es obligatorio.");
-                return;
+                CBCategoriaE.Items.Add(new OpcionCombo()
+                {
+                    value = cat.IdCategoria,
+                    Texto = cat.Descripcion,
+                });
             }
+            CBCategoriaE.DisplayMember = "Texto";
+            CBCategoriaE.ValueMember = "value";
+            CBCategoriaE.SelectedIndex = 0;
 
-            // Validación de Categoría
-            if (CBCategoriaE.SelectedIndex < 1)
-            {
-                MessageBox.Show("Debe seleccionar una categoría.");
-                return;
-            }
+            List<Proveedor> listaProv = new N_Proveedor().Listar();
 
-            // Validación de Stock
-            int stock;
-            if (!int.TryParse(TCantidadE.Text, out stock) || stock < 0)
+            foreach (Proveedor prov in listaProv)
             {
-                MessageBox.Show("Ingrese un valor válido para el Stock (debe ser un número positivo).");
-                return;
+                cbProveedor.Items.Add(new OpcionCombo()
+                {
+                    value = prov.IdProveedor,
+                    Texto = prov.Documento,
+                });
             }
+            cbProveedor.DisplayMember = "Texto";
+            cbProveedor.ValueMember = "value";
+            cbProveedor.SelectedIndex = 0;
 
-            // Validación de Precio
-            decimal precio;
-            if (!decimal.TryParse(TPrecioCompraE.Text, out precio) || precio <= 0)
+            TNombreE.Text = selectedProducto.Nombre;
+            TDescripcionE.Text = selectedProducto.Descripcion;
+            foreach(OpcionCombo item in CBCategoriaE.Items)
             {
-                MessageBox.Show("Ingrese un valor válido para el Precio (debe ser mayor a cero).");
-                return;
+                if((int)item.value == selectedProducto.oCategoria.IdCategoria)
+                {
+                    CBCategoriaE.SelectedItem = item;
+                    break;
+                }
             }
-
-            // Validación de Estado
-            if (CBEstadoE.SelectedIndex < 1)
+            foreach(OpcionCombo item in cbProveedor.Items)
             {
-                MessageBox.Show("Debe seleccionar un estado (Activo o Inactivo).");
-                return;
+                if((int)item.value == selectedProducto.oProveedor.IdProveedor)
+                {
+                    cbProveedor.SelectedItem = item;
+                    break;
+                }
             }
-
-            //validaciones de longitudes
-            if (TNombreE.Text.Length <= 5)
+            int estadoValue = selectedProducto.Estado ? 1 : 2;
+            foreach (OpcionCombo item in CBEstadoE.Items)
             {
-                MessageBox.Show("El nombre debe tener al menos 5 caracteres.");
-                return;
+                if ((int)item.value == estadoValue)
+                {
+                    CBEstadoE.SelectedItem = item;
+                }
             }
-            if (TDescripcionE.Text.Length >= 50)
-            {
-                MessageBox.Show("La descripcion no debe mas tener 50 caracteres.");
-                return;
-            }
-
-            // Si todas las validaciones pasan, guarda el producto
-            MessageBox.Show("Producto guardado correctamente.");
 
         }
 
@@ -115,9 +128,59 @@ namespace SistemaVentas.Producto
             this.Close();
         }
 
-        private void btnCancelarProdE_Click_1(object sender, EventArgs e)
+        private void btnAgregarProdE_Click(object sender, EventArgs e)
         {
-            this.Close();
+            try
+            {
+
+                Entidades.Producto objProducto = new Entidades.Producto()
+                {
+                    IdProducto = selectedProducto.IdProducto,
+                    Codigo = selectedProducto.Codigo,
+                    Nombre = TNombreE.Text,
+                    Descripcion = TDescripcionE.Text,
+                    oCategoria = new Categoria() { IdCategoria = Convert.ToInt32(((OpcionCombo)CBCategoriaE.SelectedItem).value) },
+                    oProveedor = new Proveedor() { IdProveedor = Convert.ToInt32(((OpcionCombo)cbProveedor.SelectedItem).value)},
+                    Estado = Convert.ToInt32(((OpcionCombo)CBEstadoE.SelectedItem).value) == 1,
+
+                };
+
+                bool editar = new N_Producto().Editar(objProducto);
+
+                if (editar)
+                {
+                    DataGridViewRow row = frmProducto.DgvData.Rows[selectedRowIndex];
+                    row.Cells["IdProducto"].Value = objProducto.IdProducto;
+                    row.Cells["Codigo"].Value = objProducto.Codigo;
+                    row.Cells["Nombre"].Value = objProducto.Nombre;
+                    row.Cells["Descripcion"].Value = objProducto.Descripcion;
+                    row.Cells["IdCategoria"].Value = ((OpcionCombo)CBCategoriaE.SelectedItem).value.ToString();
+                    row.Cells["Categoria"].Value = ((OpcionCombo)CBCategoriaE.SelectedItem).Texto.ToString();
+                    row.Cells["Stock"].Value = row.Cells["Stock"].Value;
+                    row.Cells["PrecioCompra"].Value = row.Cells["PrecioCompra"].Value;
+                    row.Cells["PrecioVenta"].Value = row.Cells["PrecioVenta"].Value;
+                    row.Cells["IdProveedor"].Value = ((OpcionCombo)cbProveedor.SelectedItem).value.ToString();
+                    row.Cells["Proveedor"].Value = ((OpcionCombo)cbProveedor.SelectedItem).Texto.ToString();
+                    row.Cells["EstadoValor"].Value = ((OpcionCombo)CBEstadoE.SelectedItem).value;
+                    row.Cells["Estado"].Value = ((OpcionCombo)CBEstadoE.SelectedItem).Texto.ToString();
+
+                    MessageBox.Show("Producto Actualizado correctamente");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Error ");
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                // Muestra el mensaje de error en la interfaz de usuario
+                MessageBox.Show(ex.Message, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Se produjo un error" + ex.Message);
+            }
         }
     }
 }

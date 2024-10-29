@@ -26,86 +26,6 @@ namespace SistemaVentas.Usuarios
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbestado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbrol_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtconfirmarclave_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtclave_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtcorreo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtnombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtdocumento_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnguardar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmAddUsuario form = new frmAddUsuario(this);
@@ -117,32 +37,6 @@ namespace SistemaVentas.Usuarios
             get { return dgvdata; }
         }
 
-        
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtBusqueda_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbbusqueda_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click_1(object sender, EventArgs e)
-        {
-
-        }
 
         private void frmUsuario_Load(object sender, EventArgs e)
         {
@@ -232,16 +126,7 @@ namespace SistemaVentas.Usuarios
 
             if (frmEditarUsuario == null || frmEditarUsuario.IsDisposed)
             {
-                frmEditarUsuario = new frmEditarUsuario();
-                frmEditarUsuario.TextIdData.Text = selectedUser.IdUsuario.ToString();
-                frmEditarUsuario.TextDocumentoData.Text = selectedUser.Documento;
-                frmEditarUsuario.TextNameData.Text = selectedUser.NombreCompleto;
-                frmEditarUsuario.TextCorreoData.Text = selectedUser.Correo;
-                frmEditarUsuario.TextNac.Text = selectedUser.Nacionalidad;
-                frmEditarUsuario.TextCiud.Text = selectedUser.Ciudad;
-                frmEditarUsuario.TextDir.Text = selectedUser.Direccion;
-                frmEditarUsuario.TextTel.Text = selectedUser.Telefono;
-                frmEditarUsuario.TextIndice.Text = selectedRowIndex.ToString();
+                frmEditarUsuario = new frmEditarUsuario(this,selectedUser, selectedRowIndex);
                 frmEditarUsuario.Show();
             }
             else
@@ -269,7 +154,10 @@ namespace SistemaVentas.Usuarios
                         Ciudad = dgvdata.Rows[selectedRowIndex].Cells["Ciudad"].Value.ToString(),
                         Direccion = dgvdata.Rows[selectedRowIndex].Cells["Direccion"].Value.ToString(),
                         Clave = dgvdata.Rows[selectedRowIndex].Cells["Clave"].Value.ToString(),
-                        Estado = Convert.ToInt32(dgvdata.Rows[selectedRowIndex].Cells["EstadoValor"].Value) == 1
+                        oRol = new Rol() { idRol = Convert.ToInt32(dgvdata.Rows[selectedRowIndex].Cells["idRol"].Value),
+                           Descripcion = dgvdata.Rows[selectedRowIndex].Cells["Rol"].Value.ToString()
+                        },
+                        Estado = Convert.ToInt32(dgvdata.Rows[selectedRowIndex].Cells["EstadoValor"].Value) == 1 ? true : false,
                     };
                 }
             }
@@ -300,13 +188,44 @@ namespace SistemaVentas.Usuarios
                     MessageBox.Show("Error al cambiar el estado del usuario. Por favor, intente nuevamente.");
                 }
             }
-           
+        }
 
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string columnaSeleccionada = ((OpcionCombo)cbbusqueda.SelectedItem).value.ToString();
+            string textoBusqueda = txtBusqueda.Text.Trim().ToLower();
+
+            // Filtrar filas en el DataGridView en base al texto de búsqueda y la columna seleccionada
+            foreach (DataGridViewRow row in dgvdata.Rows)
+            {
+                if (row.Cells[columnaSeleccionada].Value != null)
+                {
+                    string valorCelda = row.Cells[columnaSeleccionada].Value.ToString().ToLower();
+                    // Verificar si el valor de la celda contiene el texto de búsqueda
+                    row.Visible = valorCelda.Contains(textoBusqueda);
+                }
+                else
+                {
+                    row.Visible = false;
+                }
             }
+        }
 
-        private void backLabel_Click(object sender, EventArgs e)
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtBusqueda.Text = "";
+            cbbusqueda.SelectedIndex = 0;
+
+            // Hacer visibles todas las filas en el DataGridView
+            foreach (DataGridViewRow row in dgvdata.Rows)
+            {
+                row.Visible = true;
+            }
         }
     }
 }

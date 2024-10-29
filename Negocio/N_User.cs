@@ -23,6 +23,11 @@ namespace Negocio
             return objd_usuario.Registrar(obj);
         }
 
+        public bool Editar(Usuario objUsuario)
+        {
+            return objd_usuario.Editar(objUsuario);
+        }
+
         public bool Baja(int idUsuario, bool nuevoEstado)
         {
             return objd_usuario.Baja(idUsuario, nuevoEstado);

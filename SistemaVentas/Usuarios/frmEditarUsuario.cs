@@ -15,76 +15,31 @@ namespace SistemaVentas.Usuarios
 {
     public partial class frmEditarUsuario : Form
     {
-        public frmEditarUsuario()
+        private Usuario usuario;
+        private frmUsuario frmUsuario;
+        private int selectedRowIndex; 
+        public frmEditarUsuario(frmUsuario formUsuario, Usuario objUsuario, int RowIndex)
         {
+            selectedRowIndex = RowIndex;
+            frmUsuario = formUsuario;
+            this.usuario = objUsuario; 
             InitializeComponent();
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-        }
         private void btnCancelarE_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        public TextBox TextIndice
-        {
-            get { return txtIndice; }
-        }
-        public TextBox TextIdData
-        {
-            get { return txtId; }
-        }
-        public TextBox TextDocumentoData
-        {
-            get { return txtDocumentoE; }
-        }
-        public TextBox TextNameData
-        {
-            get { return txtNombreE; }
-        }
-        public TextBox TextCorreoData
-        {
-            get { return txtCorreoE; }
-        }
-        
-        public ComboBox ComboRol
-        {
-            get { return CBRolE; }
-        }
-        public ComboBox ComboEstado
-        {
-            get { return CBEstadoE; }
-        }
-        public TextBox TextNac
-        {
-            get{ return txtNac; }
-        }
-        public TextBox TextCiud
-        {
-            get { return txtCiud; }
-        }
-        public TextBox TextDir
-        {
-            get { return textBoxDir; }
-        }
-        public TextBox TextTel
-        {
-            get { return txtTel; }
-        }
-        private void txtId_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void frmEditarUsuario_Load(object sender, EventArgs e)
-        {
+        {   
+
             CBEstadoE.Items.Add(new OpcionCombo() { value = 1, Texto = "Activo" });
             CBEstadoE.Items.Add(new OpcionCombo() { value = 2, Texto = "Inactivo" });
             CBEstadoE.DisplayMember = "Texto";
             CBEstadoE.ValueMember = "value";
-            CBEstadoE.SelectedIndex = 0;
+            //CBEstadoE.SelectedIndex = 0;
 
             List<Rol> listaRol = new N_Rol().Listar();
 
@@ -95,18 +50,79 @@ namespace SistemaVentas.Usuarios
             }
             CBRolE.DisplayMember = "Texto";
             CBRolE.ValueMember = "value";
-            CBRolE.SelectedIndex = 0;
+
+            txtDocumentoE.Text = usuario.Documento.ToString();
+            txtNombreE.Text = usuario.NombreCompleto.ToString();
+            txtCorreoE.Text = usuario.Correo.ToString();
+            txtNac.Text = usuario.Nacionalidad.ToString();
+            txtCiud.Text = usuario.Ciudad.ToString();
+            textBoxDir.Text = usuario.Direccion.ToString();
+            txtTel.Text = usuario.Telefono.ToString();
+            int estadoValue = usuario.Estado ? 1 : 2;
+            foreach(OpcionCombo item in CBEstadoE.Items)
+            {
+                if((int)item.value == estadoValue)
+                {
+                    CBEstadoE.SelectedItem = item;
+                }
+            }
+            foreach (OpcionCombo item in CBRolE.Items)
+            {
+                if ((int)item.value == usuario.oRol.idRol)
+                {
+                    CBRolE.SelectedItem = item;
+                    break;
+                }
+            }
+
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-
-        }
         private void btnAgregarE_Click(object sender, EventArgs e)
         {
-            
-
-
+            try
+            {
+                Usuario objUsuario = new Usuario()
+                {
+                    IdUsuario = usuario.IdUsuario,
+                    Documento = txtDocumentoE.Text,
+                    NombreCompleto = txtNombreE.Text,
+                    Correo = txtCorreoE.Text,
+                    Clave = usuario.Clave,
+                    Nacionalidad = txtNac.Text,
+                    Ciudad = txtCiud.Text,
+                    Direccion = textBoxDir.Text,
+                    Telefono = txtTel.Text,
+                    oRol = new Rol() { idRol = Convert.ToInt32(((OpcionCombo)CBRolE.SelectedItem).value) },
+                    Estado = Convert.ToInt32(((OpcionCombo)CBEstadoE.SelectedItem).value) == 1
+                };
+                bool editar = new N_User().Editar(objUsuario);
+                if (editar)
+                {
+                    DataGridViewRow row = frmUsuario.DgvData.Rows[selectedRowIndex];
+                    row.Cells["IdUsuario"].Value = objUsuario.IdUsuario;
+                    row.Cells["NombreCompleto"].Value = objUsuario.NombreCompleto;
+                    row.Cells["Documento"].Value = objUsuario.Documento;
+                    row.Cells["Correo"].Value = objUsuario.Correo;
+                    row.Cells["Nacionalidad"].Value = objUsuario.Nacionalidad;
+                    row.Cells["Ciudad"].Value = objUsuario.Ciudad;
+                    row.Cells["Direccion"].Value = objUsuario.Direccion;
+                    row.Cells["Telefono"].Value = objUsuario.Telefono;
+                    row.Cells["idRol"].Value = objUsuario.oRol.idRol;
+                    row.Cells["Rol"].Value = ((OpcionCombo)CBRolE.SelectedItem).Texto.ToString();
+                    row.Cells["EstadoValor"].Value = objUsuario.Estado ? 1 : 0;
+                    row.Cells["Estado"].Value = ((OpcionCombo)CBEstadoE.SelectedItem).Texto.ToString();
+                    Limpiar();
+                    MessageBox.Show("Usuario editado con éxito");
+                    this.Close();
+                }else
+                {
+                    MessageBox.Show("Error al actualizar el usuario.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         private void Limpiar()

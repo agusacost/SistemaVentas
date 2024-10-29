@@ -71,7 +71,6 @@
             this.txtId.TabIndex = 37;
             this.txtId.Text = "0";
             this.txtId.Visible = false;
-            this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
             // 
             // btnCancelarE
             // 

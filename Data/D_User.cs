@@ -101,6 +101,47 @@ namespace Data
 
         }
 
+        public bool Editar(Usuario obj)
+        {
+            bool resultado = false;
+
+            try
+            {
+                StringBuilder query = new StringBuilder();
+                query.AppendLine("UPDATE USUARIO SET Documento = @Documento, NombreCompleto = @NombreCompleto, Correo = @Correo,Telefono = @Telefono,");
+                query.AppendLine("IdRol = @IdRol, Estado = @Estado, Nacionalidad = @Nacionalidad, Ciudad = @Ciudad ,Direccion = @Direccion");
+                query.AppendLine("Where IdUsuario = @IdUsuario");
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    oconexion.Open();
+                    using (SqlCommand comando = new SqlCommand(query.ToString(), oconexion))
+                    {
+                        comando.Parameters.AddWithValue("@IdUsuario", obj.IdUsuario);
+                        comando.Parameters.AddWithValue("@Documento", obj.Documento);
+                        comando.Parameters.AddWithValue("@NombreCompleto", obj.NombreCompleto);
+                        comando.Parameters.AddWithValue("@Correo", obj.Correo);
+                        comando.Parameters.AddWithValue("@IdRol", obj.oRol.idRol);
+                        comando.Parameters.AddWithValue("@Estado", obj.Estado);
+                        comando.Parameters.AddWithValue("@Nacionalidad", obj.Nacionalidad);
+                        comando.Parameters.AddWithValue("@Ciudad", obj.Ciudad);
+                        comando.Parameters.AddWithValue("@Direccion", obj.Direccion);
+                        comando.Parameters.AddWithValue("@Telefono", obj.Telefono);
+
+                        int filasAfectadas = comando.ExecuteNonQuery();
+                        resultado = filasAfectadas > 0;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                resultado = false;
+            }
+
+            return resultado;
+
+        }
         public bool Baja(int IdUsuario, bool nuevoEstado)
         {
             bool resultado = false;

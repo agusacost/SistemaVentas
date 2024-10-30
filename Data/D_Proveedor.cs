@@ -51,37 +51,82 @@ namespace Data
             }
         }
 
-        public bool Registrar(Proveedor obj)
+        public int Registrar(Proveedor obj, out string Mensaje)
         {
-            bool resultado = false;
+            int resultado = 0;
+            Mensaje = string.Empty;
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                using (SqlCommand comando = new SqlCommand("sp_RegistrarProveedor", oconexion))
+                {
+                    // Agregar parámetros de entrada
+                    comando.Parameters.AddWithValue("@Documento", obj.Documento);
+                    comando.Parameters.AddWithValue("@RazonSocial", obj.RazonSocial);
+                    comando.Parameters.AddWithValue("@Correo", obj.Correo);
+                    comando.Parameters.AddWithValue("@Telefono", obj.Telefono);
+                    comando.Parameters.AddWithValue("@Estado", obj.Estado);
+
+                    // Parámetros de salida
+                    comando.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    comando.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
+
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    oconexion.Open();
+                    comando.ExecuteNonQuery();
+
+                    // Obtener valores de los parámetros de salida
+                    resultado = Convert.ToInt32(comando.Parameters["Resultado"].Value);
+                    Mensaje = comando.Parameters["Mensaje"].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = "Error al registrar el proveedor: " + ex.Message;
+                resultado = 0;
+            }
+
+            return resultado;
+        }
+
+
+        public bool Editar(Proveedor obj, out string Mensaje)
+        {
+            bool respuesta = false;
+            Mensaje = string.Empty;
 
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
+                    SqlCommand comando = new SqlCommand("sp_EditarProveedor", oconexion);
+                    comando.Parameters.AddWithValue("IdProveedor", obj.IdProveedor);
+                    comando.Parameters.AddWithValue("Documento", obj.Documento);
+                    comando.Parameters.AddWithValue("RazonSocial", obj.RazonSocial);
+                    comando.Parameters.AddWithValue("Correo", obj.Correo);
+                    comando.Parameters.AddWithValue("Telefono", obj.Telefono);
+                    comando.Parameters.AddWithValue("Estado", obj.Estado);
+                    comando.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    comando.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
+                    comando.CommandType = CommandType.StoredProcedure;
+
                     oconexion.Open();
-                    using (SqlCommand comando = new SqlCommand("INSERT INTO PROVEEDOR (Documento, RazonSocial, Correo, Telefono, Estado) VALUES (@Documento, @RazonSocial, @Correo, @Telefono, @Estado)", oconexion))
-                    {
-                        comando.Parameters.AddWithValue("@Documento", obj.Documento);
-                        comando.Parameters.AddWithValue("@RazonSocial", obj.RazonSocial);
-                        comando.Parameters.AddWithValue("@Correo", obj.Correo);
-                        comando.Parameters.AddWithValue("@Telefono", obj.Telefono);
-                        comando.Parameters.AddWithValue("@Estado", obj.Estado);
+                    comando.ExecuteNonQuery();
 
-                        int filasAfectadas = comando.ExecuteNonQuery();
-                        resultado = filasAfectadas > 0;
-                    }
-
+                    respuesta = Convert.ToBoolean(comando.Parameters["Resultado"].Value);
+                    Mensaje = comando.Parameters["Mensaje"].Value.ToString();
 
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                resultado = false;
+                respuesta = false;
             }
 
-            return resultado;
+            return respuesta;
 
         }
 
@@ -95,8 +140,8 @@ namespace Data
                     oconexion.Open();
                     using (SqlCommand comando = new SqlCommand("UPDATE PROVEEDOR SET Estado = @Estado WHERE IdProveedor = @IdProveedor", oconexion))
                     {
-                        comando.Parameters.AddWithValue("@Estado", nuevoEstado);
                         comando.Parameters.AddWithValue("@IdProveedor", IdProveedor);
+                        comando.Parameters.AddWithValue("@Estado", nuevoEstado);
 
                         int filasAfectadas = comando.ExecuteNonQuery();
                         resultado = filasAfectadas > 0;

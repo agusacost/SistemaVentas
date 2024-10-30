@@ -26,57 +26,8 @@ namespace SistemaVentas.Clientes
         {
             try
             {
-                // Validación de Documento (DNI)
-                if (string.IsNullOrWhiteSpace(txtDoc.Text))
-                {
-                    MessageBox.Show("El campo Documento es obligatorio.");
-                    return;
-                }
-
-                if (txtDoc.Text.Length < 8)
-                {
-                    MessageBox.Show("El documento debe tener 8 caracteres numéricos .");
-                    return;
-                }
-                if (!EsSoloNumeros(txtDoc.Text))
-                {
-                    MessageBox.Show("El documento no debe tener caracteres alfabeticos.");
-                    return;
-                }
-                // Validación de Nombre
-                if (string.IsNullOrWhiteSpace(txtRSocial.Text))
-                {
-                    MessageBox.Show("El camporazon social es obligatorio.");
-                    return;
-                }
-
-                if (txtRSocial.Text.Length > 50)
-                {
-                    MessageBox.Show("La razon social no debe tener más de 50 caracteres.");
-                    return;
-                }
-
-                if (ContieneNumeros(txtRSocial.Text))
-                {
-                    MessageBox.Show("La razon social no puede contener números.");
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(txtCorreo.Text) || !EsEmailValido(txtCorreo.Text))
-                {
-                    MessageBox.Show("Por favor, ingrese un correo electrónico válido.");
-                    return;
-                }
-
-
-                // Validación de longitud del correo
-                if (txtCorreo.Text.Length >= 50)
-                {
-                    MessageBox.Show("El correo no debe tener más de 50 caracteres.");
-                    return;
-                }
-
-                Proveedor objProv = new Proveedor()
+                string mensaje = string.Empty;
+                Proveedor objProveedor = new Proveedor()
                 {
                     Documento = txtDoc.Text,
                     RazonSocial = txtRSocial.Text,
@@ -84,36 +35,38 @@ namespace SistemaVentas.Clientes
                     Telefono = txtTelefono.Text,
                     Estado = Convert.ToInt32(((OpcionCombo)CBEstado.SelectedItem).value) == 1
                 };
-
-                bool registro = new N_Proveedor().Registro(objProv);
-
-                if (registro)
+                if (objProveedor.IdProveedor == 0)
                 {
-                    frmProveedor.DgvData.Rows.Add(new object[]
+                    int idProveedorgenerado = new N_Proveedor().Registro(objProveedor, out mensaje);
+                    List<Proveedor> listProveedor = new N_Proveedor().Listar();
+                    int nuevoId = listProveedor.Any() ? listProveedor.Max(c => c.IdProveedor) + 1 : 1;
+
+                    if (idProveedorgenerado != 0)
                     {
-                        "",
-                        txtId.Text,
-                        txtDoc.Text,
-                        txtRSocial.Text,
-                        txtCorreo.Text,
-                        txtTelefono.Text,
-                        ((OpcionCombo)CBEstado.SelectedItem).Texto.ToString(),
-                    });
-                    MessageBox.Show("Proveedor agregado con exito");
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Error al registrar el usuario. Por favor, intente nuevamente.");
+                        frmProveedor.DgvData.Rows.Add(new object[]
+                        {
+                            "",
+                            nuevoId,
+                            txtDoc.Text,
+                            txtRSocial.Text,
+                            txtCorreo.Text,
+                            txtTelefono.Text,
+                            ((OpcionCombo)CBEstado.SelectedItem).value.ToString(),
+                            ((OpcionCombo)CBEstado.SelectedItem).Texto.ToString(),
+                        });
+                        MessageBox.Show("Proveedor agregado con exito");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show(mensaje);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
-                MessageBox.Show("Error al agregar un proveedor");
+                MessageBox.Show("Error al agregar Proveedor" + ex.Message);
             }
-
-
         }
         private bool EsEmailValido(string email)
         {

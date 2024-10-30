@@ -41,7 +41,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CBEstado = new System.Windows.Forms.ComboBox();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnCancelarProv
@@ -156,7 +155,7 @@
             this.txtDoc.BackColor = System.Drawing.SystemColors.Control;
             this.txtDoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDoc.Location = new System.Drawing.Point(118, 141);
-            this.txtDoc.MaxLength = 8;
+            this.txtDoc.MaxLength = 11;
             this.txtDoc.Name = "txtDoc";
             this.txtDoc.Size = new System.Drawing.Size(272, 20);
             this.txtDoc.TabIndex = 45;
@@ -188,15 +187,8 @@
             this.CBEstado.FormattingEnabled = true;
             this.CBEstado.Location = new System.Drawing.Point(118, 335);
             this.CBEstado.Name = "CBEstado";
-            this.CBEstado.Size = new System.Drawing.Size(121, 21);
+            this.CBEstado.Size = new System.Drawing.Size(272, 21);
             this.CBEstado.TabIndex = 58;
-            // 
-            // txtId
-            // 
-            this.txtId.Location = new System.Drawing.Point(341, 76);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(49, 20);
-            this.txtId.TabIndex = 59;
             // 
             // frmAddProveedor
             // 
@@ -205,7 +197,6 @@
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ClientSize = new System.Drawing.Size(507, 512);
             this.ControlBox = false;
-            this.Controls.Add(this.txtId);
             this.Controls.Add(this.CBEstado);
             this.Controls.Add(this.btnCancelarProv);
             this.Controls.Add(this.btnAgregarProv);
@@ -245,6 +236,5 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox CBEstado;
-        private System.Windows.Forms.TextBox txtId;
     }
 }

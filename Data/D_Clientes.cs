@@ -109,9 +109,10 @@ namespace Data
                     comando.CommandType = CommandType.StoredProcedure;
 
                     oconexion.Open();
+                    comando.ExecuteNonQuery();
 
                     respuesta = Convert.ToBoolean(comando.Parameters["Resultado"].Value);
-                    Mensaje = comando.Parameters["Mensaje"].Value.ToString();
+                    Mensaje = comando.Parameters["Mensaje"].Value.ToString(); 
 
                 }
             }

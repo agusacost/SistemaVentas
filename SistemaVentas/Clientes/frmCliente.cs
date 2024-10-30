@@ -27,7 +27,31 @@ namespace SistemaVentas.Clientes
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            if (selectedCliente == null)
+            {
+                MessageBox.Show("Por favor, selecciona un cliente para continuar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            bool nuevoEstado = false;
+            DialogResult dialogResult = MessageBox.Show($"¿Estás seguro de que deseas dar de baja el cliente '{selectedCliente.NombreCompleto}'", "Confirmar cambio de estado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes)
+            {
+
+                bool resultado = new N_Cliente().baja(selectedCliente.IdCliente, nuevoEstado);
+                if (resultado)
+                {
+                    selectedCliente.Estado = nuevoEstado;
+                    dgvdata.Rows[selectedRowIndex].Cells["Estado"].Value = "Inactivo";
+
+                    MessageBox.Show("Cliente dado de baja");
+
+                }
+                else
+                {
+                    MessageBox.Show("Error al cambiar el estado del cliente. Por favor, intente nuevamente.");
+                }
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -65,7 +89,7 @@ namespace SistemaVentas.Clientes
 
             if (frmEditCliente == null || frmEditCliente.IsDisposed)
             {
-                frmEditCliente = new frmEditCliente();
+                frmEditCliente = new frmEditCliente(this, selectedCliente, selectedRowIndex);
                 frmEditCliente.Show();
             }
             else
@@ -76,13 +100,7 @@ namespace SistemaVentas.Clientes
 
         private void frmCliente_Load(object sender, EventArgs e)
         {
-            foreach (DataGridViewColumn columa in dgvdata.Columns)
-            {
-                if (columa.Visible == true && columa.Name != "btnSeleccionar")
-                {
-                    cbbusqueda.Items.Add(new OpcionCombo() { value = columa.Name, Texto = columa.HeaderText });
-                }
-            }
+            
             List<Cliente> listCliente = new N_Cliente().Listar();
             foreach(Cliente item in listCliente)
             {
@@ -94,10 +112,12 @@ namespace SistemaVentas.Clientes
                     item.NombreCompleto,
                     item.Correo,
                     item.Telefono,
-                    item.Estado == true ? "Activo" : "Inactivo",
+                    item.Estado == true ? 1 : 0,
                     item.Estado == true ? "Activo" : "Inactivo",
                 });
             }
+
+            
         }
 
         private void dgvdata_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -115,7 +135,8 @@ namespace SistemaVentas.Clientes
                         Documento = dgvdata.Rows[selectedRowIndex].Cells["Documento"].Value.ToString(),
                         NombreCompleto = dgvdata.Rows[selectedRowIndex].Cells["NombreCompleto"].Value.ToString(),
                         Correo = dgvdata.Rows[selectedRowIndex].Cells["Correo"].Value.ToString(),
-                        Telefono = dgvdata.Rows[selectedRowIndex].Cells["Telefono"].Value.ToString()
+                        Telefono = dgvdata.Rows[selectedRowIndex].Cells["Telefono"].Value.ToString(),
+                        Estado = Convert.ToInt32(dgvdata.Rows[selectedRowIndex].Cells["EstadoValor"].Value) == 1
                     };
                     
                 }
@@ -144,6 +165,60 @@ namespace SistemaVentas.Clientes
                 var y = e.CellBounds.Top + (cellHeight - newHeight) / 2;
                 e.Graphics.DrawImage(icon, new Rectangle(x, y, newWidth, newHeight));
                 e.Handled = true;
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string searchText = txtBusqueda.Text.Trim().ToLower();
+
+            List<Cliente> listaClientes = new N_Cliente().Listar();
+
+            var clientesFiltrados = listaClientes
+                .Where(c =>
+                    c.Documento.ToLower().Contains(searchText) ||
+                    c.NombreCompleto.ToLower().Contains(searchText) ||
+                    c.Correo.ToLower().Contains(searchText) ||
+                    c.Telefono.ToLower().Contains(searchText))
+                .ToList();
+
+            dgvdata.Rows.Clear();
+
+            foreach (var cliente in clientesFiltrados)
+            {
+                dgvdata.Rows.Add(
+                    "",
+                    cliente.IdCliente,
+                    cliente.Documento,
+                    cliente.NombreCompleto,
+                    cliente.Correo,
+                    cliente.Telefono,
+                    cliente.Estado ? 1 : 0,
+                    cliente.Estado ? "Activo" : "Inactivo"
+                );
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtBusqueda.Text = string.Empty;
+
+            List<Cliente> listaClientes = new N_Cliente().Listar();
+
+            dgvdata.Rows.Clear();
+
+            foreach (var cliente in listaClientes)
+            {
+                dgvdata.Rows.Add(
+                    "",
+                    cliente.IdCliente,
+                    cliente.Documento,
+                    cliente.NombreCompleto,
+                    cliente.Correo,
+                    cliente.Telefono,
+                    cliente.Estado ? 1 : 0,
+                    cliente.Estado ? "Activo" : "Inactivo"
+                );
             }
         }
     }

@@ -39,17 +39,20 @@ namespace SistemaVentas.Clientes
                 if(objCliente.IdCliente == 0)
                 {
                     int idusuariogenerado = new N_Cliente().Registro(objCliente,out mensaje);
+                    List<Cliente> listCliente = new N_Cliente().Listar();
+                    int nuevoId = listCliente.Any() ? listCliente.Max(c => c.IdCliente) + 1 : 1;
 
                     if (idusuariogenerado != 0)
                     {
                         frmCliente.DgvData.Rows.Add(new object[]
                         {
                             "",
-                            "",
+                            nuevoId,
                             txtDocumento.Text,
                             txtNombre.Text,
                             txtCorreo.Text,
                             txtTelefono.Text,
+                            ((OpcionCombo)CBEstado.SelectedItem).value.ToString(),
                             ((OpcionCombo)CBEstado.SelectedItem).Texto.ToString(),
                         });
                         MessageBox.Show("Cliente agregado con exito");

@@ -46,9 +46,10 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(165, 48);
+            this.label3.Location = new System.Drawing.Point(220, 59);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(188, 38);
+            this.label3.Size = new System.Drawing.Size(251, 47);
             this.label3.TabIndex = 21;
             this.label3.Text = "Agregar Cliente";
             // 
@@ -56,19 +57,21 @@
             // 
             this.txtDocumento.BackColor = System.Drawing.SystemColors.Control;
             this.txtDocumento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDocumento.Location = new System.Drawing.Point(118, 127);
+            this.txtDocumento.Location = new System.Drawing.Point(157, 156);
+            this.txtDocumento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDocumento.MaxLength = 8;
             this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(272, 20);
+            this.txtDocumento.Size = new System.Drawing.Size(362, 22);
             this.txtDocumento.TabIndex = 30;
             // 
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(120, 101);
+            this.label4.Location = new System.Drawing.Point(160, 124);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(233, 23);
+            this.label4.Size = new System.Drawing.Size(311, 28);
             this.label4.TabIndex = 29;
             this.label4.Text = "Documento:";
             // 
@@ -76,9 +79,10 @@
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(120, 262);
+            this.label1.Location = new System.Drawing.Point(160, 322);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(233, 23);
+            this.label1.Size = new System.Drawing.Size(311, 28);
             this.label1.TabIndex = 31;
             this.label1.Text = "Telefono:";
             // 
@@ -86,9 +90,10 @@
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(120, 204);
+            this.label2.Location = new System.Drawing.Point(160, 251);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(233, 23);
+            this.label2.Size = new System.Drawing.Size(311, 28);
             this.label2.TabIndex = 32;
             this.label2.Text = "Correo:";
             // 
@@ -96,9 +101,10 @@
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(120, 148);
+            this.label5.Location = new System.Drawing.Point(160, 182);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(233, 23);
+            this.label5.Size = new System.Drawing.Size(311, 28);
             this.label5.TabIndex = 33;
             this.label5.Text = "Nombre:";
             // 
@@ -106,36 +112,40 @@
             // 
             this.txtTelefono.BackColor = System.Drawing.SystemColors.Control;
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTelefono.Location = new System.Drawing.Point(118, 288);
+            this.txtTelefono.Location = new System.Drawing.Point(157, 354);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(272, 20);
+            this.txtTelefono.Size = new System.Drawing.Size(362, 22);
             this.txtTelefono.TabIndex = 34;
             // 
             // txtCorreo
             // 
             this.txtCorreo.BackColor = System.Drawing.SystemColors.Control;
             this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCorreo.Location = new System.Drawing.Point(118, 230);
+            this.txtCorreo.Location = new System.Drawing.Point(157, 283);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(272, 20);
+            this.txtCorreo.Size = new System.Drawing.Size(362, 22);
             this.txtCorreo.TabIndex = 36;
             // 
             // txtNombre
             // 
             this.txtNombre.BackColor = System.Drawing.SystemColors.Control;
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNombre.Location = new System.Drawing.Point(118, 174);
+            this.txtNombre.Location = new System.Drawing.Point(157, 214);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(272, 20);
+            this.txtNombre.Size = new System.Drawing.Size(362, 22);
             this.txtNombre.TabIndex = 37;
             // 
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(120, 318);
+            this.label6.Location = new System.Drawing.Point(153, 389);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(233, 23);
+            this.label6.Size = new System.Drawing.Size(311, 28);
             this.label6.TabIndex = 38;
             this.label6.Text = "Estado:";
             // 
@@ -147,9 +157,10 @@
             this.btnCancelar.IconColor = System.Drawing.Color.White;
             this.btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCancelar.IconSize = 16;
-            this.btnCancelar.Location = new System.Drawing.Point(275, 403);
+            this.btnCancelar.Location = new System.Drawing.Point(367, 496);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(114, 32);
+            this.btnCancelar.Size = new System.Drawing.Size(152, 39);
             this.btnCancelar.TabIndex = 42;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -166,9 +177,10 @@
             this.btnAgregar.IconColor = System.Drawing.Color.White;
             this.btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAgregar.IconSize = 16;
-            this.btnAgregar.Location = new System.Drawing.Point(118, 403);
+            this.btnAgregar.Location = new System.Drawing.Point(157, 496);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(114, 32);
+            this.btnAgregar.Size = new System.Drawing.Size(152, 39);
             this.btnAgregar.TabIndex = 41;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -181,17 +193,18 @@
             this.CBEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CBEstado.FormattingEnabled = true;
-            this.CBEstado.Location = new System.Drawing.Point(118, 335);
+            this.CBEstado.Location = new System.Drawing.Point(157, 412);
+            this.CBEstado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CBEstado.Name = "CBEstado";
-            this.CBEstado.Size = new System.Drawing.Size(121, 21);
+            this.CBEstado.Size = new System.Drawing.Size(362, 24);
             this.CBEstado.TabIndex = 59;
             // 
             // frmAddCliente
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.ClientSize = new System.Drawing.Size(507, 512);
+            this.ClientSize = new System.Drawing.Size(676, 630);
             this.ControlBox = false;
             this.Controls.Add(this.CBEstado);
             this.Controls.Add(this.btnCancelar);
@@ -206,7 +219,7 @@
             this.Controls.Add(this.txtDocumento);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddCliente";

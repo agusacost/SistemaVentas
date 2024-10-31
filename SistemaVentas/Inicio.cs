@@ -130,69 +130,10 @@ namespace SistemaVentas
         {
             openForm((IconMenuItem)sender, new frmAcercaDe());
         }
-        private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+
+        private void subMenuNegocio_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void iconMenuItem6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void iconMenuItem5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void iconMenuItem4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menu2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void sidePanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuStrip2_ItemClicked_1(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void Container_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
+            openForm(SettingsLabel, new frmNegocio());
         }
     }
 }

@@ -62,7 +62,6 @@ namespace Negocio
             }
             return objProducto.Editar(objProd);
         }
-
         public bool Delete(int idProducto, bool newState)
         {
             return objProducto.Baja(idProducto, newState);

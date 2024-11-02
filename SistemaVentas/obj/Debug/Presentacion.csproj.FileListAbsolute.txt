@@ -107,3 +107,5 @@ C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\bin\Deb
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\bin\Debug\Data.dll.config
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.frmNegocio.resources
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Modals.mdProveedor.resources
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Modals.mdProducto.resources

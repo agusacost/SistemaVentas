@@ -236,6 +236,7 @@
   <ItemGroup>
     <Compile Include="N_Categoria.cs" />
     <Compile Include="N_Cliente.cs" />
+    <Compile Include="N_Compra.cs" />
     <Compile Include="N_Negocio.cs" />
     <Compile Include="N_Permiso.cs" />
     <Compile Include="N_Producto.cs" />

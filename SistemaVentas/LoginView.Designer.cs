@@ -61,7 +61,6 @@
             this.label2.Size = new System.Drawing.Size(233, 31);
             this.label2.TabIndex = 1;
             this.label2.Text = "Gestión de ventas";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtDocumento
             // 
@@ -70,7 +69,6 @@
             this.txtDocumento.Name = "txtDocumento";
             this.txtDocumento.Size = new System.Drawing.Size(348, 22);
             this.txtDocumento.TabIndex = 3;
-            this.txtDocumento.TextChanged += new System.EventHandler(this.txtDocumento_TextChanged);
             // 
             // txtClave
             // 
@@ -80,7 +78,6 @@
             this.txtClave.PasswordChar = '*';
             this.txtClave.Size = new System.Drawing.Size(348, 22);
             this.txtClave.TabIndex = 4;
-            this.txtClave.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label3
             // 
@@ -175,7 +172,6 @@
             this.Name = "LoginView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
-            this.Load += new System.EventHandler(this.LoginView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -49,6 +49,7 @@
             this.cbbusqueda = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnDescargar = new FontAwesome.Sharp.IconButton();
+            this.btnDetalle = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -266,12 +267,34 @@
             this.btnDescargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDescargar.UseVisualStyleBackColor = false;
             // 
+            // btnDetalle
+            // 
+            this.btnDetalle.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnDetalle.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnDetalle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetalle.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalle.ForeColor = System.Drawing.Color.White;
+            this.btnDetalle.IconChar = FontAwesome.Sharp.IconChar.Paperclip;
+            this.btnDetalle.IconColor = System.Drawing.Color.White;
+            this.btnDetalle.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnDetalle.IconSize = 16;
+            this.btnDetalle.Location = new System.Drawing.Point(723, 11);
+            this.btnDetalle.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDetalle.Name = "btnDetalle";
+            this.btnDetalle.Size = new System.Drawing.Size(87, 36);
+            this.btnDetalle.TabIndex = 32;
+            this.btnDetalle.Text = "Detalle";
+            this.btnDetalle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDetalle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDetalle.UseVisualStyleBackColor = false;
+            // 
             // frmVentaDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1058, 559);
+            this.Controls.Add(this.btnDetalle);
             this.Controls.Add(this.btnDescargar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnBuscar);
@@ -313,5 +336,6 @@
         private System.Windows.Forms.ComboBox cbbusqueda;
         private System.Windows.Forms.Label label2;
         private FontAwesome.Sharp.IconButton btnDescargar;
+        private FontAwesome.Sharp.IconButton btnDetalle;
     }
 }

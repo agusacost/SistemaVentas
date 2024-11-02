@@ -20,29 +20,10 @@ namespace SistemaVentas
             InitializeComponent();
         }
 
-        private void iconPictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LoginView_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void ingresarBtn_Click(object sender, EventArgs e)
@@ -78,14 +59,5 @@ namespace SistemaVentas
             this.Show();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtDocumento_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

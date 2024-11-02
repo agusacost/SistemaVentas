@@ -104,7 +104,7 @@ namespace SistemaVentas
         }
         private void subRegistrarCompra_Click(object sender, EventArgs e)
         {
-            openForm(ComprasLabel, new frmCompras());
+            openForm(ComprasLabel, new frmCompras(usuarioLogged));
         }
         private void subDetalleCompra_Click(object sender, EventArgs e)
         {

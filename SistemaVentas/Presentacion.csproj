@@ -317,6 +317,18 @@
     <Compile Include="LoginView.Designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modals\mdProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modals\mdProducto.Designer.cs">
+      <DependentUpon>mdProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modals\mdProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modals\mdProveedor.Designer.cs">
+      <DependentUpon>mdProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Producto\frmAddCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -434,6 +446,12 @@
     <EmbeddedResource Include="LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modals\mdProducto.resx">
+      <DependentUpon>mdProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modals\mdProveedor.resx">
+      <DependentUpon>mdProveedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Producto\frmAddCategoria.resx">
       <DependentUpon>frmAddCategoria.cs</DependentUpon>
     </EmbeddedResource>
@@ -527,6 +545,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Layout.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5693450.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

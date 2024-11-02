@@ -11,160 +11,100 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
 using Entidades;
+using SistemaVentas.Modals;
 
 namespace SistemaVentas.Compras
 {
     public partial class frmCompras : Form
     {
-        public frmCompras()
+        private Usuario _usuario;
+        public frmCompras(Usuario ousuario=null)
         {
             InitializeComponent();
+            _usuario = ousuario;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-        private bool ValidarFecha()
-        {
-            if (DateTime.Now < DateFechaCompra.Value)
-            {
-                MessageBox.Show("La fecha de la venta no puede ser en el futuro.", "Fecha inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                DateFechaCompra.Value = DateTime.Now; // Ajusta el valor a la fecha actual.
-                return false; // Devuelve false si la fecha es inválida.
-            }
-            return true; // Devuelve true si la fecha es válida.
-        }
-        private bool ValidarTipoDocumento()
-        {
-            if (string.IsNullOrEmpty(CBFactura.Text))
-            {
-                MessageBox.Show("Debe seleccionar un tipo de documento.", "Tipo de documento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            return true;
-        }
         
-        private bool ValidarRazonSocial()
-        {
-            // Verifica que no esté vacío ni solo con espacios
-            if (string.IsNullOrWhiteSpace(TRazonSocialC.Text))
-            {
-                MessageBox.Show("Debe ingresar la razon social.", "Razon Social", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            // Verifica que el nombre no tenga más de 40 caracteres
-            if (TRazonSocialC.Text.Length > 40)
-            {
-                MessageBox.Show("La razon social no puede tener más de 40 caracteres.", "Razon Social", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            // Verifica que el nombre no contenga números
-            if (TRazonSocialC.Text.Any(char.IsDigit))
-            {
-                MessageBox.Show("La razon social no debe contener números.", "Razon Social", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            return true;
-        }
-
-        private bool ValidarProducto()
-        {
-            // Verifica que el nombre del producto no tenga más de 40 caracteres
-            if (TProductoC.Text.Length > 40)
-            {
-                MessageBox.Show("El nombre del producto no puede tener más de 40 caracteres.", "Producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            return true;
-        }
-        private bool ValidarCodigoProducto()
-        {
-            if (string.IsNullOrWhiteSpace(TCodProdC.Text))
-            {
-                MessageBox.Show("Debe ingresar el código de producto.", "Código de producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            return true;
-        }
-        private bool ValidarPrecioYStock()
-        {
-            if (!decimal.TryParse(TPrecioCompraC.Text, out decimal precio) || precio <= 0)
-            {
-                MessageBox.Show("El precio  venta debe ser un valor positivo.", "Precio  Venta inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            if (!int.TryParse(TPrecioCompraC.Text, out int stock) || stock <= 0)
-            {
-                MessageBox.Show("El Precio compra debe ser un número positivo.", "Precio Compra inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            if (!int.TryParse(CantidadC.Text, out int cantidad) || cantidad <= 0 || cantidad > stock)
-            {
-                MessageBox.Show("La cantidad debe ser mayor que 0 y no mayor al stock disponible.", "Cantidad inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            return true;
-        }
-        private bool ValidarPago()
-        {
-            if (!decimal.TryParse(TTotalAPagar.Text, out decimal total) || total <= 0)
-            {
-                MessageBox.Show("El total a pagar debe ser un valor positivo.", "Total inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            return true;
-        }
-
-        private void BRegistrar_Click(object sender, EventArgs e)
-        {
-       
-
-        }
+        
         private void BRegistrarCompra_Click(object sender, EventArgs e)
         {
-            if (!ValidarFecha() ||
-           !ValidarTipoDocumento() ||
-           !ValidarRazonSocial() ||
-           !ValidarCodigoProducto() ||
-           !ValidarProducto() ||
-           !ValidarPrecioYStock() ||
-           !ValidarPago())
+            if(Convert.ToInt32(txtIdProveedor.Text) == 0)
             {
-
+                MessageBox.Show("Debe seleccionar un proveedor", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+            if(dgvdata.Rows.Count < 1)
+            {
+                MessageBox.Show("Debe ingresar productos en la compra","Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            DataTable detalle_compra = new DataTable();
 
-            // agregar el código para registrar la venta en la base de datos
-            MessageBox.Show("Venta registrada con éxito.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            detalle_compra.Columns.Add("IdProducto", typeof(int));
+            detalle_compra.Columns.Add("PrecioCompra", typeof(decimal));
+            detalle_compra.Columns.Add("PrecioVenta", typeof(decimal));
+            detalle_compra.Columns.Add("Cantidad", typeof(int));
+            detalle_compra.Columns.Add("MontoTotal", typeof(decimal));
 
+            foreach (DataGridViewRow row in dgvdata.Rows)
+            {
+                detalle_compra.Rows.Add(new object[]
+                {
+                    Convert.ToInt32(row.Cells["IdProducto"].Value.ToString()),
+                    row.Cells["PrecioCompra"].Value.ToString(),
+                    row.Cells["PrecioVenta"].Value.ToString(),
+                    row.Cells["Cantidad"].Value.ToString(),
+                    row.Cells["Subtotal"].Value.ToString(),
+                });
+            }
+
+            int idcorrelativo = new N_Compra().GetCorrelative();
+            string numeroDocumento = string.Format( "{0:00000}" , idcorrelativo );
+            Compra oCompra = new Compra()
+            {
+                oUsuario = new Usuario() { IdUsuario = _usuario.IdUsuario},
+                oProveedor = new Proveedor() { IdProveedor = Convert.ToInt32(txtIdProveedor.Text) },
+                TipoDocumento = ((OpcionCombo)CBFactura.SelectedItem).Texto,
+                NumeroDocumento = numeroDocumento,
+                MontoTotal = Convert.ToDecimal(txtTotalPagar.Text),
+            };
+            string mensaje = string.Empty;
+            bool respuesta = new N_Compra().Registro(oCompra, detalle_compra, out mensaje);
+
+            if(respuesta)
+            {
+                var result = MessageBox.Show("Numero de compra generada: \n" + numeroDocumento + "\n\nDesea copiar al portapapeles?", "Mensaje",
+                MessageBoxButtons.YesNo ,MessageBoxIcon.Exclamation);
+
+                if (result == DialogResult.Yes)
+                    Clipboard.SetText(numeroDocumento);
+
+                txtIdProveedor.Text = "0";
+                txtCuit.Text = "";
+                txtRazonSocial.Text = "";
+                dgvdata.Rows.Clear();
+                calcularTotal();
+
+            }
+            else
+            {
+                MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void BLimpiarCompra_Click(object sender, EventArgs e)
         {
             
-            TRazonSocialC.Clear();
-            TProductoC.Clear();
-            TCodProdC.Clear();
-            TPrecioCompraC.Clear();
-            TTotalAPagar.Clear();
+            txtRazonSocial.Clear();
+            txtProducto.Clear();
+            txtCodigoProducto.Clear();
+            txtPrecioCompra.Clear();
+            txtTotalPagar.Clear();
 
-            // Restablecer los ComboBox
-            CBFactura.SelectedIndex = -1; // Si no tienes un valor predeterminado, utiliza -1
-                                             // Agrega aquí otros ComboBox que necesiten ser limpiados, si los hay
-            CantidadC.Value= 0;
+            CBFactura.SelectedIndex = -1; 
+            txtCantidad.Value= 0;
 
-            // Restablecer a la fecha actual
-            DateFechaCompra.Value = DateTime.Now; 
+            datepicker.Value = DateTime.Now; 
         }
 
         private void frmCompras_Load(object sender, EventArgs e)
@@ -176,18 +116,207 @@ namespace SistemaVentas.Compras
             CBFactura.ValueMember = "value";
             CBFactura.SelectedIndex = 2;
 
-            List<Proveedor> listaprov = new N_Proveedor().Listar();
-            foreach(Proveedor prov in listaprov)
+            datepicker.Value = DateTime.Now;
+            dgvdata.AllowUserToAddRows = false;
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            using (var modal = new mdProveedor())
             {
-                CbProveedor.Items.Add(new OpcionCombo()
+                var result = modal.ShowDialog();
+                if(result == DialogResult.OK)
                 {
-                    value = prov.IdProveedor,
-                    Texto = prov.Documento,
-                });
+                    txtIdProveedor.Text = modal._Proveedor.IdProveedor.ToString();
+                    txtCuit.Text = modal._Proveedor.Documento;
+                    txtRazonSocial.Text = modal._Proveedor.RazonSocial;
+
+                }
+                else
+                {
+                    txtCuit.Select();
+                }
             }
-            CbProveedor.DisplayMember = "Texto";
-            CbProveedor.ValueMember = "value";
-            CbProveedor.SelectedIndex = 0;
+        }
+
+        private void btnBuscarProd_Click(object sender, EventArgs e)
+        {
+            using (var modal = new mdProducto())
+            {
+                var result = modal.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    txtIdProducto.Text = modal._Producto.IdProducto.ToString();
+                    txtCodigoProducto.Text = modal._Producto.Codigo;
+                    txtProducto.Text = modal._Producto.Nombre;
+                    txtPrecioCompra.Select();
+                }
+                else
+                {
+                    txtCodigoProducto.Select();
+                }
+            }
+        }
+
+        private void txtCodigoProducto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Entidades.Producto oproducto = new N_Producto().listar().Where(p=> p.Codigo == txtCodigoProducto.Text && p.Estado == true).FirstOrDefault();
+                if(oproducto != null)
+                {
+                    txtCodigoProducto.BackColor = Color.LightGreen;
+                    txtIdProducto.Text = oproducto.IdProducto.ToString();
+                    txtProducto.Text = oproducto.Nombre;
+                    txtPrecioCompra.Select();
+                }
+                else
+                {
+                    txtCodigoProducto.BackColor= Color.MistyRose;
+                    txtIdProducto.Text = "0";
+                    txtProducto.Text = "";
+                }
+            }
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            decimal preciocompra = 0;
+            decimal precioventa = 0;
+            int porcentajeventa = 0;
+            bool productoExists = false;
+
+            if (int.Parse(txtIdProducto.Text) == 0)
+            {
+                MessageBox.Show("Debe seleccionar un producto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            if (!decimal.TryParse(txtPrecioCompra.Text, out preciocompra))
+            {
+                MessageBox.Show("Precio Compra - Formato moneda incorrecto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtPrecioCompra.Select();
+                return;
+            }
+            if (!int.TryParse(txtGanancia.Text, out porcentajeventa))
+            {
+                MessageBox.Show("Porcentaje Venta - Formato entero incorrecto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+
+            foreach (DataGridViewRow fila in dgvdata.Rows)
+            {
+                if (fila.Cells["IdProducto"]?.Value?.ToString() == txtIdProducto.Text)
+                {
+                    productoExists = true;
+                    break;
+                }
+            }
+
+            if (!productoExists)
+            {
+                precioventa = preciocompra + (preciocompra * porcentajeventa / 100);
+                dgvdata.Rows.Add(new object[]
+                {
+                txtIdProducto.Text,
+                txtProducto.Text,
+                preciocompra.ToString("0.00"),
+                precioventa.ToString("0.00"),
+                txtCantidad.Value.ToString(),
+                (txtCantidad.Value * preciocompra).ToString("0.00")
+                });
+
+                limpiarProd();
+                calcularTotal();
+                txtCodigoProducto.Select();
+            }
+            else
+            {
+                MessageBox.Show("El producto ya ha sido agregado.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void limpiarProd()
+        {
+            txtIdProducto.Text = "0";
+            txtCodigoProducto.Text = "";
+            txtProducto.BackColor = Color.White;
+            txtProducto.Text = "";
+            txtPrecioCompra.Text = "";
+            txtGanancia.Text = "";
+            txtCantidad.Value = 1;
+        }
+
+        private void calcularTotal()
+        {
+            decimal total = 0;
+            if(dgvdata.Rows.Count > 0)
+            {
+                foreach(DataGridViewRow row in dgvdata.Rows)
+                {
+                    total += Convert.ToDecimal(row.Cells["Subtotal"].Value.ToString());
+                }
+            }
+            txtTotalPagar.Text = total.ToString("0.00");
+        }
+
+        private void dgvdata_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            
+                if (e.RowIndex < 0)
+                    return;
+
+                if (e.ColumnIndex == 6)
+                {
+                    e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                    var cellWidth = e.CellBounds.Width;
+                    var cellHeight = e.CellBounds.Height;
+                    var icon = Properties.Resources.delete;
+                    int iconWidth = icon.Width;
+                    int iconHeight = icon.Height;
+                    float scale = Math.Min((float)cellWidth / iconWidth, (float)cellHeight / iconHeight);
+
+                    int newWidth = (int)(iconWidth * scale);
+                    int newHeight = (int)(iconHeight * scale);
+                    var x = e.CellBounds.Left + (cellWidth - newWidth) / 2;
+                    var y = e.CellBounds.Top + (cellHeight - newHeight) / 2;
+                    e.Graphics.DrawImage(icon, new Rectangle(x, y, newWidth, newHeight));
+                    e.Handled = true;
+                }
+            
+        }
+
+        private void dgvdata_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvdata.Columns[e.ColumnIndex].Name == "btnEliminar")
+            {
+                int indice = e.RowIndex;
+                if (indice >= 0)
+                {
+                    dgvdata.Rows.RemoveAt(indice);
+                    calcularTotal();
+                }
+            }
+        }
+
+        private void txtPrecioCompra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                if(Char.IsControl(e.KeyChar) || e.KeyChar.ToString() == ".")
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true ;
+                }
+            }
         }
     }
 

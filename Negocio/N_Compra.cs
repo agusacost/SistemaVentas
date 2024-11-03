@@ -24,5 +24,16 @@ namespace Negocio
 
         }
 
+        public Compra getCompra(string numero)
+        {
+            Compra oCompra = objCompra.obtenerCompra(numero);
+            if(oCompra.IdCompra != 0)
+            {
+                List<Detalle_Compra> oDetalleCompra = objCompra.ObtenerDetalleCompra(oCompra.IdCompra);
+                oCompra.oDetalleCompra = oDetalleCompra;
+            }
+            return oCompra;
+        }
+
     }
 }

@@ -109,3 +109,8 @@ C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\bin\Deb
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.frmNegocio.resources
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Modals.mdProveedor.resources
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Modals.mdProducto.resources
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\bin\Debug\itextsharp.dll
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\bin\Debug\itextsharp.xml
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\bin\Debug\itextsharp.xmlworker.dll

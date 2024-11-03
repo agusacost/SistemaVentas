@@ -24,22 +24,22 @@ namespace SistemaVentas.Compras
             _usuario = ousuario;
         }
 
-        
-        
+
         private void BRegistrarCompra_Click(object sender, EventArgs e)
         {
-            if(Convert.ToInt32(txtIdProveedor.Text) == 0)
+            if (string.IsNullOrWhiteSpace(txtIdProveedor.Text) || Convert.ToInt32(txtIdProveedor.Text) == 0)
             {
                 MessageBox.Show("Debe seleccionar un proveedor", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            if(dgvdata.Rows.Count < 1)
+
+            if (dgvdata.Rows.Count < 1)
             {
-                MessageBox.Show("Debe ingresar productos en la compra","Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe ingresar productos en la compra", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            DataTable detalle_compra = new DataTable();
 
+            DataTable detalle_compra = new DataTable();
             detalle_compra.Columns.Add("IdProducto", typeof(int));
             detalle_compra.Columns.Add("PrecioCompra", typeof(decimal));
             detalle_compra.Columns.Add("PrecioVenta", typeof(decimal));
@@ -48,49 +48,63 @@ namespace SistemaVentas.Compras
 
             foreach (DataGridViewRow row in dgvdata.Rows)
             {
-                detalle_compra.Rows.Add(new object[]
+                if (row.Cells["IdProducto"].Value != null &&
+                    row.Cells["PrecioCompra"].Value != null &&
+                    row.Cells["PrecioVenta"].Value != null &&
+                    row.Cells["Cantidad"].Value != null &&
+                    row.Cells["Subtotal"].Value != null)
                 {
-                    Convert.ToInt32(row.Cells["IdProducto"].Value.ToString()),
-                    row.Cells["PrecioCompra"].Value.ToString(),
-                    row.Cells["PrecioVenta"].Value.ToString(),
-                    row.Cells["Cantidad"].Value.ToString(),
-                    row.Cells["Subtotal"].Value.ToString(),
-                });
+                    detalle_compra.Rows.Add(new object[]
+                    {
+                Convert.ToInt32(row.Cells["IdProducto"].Value),
+                Convert.ToDecimal(row.Cells["PrecioCompra"].Value),
+                Convert.ToDecimal(row.Cells["PrecioVenta"].Value),
+                Convert.ToInt32(row.Cells["Cantidad"].Value),
+                Convert.ToDecimal(row.Cells["Subtotal"].Value)
+                    });
+                }
+                else
+                {
+                    MessageBox.Show("Faltan datos en alguna fila del detalle de productos.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
 
             int idcorrelativo = new N_Compra().GetCorrelative();
-            string numeroDocumento = string.Format( "{0:00000}" , idcorrelativo );
+            string numeroDocumento = string.Format("{0:00000}", idcorrelativo);
+
             Compra oCompra = new Compra()
             {
-                oUsuario = new Usuario() { IdUsuario = _usuario.IdUsuario},
+                oUsuario = new Usuario() { IdUsuario = _usuario.IdUsuario },
                 oProveedor = new Proveedor() { IdProveedor = Convert.ToInt32(txtIdProveedor.Text) },
-                TipoDocumento = ((OpcionCombo)CBFactura.SelectedItem).Texto,
+                TipoDocumento = ((OpcionCombo)CBFactura.SelectedItem)?.Texto ?? "Sin especificar",
                 NumeroDocumento = numeroDocumento,
-                MontoTotal = Convert.ToDecimal(txtTotalPagar.Text),
+                MontoTotal = decimal.TryParse(txtTotalPagar.Text, out decimal totalPagar) ? totalPagar : 0
             };
+
             string mensaje = string.Empty;
             bool respuesta = new N_Compra().Registro(oCompra, detalle_compra, out mensaje);
 
-            if(respuesta)
+            if (respuesta)
             {
-                var result = MessageBox.Show("Numero de compra generada: \n" + numeroDocumento + "\n\nDesea copiar al portapapeles?", "Mensaje",
-                MessageBoxButtons.YesNo ,MessageBoxIcon.Exclamation);
+                var result = MessageBox.Show("Número de compra generada: \n" + numeroDocumento + "\n\n¿Desea copiar al portapapeles?", "Mensaje",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                 if (result == DialogResult.Yes)
                     Clipboard.SetText(numeroDocumento);
 
                 txtIdProveedor.Text = "0";
-                txtCuit.Text = "";
-                txtRazonSocial.Text = "";
+                txtCuit.Clear();
+                txtRazonSocial.Clear();
                 dgvdata.Rows.Clear();
                 calcularTotal();
-
             }
             else
             {
-                MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void BLimpiarCompra_Click(object sender, EventArgs e)
         {
@@ -185,25 +199,32 @@ namespace SistemaVentas.Compras
             decimal precioventa = 0;
             int porcentajeventa = 0;
             bool productoExists = false;
+            int idProducto;
 
-            if (int.Parse(txtIdProducto.Text) == 0)
+            // Validar que el ID de producto sea un número válido
+            if (!int.TryParse(txtIdProducto.Text, out idProducto) || idProducto == 0)
             {
-                MessageBox.Show("Debe seleccionar un producto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Debe seleccionar un producto válido", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+
+            // Validar que el precio de compra sea un decimal válido
             if (!decimal.TryParse(txtPrecioCompra.Text, out preciocompra))
             {
                 MessageBox.Show("Precio Compra - Formato moneda incorrecto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtPrecioCompra.Select();
                 return;
             }
+
+            // Validar que el porcentaje de ganancia sea un entero válido
             if (!int.TryParse(txtGanancia.Text, out porcentajeventa))
             {
                 MessageBox.Show("Porcentaje Venta - Formato entero incorrecto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtGanancia.Select();
                 return;
             }
 
-
+            // Verificar si el producto ya ha sido agregado al DataGridView
             foreach (DataGridViewRow fila in dgvdata.Rows)
             {
                 if (fila.Cells["IdProducto"]?.Value?.ToString() == txtIdProducto.Text)
@@ -213,17 +234,18 @@ namespace SistemaVentas.Compras
                 }
             }
 
+            // Si el producto no existe, calcular el precio de venta y agregar al DataGridView
             if (!productoExists)
             {
                 precioventa = preciocompra + (preciocompra * porcentajeventa / 100);
                 dgvdata.Rows.Add(new object[]
                 {
-                txtIdProducto.Text,
-                txtProducto.Text,
-                preciocompra.ToString("0.00"),
-                precioventa.ToString("0.00"),
-                txtCantidad.Value.ToString(),
-                (txtCantidad.Value * preciocompra).ToString("0.00")
+            txtIdProducto.Text,
+            txtProducto.Text,
+            preciocompra.ToString("0.00"),
+            precioventa.ToString("0.00"),
+            txtCantidad.Value.ToString(),
+            (txtCantidad.Value * preciocompra).ToString("0.00")
                 });
 
                 limpiarProd();
@@ -235,6 +257,7 @@ namespace SistemaVentas.Compras
                 MessageBox.Show("El producto ya ha sido agregado.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
 
         private void limpiarProd()
         {
@@ -318,6 +341,7 @@ namespace SistemaVentas.Compras
                 }
             }
         }
+
     }
 
 }

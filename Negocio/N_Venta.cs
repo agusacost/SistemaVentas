@@ -31,5 +31,18 @@ namespace Negocio
         {
             return objVenta.registrar(obj, DetalleVenta, out mensaje);
         }
+
+        public Venta ObtenerVenta(string numero)
+        {
+            Venta oVenta = objVenta.ObtenerVenta(numero);
+
+            if(oVenta.IdVenta != 0)
+            {
+                List<Detalle_Venta> oDetalleVenta = objVenta.ObtenerDetalleVenta(oVenta.IdVenta);
+                oVenta.oDetalleVenta = oDetalleVenta;
+            }
+
+            return oVenta;
+        }
     }
 }

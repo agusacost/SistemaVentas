@@ -92,15 +92,7 @@ namespace SistemaVentas
 
         private void subDetalleVenta_Click(object sender, EventArgs e)
         {
-            if (usuarioLogged.oRol.idRol == 1)
-            {
-                openForm(VentasLabel, new frmVentaDetalle());
-
-            }
-            else
-            {
-                openForm(VentasLabel, new frmVtasGral());
-            }
+            openForm(VentasLabel, new frmVentaDetalle());
         }
         private void subRegistrarCompra_Click(object sender, EventArgs e)
         {

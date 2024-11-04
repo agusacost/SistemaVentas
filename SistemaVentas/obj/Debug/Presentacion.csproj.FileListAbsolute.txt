@@ -114,3 +114,4 @@ C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\bin\Deb
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\bin\Debug\BouncyCastle.Cryptography.xml
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\bin\Debug\itextsharp.xml
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\bin\Debug\itextsharp.xmlworker.dll
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Modals.mdCliente.resources

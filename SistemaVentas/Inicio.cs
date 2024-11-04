@@ -87,7 +87,7 @@ namespace SistemaVentas
 
         private void subRegistrarVta_Click(object sender, EventArgs e)
         {
-            openForm(VentasLabel, new frmVentas());
+            openForm(VentasLabel, new frmVentas(usuarioLogged));
         }
 
         private void subDetalleVenta_Click(object sender, EventArgs e)

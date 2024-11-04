@@ -245,6 +245,7 @@
     <Compile Include="D_Proveedor.cs" />
     <Compile Include="D_Rol.cs" />
     <Compile Include="D_User.cs" />
+    <Compile Include="D_Venta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

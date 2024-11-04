@@ -16,6 +16,7 @@ namespace SistemaVentas.Modals
     public partial class mdProducto : Form
     {
         public Entidades.Producto _Producto { get; set; }
+        public bool esVenta {  get; set; }
         public mdProducto()
         {
             InitializeComponent();
@@ -43,6 +44,12 @@ namespace SistemaVentas.Modals
             cbbusqueda.SelectedIndex = 0;
             List<Entidades.Producto> listaProd = new N_Producto().listar();
 
+            if (esVenta)
+            {
+                listaProd = listaProd.Where(p => p.PrecioVenta != 0).ToList();
+            }
+
+
             foreach (Entidades.Producto item in listaProd)
             {
                 dgvdata.Rows.Add(new object[]
@@ -64,16 +71,25 @@ namespace SistemaVentas.Modals
             int iRow = e.RowIndex;
             int iCol = e.ColumnIndex;
 
-            if (iRow >= 0 && iCol > 0)
+            if (iRow >= 0 && iCol >= 0)
             {
+                string precioVentaString = dgvdata.Rows[iRow].Cells["PrecioVenta"].Value?.ToString()
+                            .Replace("$", ""); 
+
+                decimal precioVenta;
+                if (!decimal.TryParse(precioVentaString, out precioVenta))
+                {
+                    precioVenta = 0; 
+                }
                 _Producto = new Entidades.Producto()
                 {
                     IdProducto = Convert.ToInt32(dgvdata.Rows[iRow].Cells["IdProducto"].Value.ToString()),
                     Codigo = dgvdata.Rows[iRow].Cells["Codigo"].Value.ToString(),
                     Nombre = dgvdata.Rows[iRow].Cells["Nombre"].Value.ToString(),
+                    PrecioVenta = precioVenta,
                     Stock = Convert.ToInt32(dgvdata.Rows[iRow].Cells["Stock"].Value.ToString()),
                 };
-
+                Console.WriteLine(precioVenta);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

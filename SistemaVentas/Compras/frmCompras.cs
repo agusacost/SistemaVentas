@@ -157,6 +157,7 @@ namespace SistemaVentas.Compras
         {
             using (var modal = new mdProducto())
             {
+                modal.esVenta = false;
                 var result = modal.ShowDialog();
                 if (result == DialogResult.OK)
                 {

@@ -13,6 +13,11 @@ namespace Negocio
     {
         private D_Venta objVenta = new D_Venta();
 
+        public  List<Venta> ListarVentas()
+        {
+            return objVenta.ListaVentas();
+        }
+
         public bool RestarStock(int idProducto, int cantidad)
         {
             return objVenta.restarStock(idProducto, cantidad);
@@ -44,5 +49,10 @@ namespace Negocio
 
             return oVenta;
         }
+        public List<BackupV> BackupV()
+        {
+            return objVenta.ListarBackup();
+        }
+
     }
 }

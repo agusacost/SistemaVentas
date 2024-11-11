@@ -16,6 +16,10 @@ using SistemaVentas.Compras;
 using SistemaVentas.Clientes;
 using SistemaVentas.Reportes;
 using Negocio;
+using ClosedXML.Excel;
+using System.Data.SqlClient;
+using Data;
+using System.IO;
 
 namespace SistemaVentas
 {
@@ -46,8 +50,27 @@ namespace SistemaVentas
                 }
             }
 
+            if(usuarioLogged.oRol.idRol == 1)
+            {
+                subRegistrarVta.Visible = false;
+            }
 
+            if(usuarioLogged.oRol.idRol == 3)
+            {
+                subCategoria.Visible = false;
+
+            }
+
+            Form formulario = new frmMuestra(usuarioLogged);
             lbUsuario.Text = usuarioLogged.NombreCompleto.ToString();
+            formActivo = formulario;
+            formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None;
+            formulario.Dock = DockStyle.Fill;
+            formulario.BackColor = Color.White;
+
+            Container.Controls.Add(formulario);
+            formulario.Show();
         }
 
         private void openForm(IconMenuItem menu, Form formulario)
@@ -82,7 +105,7 @@ namespace SistemaVentas
         }
         private void subProducto_Click(object sender, EventArgs e)
         {
-            openForm(SettingsLabel, new frmProducto());
+            openForm(SettingsLabel, new frmProducto(usuarioLogged));
         }
 
         private void subRegistrarVta_Click(object sender, EventArgs e)
@@ -126,6 +149,65 @@ namespace SistemaVentas
         private void subMenuNegocio_Click(object sender, EventArgs e)
         {
             openForm(SettingsLabel, new frmNegocio());
+        }
+
+        private void backupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Define una ruta accesible como C:\Backups
+                string backupFolder = @"C:\Backups";
+                if (!Directory.Exists(backupFolder))
+                {
+                    Directory.CreateDirectory(backupFolder); // Crea la carpeta si no existe
+                }
+
+                string backupFileName = $"DBVENTAS_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.bak";
+                string backupFilePath = Path.Combine(backupFolder, backupFileName);
+
+                // Cadena de conexión
+                string connectionString = "Data Source=.;Initial Catalog=DBVENTAS;Integrated Security=True;TrustServerCertificate=True";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Comando SQL para realizar el backup
+                    string backupCommand = $"BACKUP DATABASE DBVENTAS TO DISK = '{backupFilePath}' WITH FORMAT, MEDIANAME = 'DB_Backup', NAME = 'Full Backup of DBVENTAS';";
+
+                    using (SqlCommand command = new SqlCommand(backupCommand, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show($"Backup realizado con éxito en {backupFilePath}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al realizar el backup: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void SettingsLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ProductosLabel_Click(object sender, EventArgs e)
+        {
+            openForm(SettingsLabel, new frmProducto(usuarioLogged));
+        }
+
+        private void listaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openForm(VentasLabel, new frmListaVentas(usuarioLogged));
+        }
+
+        private void subListaCompras_Click(object sender, EventArgs e)
+        {
+            openForm(ComprasLabel, new frmListaCompras(usuarioLogged));
         }
     }
 }

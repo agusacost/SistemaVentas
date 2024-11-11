@@ -24,6 +24,12 @@ namespace Negocio
 
         }
 
+        public List<Compra> listarCompras()
+        {
+            return objCompra.listarCompras();  
+        }
+
+
         public Compra getCompra(string numero)
         {
             Compra oCompra = objCompra.obtenerCompra(numero);

@@ -17,13 +17,15 @@ namespace SistemaVentas.Producto
 {
     public partial class frmProducto : Form
     {
+        private Usuario _Usuario;
         private frmAddProducto frmAddProducto;
         private frmEditarProducto frmEditarProducto;
         private int selectedRowIndex = -1;
         private Entidades.Producto selectedProduct = null;
-        public frmProducto()
+        public frmProducto(Usuario ousuario = null)
         {
             InitializeComponent();
+            _Usuario = ousuario;
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
@@ -120,6 +122,13 @@ namespace SistemaVentas.Producto
         private void frmProducto_Load(object sender, EventArgs e)
         {
             //fetch de categorias para combobox
+            if(_Usuario.IdUsuario != 1)
+            {
+                btnAgregar.Visible = false;
+                btnEditar.Visible = false;
+                btnEliminar.Visible = false;
+            }
+
             cbbusqueda.Items.Add(new OpcionCombo()
             {
                 value = 0,

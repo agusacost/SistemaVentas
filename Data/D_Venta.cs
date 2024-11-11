@@ -239,5 +239,98 @@ namespace Data
             return oLista;
         }
 
+        public List<Venta> ListaVentas()
+        {
+            List<Venta> listaV = new List<Venta>();
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("select TipoDocumento, Documento, DocumentoCliente, NombreCliente ,MontoPago, MontoCambio,");
+                    query.AppendLine("MontoTotal, CAST(FechaRegistro as DATE) as FechaRegistro");
+                    query.AppendLine("from VENTA");
+                    oconexion.Open();
+                    SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
+                    cmd.CommandType = CommandType.Text;
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listaV.Add(new Venta()
+                            {
+                                TipoDocumento = reader["TipoDocumento"].ToString(),
+                                NumeroDocumento = reader["Documento"].ToString(),
+                                DocumentoCliente = reader["DocumentoCliente"].ToString(),
+                                NombreCliente = reader["NombreCliente"].ToString(),
+                                MontoPago = Convert.ToDecimal(reader["MontoPago"].ToString()),
+                                MontoCambio = Convert.ToDecimal(reader["MontoPago"].ToString()),
+                                MontoTotal = Convert.ToDecimal(reader["MontoTotal"].ToString()),
+                                FechaRegistro = reader["FechaRegistro"].ToString(),
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                listaV = new List<Venta>();
+                Console.WriteLine(ex.Message);
+            }
+
+            return listaV;
+        }
+        public List<BackupV> ListarBackup()
+        {
+            List<BackupV> listado = new List<BackupV>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    oconexion.Open();
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("SELECT CONVERT(char(10), v.FechaRegistro, 103) AS [FechaRegistro], v.TipoDocumento,v.Documento, v.MontoTotal,u.NombreCompleto AS [UsuarioRegistro]," +
+                        "v.DocumentoCliente,v.NombreCliente, p.Codigo AS [CodigoProducto],p.Nombre AS [NombreProducto],ca.Descripcion AS [Categoria],dv.PrecioVenta,dv.Cantidad,dv.SubTotal FROM Venta v");
+                    query.AppendLine("INNER JOIN Usuario u ON u.IdUsuario = v.IdUsuario INNER JOIN Detalle_Venta dv ON dv.IdVenta = v.IdVenta INNER JOIN Producto p ON p.IdProducto = dv.IdProducto INNER JOIN Categoria ca ON ca.IdCategoria = p.IdCategoria");
+
+                    SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
+                    cmd.CommandType = CommandType.Text;
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            listado.Add(new BackupV()
+                            {
+                                FechaRegistro = dr["FechaRegistro"].ToString(),
+                                TipoDocumento = dr["TipoDocumento"].ToString(),
+                                Documento = dr["Documento"].ToString(),
+                                MontoTotal = dr["MontoTotal"].ToString(),
+                                UsuarioRegistro = dr["UsuarioRegistro"].ToString(),
+                                DocumentoCliente = dr["DocumentoCliente"].ToString(),
+                                NombreCliente = dr["NombreCliente"].ToString(),
+                                CodigoProducto = dr["CodigoProducto"].ToString(),
+                                NombreProducto = dr["NombreProducto"].ToString(),
+                                Categoria = dr["Categoria"].ToString(),
+                                PrecioVenta = dr["PrecioVenta"].ToString(),
+                                Cantidad = dr["Cantidad"].ToString(),
+                                SubTotal = dr["SubTotal"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                listado = new List<BackupV>();
+            }
+
+            return listado;
+
+        }
+
     }
 }

@@ -137,6 +137,46 @@ namespace Data
             return obj;
         }
 
+        public List<Compra> listarCompras()
+        {           
+            List<Compra> oLista = new List<Compra>();
+            try {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    oconexion.Open();
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("select c.IdCompra, u.Documento as Usuario, p.RazonSocial as Proveedor, c.TipoDocumento, c.Documento, c.MontoTotal, c.FechaRegistro");
+                    query.AppendLine("from COMPRA C");
+                    query.AppendLine("INNER JOIN USUARIO U ON U.IdUsuario = C.IdUsuario");
+                    query.AppendLine("INNER JOIN PROVEEDOR P ON P.IdProveedor = C.IdProveedor");
+                    SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            oLista.Add(new Compra()
+                            {
+                                IdCompra = Convert.ToInt32(dr["IdCompra"]),
+                                oUsuario = new Usuario() { Documento = dr["Usuario"].ToString() },
+                                oProveedor = new Proveedor() { RazonSocial = dr["Proveedor"].ToString() },
+                                TipoDocumento = dr["TipoDocumento"].ToString(),
+                                NumeroDocumento = dr["Documento"].ToString(),
+                                MontoTotal = Convert.ToDecimal(dr["MontoTotal"].ToString()),
+                                FechaRegistro = dr["FechaRegistro"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                oLista = new List<Compra>();
+                Console.WriteLine (ex.ToString());
+            }
+
+            return oLista;
+        }
+
         public List<Detalle_Compra> ObtenerDetalleCompra(int idCompra)
         {
             List<Detalle_Compra> oLista = new List<Detalle_Compra>();

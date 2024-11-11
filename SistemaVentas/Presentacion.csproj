@@ -302,11 +302,23 @@
     <Compile Include="Compras\frmCompras.Designer.cs">
       <DependentUpon>frmCompras.cs</DependentUpon>
     </Compile>
+    <Compile Include="Compras\frmListaCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compras\frmListaCompras.Designer.cs">
+      <DependentUpon>frmListaCompras.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAcercaDe.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAcercaDe.Designer.cs">
       <DependentUpon>frmAcercaDe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMuestra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMuestra.Designer.cs">
+      <DependentUpon>frmMuestra.cs</DependentUpon>
     </Compile>
     <Compile Include="frmNegocio.cs">
       <SubType>Form</SubType>
@@ -407,6 +419,12 @@
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\OpcionCombo.cs" />
+    <Compile Include="Ventas\frmListaVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmListaVentas.Designer.cs">
+      <DependentUpon>frmListaVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventas\frmVentaDetalle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -443,8 +461,14 @@
     <EmbeddedResource Include="Compras\frmCompras.resx">
       <DependentUpon>frmCompras.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Compras\frmListaCompras.resx">
+      <DependentUpon>frmListaCompras.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAcercaDe.resx">
       <DependentUpon>frmAcercaDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMuestra.resx">
+      <DependentUpon>frmMuestra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNegocio.resx">
       <DependentUpon>frmNegocio.cs</DependentUpon>
@@ -504,6 +528,9 @@
     <EmbeddedResource Include="Usuarios\frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\frmListaVentas.resx">
+      <DependentUpon>frmListaVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventas\frmVentaDetalle.resx">
       <DependentUpon>frmVentaDetalle.cs</DependentUpon>
     </EmbeddedResource>
@@ -537,6 +564,10 @@
     <None Include="Resources\icono-de-trazo-de-casco-de-construccion-by_vexels.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{915FFFAE-915E-4107-A336-64A252959C18}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{8cefa246-b1d2-46fd-9630-a5c4db482c19}</Project>
       <Name>Entidades</Name>

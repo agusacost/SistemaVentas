@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Entidades;
+using Negocio;
 
 namespace SistemaVentas.Reportes
 {
@@ -17,113 +21,210 @@ namespace SistemaVentas.Reportes
         {
             InitializeComponent();
         }
+
         private void ConfigurarGraficoVentas()
         {
-            Dictionary<string, decimal> datosVentas = new Dictionary<string, decimal>()
-    {
-        { "2024-09-25", 50m },
-        { "2024-09-26", 30m },
-        { "2024-09-27", 70m },
-        { "2024-09-28", 100m },
-        { "2024-09-29", 40m }
-    };
-
-            decimal totalventas = 0;
-
+            // Limpiar los puntos de datos existentes y las series previas
             ChartVentas.Series.Clear();
-            Series seriesVentas = new Series("Ventas");
-            seriesVentas.ChartType = SeriesChartType.Column;
+            ChartVentas.Legends.Clear();
 
-            // Configurar estilo de las etiquetas
-            seriesVentas.IsValueShownAsLabel = true;  // Mostrar los valores en las barras
-            seriesVentas.Font = new Font("Arial", 10, FontStyle.Bold);  // Cambiar estilo de fuente
-            seriesVentas.LabelForeColor = Color.Black;  // Cambiar color de las etiquetas
+            // Crear una nueva leyenda para el gráfico
+            Legend legend = new Legend("Ventas");
+            ChartVentas.Legends.Add(legend);
 
-            // Agregar los puntos al gráfico y suma total
-            foreach (var venta in datosVentas)
+            // Crear la serie para el gráfico
+            Series series = new Series("Ventas Totales")
             {
-                seriesVentas.Points.AddXY(venta.Key, venta.Value);
-                totalventas += venta.Value;
+                ChartType = SeriesChartType.Column, // Gráfico de columnas
+                IsValueShownAsLabel = true, // Mostrar valores en las etiquetas
+                XValueType = ChartValueType.String,
+                YValueType = ChartValueType.Double
+            };
+
+            // Obtener los datos desde la capa de negocio
+            List<DateTime> FechasV = new N_Reporte().FechasV(dtFechaDesde.Value, dtFechaHasta.Value);
+            List<double> MontosV = new N_Reporte().MontosV(dtFechaDesde.Value, dtFechaHasta.Value);
+
+            // Validar que ambas listas tengan la misma longitud
+            if (FechasV.Count == MontosV.Count)
+            {
+                for (int i = 0; i < FechasV.Count; i++)
+                {
+                    // Evitar valores nulos o faltantes en los datos
+                    if (FechasV[i] != null && MontosV[i] != null)
+                    {
+                        // Agregar cada punto a la serie
+                        series.Points.AddXY(FechasV[i].ToString("dd/MM/yyyy"), MontosV[i]);
+                    }
+                }
+
+                // Agregar la serie al gráfico
+                ChartVentas.Series.Add(series);
+
+                // Configurar el área del gráfico
+                ChartVentas.ChartAreas[0].AxisX.Title = "Fecha";
+                ChartVentas.ChartAreas[0].AxisY.Title = "Monto Total ($)";
+                ChartVentas.ChartAreas[0].AxisX.Interval = 1; // Mostrar todas las etiquetas del eje X
+                ChartVentas.ChartAreas[0].RecalculateAxesScale();
+
+                // Establecer el formato de los valores en el eje Y
+                ChartVentas.ChartAreas[0].AxisY.LabelStyle.Format = "$0.00";
             }
-            TTotalVentas.Text = $"Total Ventas: {totalventas:C}";
-
-            // Configurar eje X para que se vea más limpio
-            ChartVentas.ChartAreas[0].AxisX.Interval = 1;
-            ChartVentas.ChartAreas[0].AxisX.LabelStyle.Angle = -45;  // Girar etiquetas del eje X
-            ChartVentas.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Arial", 10, FontStyle.Regular);
-
-            ChartVentas.Series.Add(seriesVentas);
+            else
+            {
+                MessageBox.Show("Error: La cantidad de fechas y montos no coincide.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        public void ConfigurarGraficoCompras()
+
+        private void ConfigurarGraficoCompras()
         {
-            Dictionary<string, decimal> datosCompras = new Dictionary<string, decimal>()
-    {
-        { "2024-09-25", 40m },
-        { "2024-09-26", 60m },
-        { "2024-09-27", 20m },
-        { "2024-09-28", 80m },
-        { "2024-09-29", 50m }
-    };
-            decimal totalCompras = 0;
+            // Limpiar los puntos de datos existentes y las series previas
             ChartCompras.Series.Clear();
-            Series seriesCompras = new Series("Compras");
-            seriesCompras.ChartType = SeriesChartType.Column;
+            ChartCompras.Legends.Clear();
 
-            // Configurar estilo de las etiquetas
-            seriesCompras.IsValueShownAsLabel = true;  // Mostrar los valores en las barras
-            seriesCompras.Font = new Font("Arial", 10, FontStyle.Bold);  // Cambiar estilo de fuente
-            seriesCompras.LabelForeColor = Color.Black;  // Cambiar color de las etiquetas
+            // Crear una nueva leyenda para el gráfico
+            Legend legend = new Legend("Compras");
+            ChartCompras.Legends.Add(legend);
 
-            // Agregar los puntos al gráfico
-            foreach (var compra in datosCompras)
+            // Crear la serie para el gráfico
+            Series series = new Series("Compras Totales")
             {
-                seriesCompras.Points.AddXY(compra.Key, compra.Value);
-                totalCompras += compra.Value;
-            }
-            TtotalCompras.Text = $"Total Compras: {totalCompras:C}";
-            // Configurar eje X para que se vea más limpio
-            ChartCompras.ChartAreas[0].AxisX.Interval = 1;
-            ChartCompras.ChartAreas[0].AxisX.LabelStyle.Angle = -45;  // Girar etiquetas del eje X
-            ChartCompras.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Arial", 10, FontStyle.Regular);
+                ChartType = SeriesChartType.Column, // Gráfico de columnas
+                IsValueShownAsLabel = true, // Mostrar valores en las etiquetas
+                XValueType = ChartValueType.String,
+                YValueType = ChartValueType.Double
+            };
 
-            ChartCompras.Series.Add(seriesCompras);
+            // Obtener los datos desde la capa de negocio
+            List<DateTime> FechasC = new N_Reporte().FechasC(dtFechaDesde.Value, dtFechaHasta.Value);
+            List<decimal> MontosC = new N_Reporte().MontosC(dtFechaDesde.Value, dtFechaHasta.Value);
+
+            // Validar que ambas listas tengan la misma longitud
+            if (FechasC.Count == MontosC.Count)
+            {
+                for (int i = 0; i < FechasC.Count; i++)
+                {
+                    // Evitar valores nulos o faltantes en los datos
+                    if (FechasC[i] != null && MontosC[i] != null)
+                    {
+                        // Agregar cada punto a la serie (convertir la fecha a cadena con formato)
+                        series.Points.AddXY(FechasC[i].ToString("dd/MM/yyyy"), MontosC[i]);
+                    }
+                }
+
+                // Agregar la serie al gráfico
+                ChartCompras.Series.Add(series);
+
+                // Configurar el área del gráfico
+                ChartCompras.ChartAreas[0].AxisX.Title = "Fecha";
+                ChartCompras.ChartAreas[0].AxisY.Title = "Monto Total ($)";
+                ChartCompras.ChartAreas[0].AxisX.Interval = 1; // Mostrar todas las etiquetas del eje X
+                ChartCompras.ChartAreas[0].RecalculateAxesScale();
+
+                // Establecer el formato de los valores en el eje Y
+                ChartCompras.ChartAreas[0].AxisY.LabelStyle.Format = "$0.00";
+            }
+            else
+            {
+                MessageBox.Show("Error: La cantidad de fechas y montos no coincide.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void ConfigurarGraficoProductos()
         {
-            Dictionary<string, decimal> datosProductos = new Dictionary<string, decimal>()
-    {
-        { "Producto A", 3m },
-        { "Producto B", 5m },
-        { "Producto C", 7m },
-        { "Producto D", 4m }
-    };
-
-            ChartProductos.Series.Clear();
-            Series seriesProductos = new Series("Productos");
-            seriesProductos.ChartType = SeriesChartType.Pie;
-
-            // Configurar estilo de las etiquetas
-            seriesProductos.IsValueShownAsLabel = true;  // Mostrar los valores en los sectores
-            seriesProductos.LabelForeColor = Color.Black;
-            seriesProductos.Font = new Font("Arial", 6, FontStyle.Bold);  // Cambiar estilo de fuente
-            seriesProductos.Label = "#VALX: #PERCENT{P0}";  // Mostrar el nombre del producto y el porcentaje
-
-            // Agregar los puntos al gráfico
-            foreach (var producto in datosProductos)
+            try
             {
-                seriesProductos.Points.AddXY(producto.Key, producto.Value);
-            }
+                // Obtenemos los productos y montos desde la capa de negocio
+                List<string> productos = new N_Reporte().Productos(dtFechaDesde.Value, dtFechaHasta.Value);
+                List<double> montos = new N_Reporte().MontosP(dtFechaDesde.Value, dtFechaHasta.Value);
 
-            ChartProductos.Series.Add(seriesProductos);
+                // Obtenemos los totales de ventas y compras
+                double totalVentas = new N_Reporte().totalVentas(dtFechaDesde.Value, dtFechaHasta.Value);
+                double totalCompras = new N_Reporte().totalCompras(dtFechaDesde.Value, dtFechaHasta.Value);
+
+                // Actualizamos los textos de ventas y compras
+                txtTotalVentas.Text = $"${totalVentas}";
+                txtTotalCompras.Text = $"${totalCompras}";
+
+                // Validamos que haya datos para el gráfico
+                if (productos.Count > 0 && montos.Count > 0)
+                {
+                    // Limpiamos series anteriores
+                    ChartProductos.Series.Clear();
+
+                    // Creamos una nueva serie para el gráfico de torta
+                    Series serie = new Series("Productos");
+                    serie.ChartType = SeriesChartType.Pie; // Tipo de gráfico (torta)
+                    serie.Points.DataBindXY(productos, montos); // Asignamos datos
+                    serie.IsValueShownAsLabel = true; // Mostrar etiquetas de valores
+                    serie.LabelFormat = "C"; // Formato de moneda para los montos
+                    serie.LabelForeColor = Color.White; // Color del texto
+
+                    ChartProductos.Series.Add(serie); // Añadimos la serie al gráfico
+
+                    // Comprobamos si ya existe una leyenda llamada "Legend1"
+                    if (ChartProductos.Legends.Count == 0)
+                    {
+                        Legend legend = new Legend("Legend1");
+                        legend.Docking = Docking.Bottom;
+                        ChartProductos.Legends.Add(legend);
+                    }
+
+                    ChartProductos.Series[0].Legend = "Legend1"; // Asignamos la leyenda a la serie
+                }
+                else
+                {
+                    // Si no hay datos, limpiamos el gráfico y mostramos un mensaje
+                    ChartProductos.Series.Clear();
+                    MessageBox.Show("No se encontraron ventas en el rango de fechas seleccionado.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error al configurar el gráfico: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void BGenerarReporte_Click(object sender, EventArgs e)
+
+        private void btnGenerar_Click(object sender, EventArgs e)
         {
             ConfigurarGraficoVentas();
             ConfigurarGraficoCompras();
             ConfigurarGraficoProductos();
         }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            ChartVentas.Series.Clear();
+            ChartVentas.Legends.Clear();
+            ChartCompras.Series.Clear();
+            ChartCompras.Legends.Clear();
+            ChartProductos.Series.Clear();  // Limpiar las series
+            ChartProductos.Legends.Clear(); // Limpiar las leyendas
+
+            // Restablecer las fechas de los DateTimePicker a la fecha de hoy
+            dtFechaDesde.Value = DateTime.Now;
+            dtFechaHasta.Value = DateTime.Now;
+
+            // Limpiar los cuadros de texto (si es necesario)
+            txtTotalVentas.Text = "$0.00";
+            txtTotalCompras.Text = "$0.00";
+
+            // Opcional: puedes restablecer los títulos de los ejes si lo deseas
+            ChartVentas.ChartAreas[0].AxisX.Title = "Fecha";
+            ChartVentas.ChartAreas[0].AxisY.Title = "Monto Total ($)";
+            ChartCompras.ChartAreas[0].AxisX.Title = "Fecha";
+            ChartCompras.ChartAreas[0].AxisY.Title = "Monto Total ($)";
+
+            // Si es necesario también puedes restablecer el formato de los ejes
+            ChartVentas.ChartAreas[0].AxisY.LabelStyle.Format = "$0.00";
+            ChartCompras.ChartAreas[0].AxisY.LabelStyle.Format = "$0.00";
+
+            // Opcional: puedes mostrar un mensaje de confirmación
+            MessageBox.Show("El gráfico ha sido limpiado y puedes cargar nuevos datos.", "Limpiar Gráfico", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
+

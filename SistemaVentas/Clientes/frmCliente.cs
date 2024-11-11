@@ -100,7 +100,7 @@ namespace SistemaVentas.Clientes
 
         private void frmCliente_Load(object sender, EventArgs e)
         {
-            
+
             List<Cliente> listCliente = new N_Cliente().Listar();
             foreach(Cliente item in listCliente)
             {

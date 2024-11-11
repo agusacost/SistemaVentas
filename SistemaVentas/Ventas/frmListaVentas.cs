@@ -25,8 +25,17 @@ namespace SistemaVentas.Ventas
 
         private void frmListaVentas_Load(object sender, EventArgs e)
         {
-           
             List<Entidades.Venta> lista = new N_Venta().ListarVentas();
+            if (_Usuario.oRol.idRol == 2)
+            {
+                lista = new N_Venta().ListarVentas()
+                .Where(v => v.oUsuario.IdUsuario == _Usuario.IdUsuario)
+                .ToList();
+            }
+            else
+            {
+                lista = new N_Venta().ListarVentas().ToList();
+            }
 
             foreach(Entidades.Venta venta in lista)
             {

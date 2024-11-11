@@ -247,7 +247,7 @@ namespace Data
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("select TipoDocumento, Documento, DocumentoCliente, NombreCliente ,MontoPago, MontoCambio,");
+                    query.AppendLine("select TipoDocumento, Documento,IdUsuario ,DocumentoCliente, NombreCliente ,MontoPago, MontoCambio,");
                     query.AppendLine("MontoTotal, CAST(FechaRegistro as DATE) as FechaRegistro");
                     query.AppendLine("from VENTA");
                     oconexion.Open();
@@ -262,6 +262,7 @@ namespace Data
                             {
                                 TipoDocumento = reader["TipoDocumento"].ToString(),
                                 NumeroDocumento = reader["Documento"].ToString(),
+                                oUsuario = new Usuario { IdUsuario = Convert.ToInt32(reader["IdUsuario"]) },
                                 DocumentoCliente = reader["DocumentoCliente"].ToString(),
                                 NombreCliente = reader["NombreCliente"].ToString(),
                                 MontoPago = Convert.ToDecimal(reader["MontoPago"].ToString()),

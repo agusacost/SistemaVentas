@@ -126,9 +126,9 @@ namespace SistemaVentas.Producto
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (selectedCat == null)
+            if (selectedCat == null || selectedCat.Estado == false)
             {
-                MessageBox.Show("Por favor, selecciona una categoria para Editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, selecciona una categoria correcta para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -149,6 +149,15 @@ namespace SistemaVentas.Producto
                 {
                     MessageBox.Show("Error al cambiar el estado de la categoria. Por favor, intente nuevamente.");
                 }
+            }
+            dgvdata.Rows.Clear();
+            List<Categoria> listaCat = new N_Categoria().Listar();
+            foreach (Categoria item in listaCat)
+            {
+                dgvdata.Rows.Add(new object[] {"",item.IdCategoria,item.Descripcion,
+                item.Estado == true ? 1:0,
+                item.Estado == true ? "Activo" : "Inactivo",
+            });
             }
         }
 

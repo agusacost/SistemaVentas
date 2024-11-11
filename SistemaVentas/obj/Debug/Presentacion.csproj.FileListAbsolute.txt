@@ -117,3 +117,5 @@ C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Deb
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Ventas.frmListaVentas.resources
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.Compras.frmListaCompras.resources
 C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\obj\Debug\SistemaVentas.frmMuestra.resources
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\bin\Debug\System.ValueTuple.dll
+C:\Users\juana\OneDrive\Documentos\proyectos\SistemaVentas\SistemaVentas\bin\Debug\System.ValueTuple.xml

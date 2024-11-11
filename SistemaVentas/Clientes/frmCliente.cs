@@ -27,7 +27,7 @@ namespace SistemaVentas.Clientes
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (selectedCliente == null)
+            if (selectedCliente == null || selectedCliente.Estado == false)
             {
                 MessageBox.Show("Por favor, selecciona un cliente para continuar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -51,6 +51,22 @@ namespace SistemaVentas.Clientes
                 {
                     MessageBox.Show("Error al cambiar el estado del cliente. Por favor, intente nuevamente.");
                 }
+            }
+            dgvdata.Rows.Clear();
+            List<Cliente> listCliente = new N_Cliente().Listar();
+            foreach (Cliente item in listCliente)
+            {
+                dgvdata.Rows.Add(new object[]
+                {
+                    "",
+                    item.IdCliente,
+                    item.Documento,
+                    item.NombreCompleto,
+                    item.Correo,
+                    item.Telefono,
+                    item.Estado == true ? 1 : 0,
+                    item.Estado == true ? "Activo" : "Inactivo",
+                });
             }
         }
 
@@ -80,6 +96,12 @@ namespace SistemaVentas.Clientes
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if(selectedCliente == null)
+            {
+                MessageBox.Show("Por favor, selecciona un cliente para Editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (frmAddCliente != null && !frmAddCliente.IsDisposed)
             {
                 MessageBox.Show("No se puede abrir 'Editar Cliente' mientras 'Agregar Cliente' está abierto.");
@@ -219,6 +241,62 @@ namespace SistemaVentas.Clientes
                     cliente.Estado ? 1 : 0,
                     cliente.Estado ? "Activo" : "Inactivo"
                 );
+            }
+        }
+
+        private void btnDescargar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Crear el cuadro de diálogo para guardar el archivo Excel
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    // Configurar el filtro para archivos Excel
+                    saveFileDialog.Filter = "Excel Files|*.xlsx";
+                    saveFileDialog.Title = "Guardar archivo Excel";
+                    saveFileDialog.FileName = "Clientes.xlsx"; // Nombre sugerido para el archivo Excel
+
+                    // Si el usuario selecciona una ubicación y hace clic en Guardar
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Crear un libro de Excel usando ClosedXML
+                        using (var workbook = new ClosedXML.Excel.XLWorkbook())
+                        {
+                            // Crear una hoja de cálculo llamada "Clientes"
+                            var worksheet = workbook.Worksheets.Add("Clientes");
+
+                            // Agregar el encabezado de las columnas (basado en las columnas de tu DataGridView)
+                            for (int i = 0; i < dgvdata.Columns.Count; i++)
+                            {
+                                worksheet.Cell(1, i + 1).Value = dgvdata.Columns[i].HeaderText;
+                            }
+
+                            // Agregar los datos de las filas del DataGridView al archivo Excel
+                            for (int i = 0; i < dgvdata.Rows.Count; i++)
+                            {
+                                for (int j = 0; j < dgvdata.Columns.Count; j++)
+                                {
+                                    worksheet.Cell(i + 2, j + 1).Value = dgvdata.Rows[i].Cells[j].Value?.ToString() ?? string.Empty;
+                                }
+                            }
+
+                            // Guardar el archivo Excel en la ubicación seleccionada por el usuario
+                            try
+                            {
+                                workbook.SaveAs(saveFileDialog.FileName);
+                                MessageBox.Show("Archivo Excel descargado con éxito en " + saveFileDialog.FileName);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error al guardar el archivo: " + ex.Message);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -164,9 +164,9 @@ namespace SistemaVentas.Usuarios
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if(selectedUser == null)
+            if(selectedUser == null || selectedUser.Estado == false)
             {
-                MessageBox.Show("Por favor, selecciona un usuario para Editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, selecciona un usuario valido para dar de baja.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             

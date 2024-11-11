@@ -307,9 +307,9 @@ namespace SistemaVentas.Producto
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (selectedProduct == null)
+            if (selectedProduct == null || selectedProduct.Estado == false)
             {
-                MessageBox.Show("Por favor, selecciona un Producto para continuar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, selecciona un Producto valido para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -331,6 +331,29 @@ namespace SistemaVentas.Producto
                 {
                     MessageBox.Show("Error al cambiar el estado del producto. Por favor, intente nuevamente.");
                 }
+            }
+            dgvdata.Rows.Clear();
+            List<Entidades.Producto> listaProd = new N_Producto().listar();
+
+            foreach (Entidades.Producto item in listaProd)
+            {
+                dgvdata.Rows.Add(new object[]
+                {
+                    "",
+                    item.IdProducto,
+                    item.Codigo,
+                    item.Nombre,
+                    item.Descripcion,
+                    item.oCategoria.IdCategoria,
+                    item.oCategoria.Descripcion,
+                    item.Stock.HasValue ? item.Stock.Value.ToString() : "N/A",
+                    item.PrecioCompra.HasValue ? item.PrecioCompra.Value.ToString() : "N/A",
+                    item.PrecioVenta.HasValue ? item.PrecioVenta.Value.ToString("C") : "N/A",
+                    item.oProveedor != null ? item.oProveedor.IdProveedor : 0,
+                    item.oProveedor != null ? item.oProveedor.Documento : "Sin Proveedor",
+                    item.Estado == true ? 1:0,
+                    item.Estado == true ? "Activo" : "Inactivo",
+                });
             }
         }
     }

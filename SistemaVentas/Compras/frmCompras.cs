@@ -108,15 +108,15 @@ namespace SistemaVentas.Compras
 
         private void BLimpiarCompra_Click(object sender, EventArgs e)
         {
-            
+            txtCuit.Clear();
             txtRazonSocial.Clear();
             txtProducto.Clear();
             txtCodigoProducto.Clear();
             txtPrecioCompra.Clear();
             txtTotalPagar.Clear();
 
-            CBFactura.SelectedIndex = -1; 
-            txtCantidad.Value= 0;
+            CBFactura.SelectedIndex = 1; 
+            txtCantidad.Value= 1;
 
             datepicker.Value = DateTime.Now; 
         }

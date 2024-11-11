@@ -30,9 +30,9 @@ namespace SistemaVentas.Clientes
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (selectedProveedor == null)
+            if (selectedProveedor == null || selectedProveedor.Estado == false)
             {
-                MessageBox.Show("Por favor, selecciona un proveedor para continuar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, selecciona un proveedor valido para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -47,13 +47,29 @@ namespace SistemaVentas.Clientes
                     selectedProveedor.Estado = nuevoEstado;
                     dgvdata.Rows[selectedRowIndex].Cells["Estado"].Value = "Inactivo";
 
-                    MessageBox.Show("Cliente dado de baja");
+                    MessageBox.Show("Proveedor dado de baja");
 
                 }
                 else
                 {
-                    MessageBox.Show("Error al cambiar el estado del cliente. Por favor, intente nuevamente.");
+                    MessageBox.Show("Error al cambiar el estado del proveedor. Por favor, intente nuevamente.");
                 }
+            }
+            dgvdata.Rows.Clear();
+            List<Proveedor> listProv = new N_Proveedor().Listar();
+            foreach (Proveedor item in listProv)
+            {
+                dgvdata.Rows.Add(new object[]
+                {
+                    "",
+                    item.IdProveedor,
+                    item.Documento,
+                    item.RazonSocial,
+                    item.Correo,
+                    item.Telefono,
+                    item.Estado == true ? 1 : 0,
+                    item.Estado == true ? "Activo" : "Inactivo",
+                });
             }
         }
 
@@ -79,6 +95,11 @@ namespace SistemaVentas.Clientes
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if(selectedProveedor == null)
+            {
+                MessageBox.Show("Por favor, selecciona un proveedor para Editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (frmAddProveedor != null && !frmAddProveedor.IsDisposed)
             {
                 MessageBox.Show("No se puede abrir 'Editar Proveedor' mientras 'Agregar Proveedor' está abierto.");
@@ -215,6 +236,64 @@ namespace SistemaVentas.Clientes
                     item.Estado == true ? 1 : 0,
                     item.Estado == true ? "Activo" : "Inactivo"
                 );
+            }
+        }
+
+        private void btnDescargar_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                // Configurar las propiedades del SaveFileDialog
+                saveFileDialog.Filter = "Excel Files|*.xlsx"; // Solo mostrar archivos .xlsx
+                saveFileDialog.Title = "Guardar archivo Excel";
+                saveFileDialog.FileName = "Proveedores.xlsx"; // Nombre sugerido por defecto
+
+                // Si el usuario selecciona una ubicación y da clic en Guardar
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Crear el archivo Excel
+                    using (var workbook = new ClosedXML.Excel.XLWorkbook())
+                    {
+                        // Crear una hoja de cálculo
+                        var worksheet = workbook.Worksheets.Add("Proveedores");
+
+                        // Agregar el encabezado de las columnas (según los datos que quieres exportar)
+                        worksheet.Cell(1, 1).Value = "IdProveedor";
+                        worksheet.Cell(1, 2).Value = "Documento";
+                        worksheet.Cell(1, 3).Value = "RazonSocial";
+                        worksheet.Cell(1, 4).Value = "Correo";
+                        worksheet.Cell(1, 5).Value = "Telefono";
+                        worksheet.Cell(1, 6).Value = "Estado (Numérico)";
+                        worksheet.Cell(1, 7).Value = "Estado (Texto)";
+
+                        // Agregar los datos de los proveedores desde la lista
+                        List<Proveedor> listProv = new N_Proveedor().Listar();
+                        int row = 2; // Comenzamos en la fila 2 (la fila 1 es el encabezado)
+                        foreach (Proveedor item in listProv)
+                        {
+                            worksheet.Cell(row, 1).Value = item.IdProveedor;
+                            worksheet.Cell(row, 2).Value = item.Documento;
+                            worksheet.Cell(row, 3).Value = item.RazonSocial;
+                            worksheet.Cell(row, 4).Value = item.Correo;
+                            worksheet.Cell(row, 5).Value = item.Telefono;
+                            worksheet.Cell(row, 6).Value = item.Estado == true ? 1 : 0;
+                            worksheet.Cell(row, 7).Value = item.Estado == true ? "Activo" : "Inactivo";
+
+                            row++; // Pasar a la siguiente fila
+                        }
+
+                        // Guardar el archivo Excel en la ubicación seleccionada por el usuario
+                        try
+                        {
+                            workbook.SaveAs(saveFileDialog.FileName);
+                            MessageBox.Show("Archivo Excel descargado con éxito en " + saveFileDialog.FileName);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error al guardar el archivo: " + ex.Message);
+                        }
+                    }
+                }
             }
         }
     }

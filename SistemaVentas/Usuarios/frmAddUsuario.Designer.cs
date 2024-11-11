@@ -253,6 +253,7 @@
             this.txtId.Size = new System.Drawing.Size(30, 20);
             this.txtId.TabIndex = 20;
             this.txtId.Text = "0";
+            this.txtId.Visible = false;
             // 
             // txtCiud
             // 

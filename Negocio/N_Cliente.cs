@@ -22,19 +22,19 @@ namespace Negocio
             Mensaje = string.Empty;
             if (oCliente.Documento == "")
             {
-                Mensaje += "Es necesario el documento del cliente";
+                Mensaje += "Es necesario el documento del cliente\n";
             }
             if (oCliente.NombreCompleto == "")
             {
-                Mensaje += "Es necesario el nombre del cliente";
+                Mensaje += "Es necesario el nombre del cliente\n";
             }
             if (oCliente.Correo == "")
             {
-                Mensaje += "Es necesario el correo del cliente";
+                Mensaje += "Es necesario el correo del cliente\n";
             }
             if (oCliente.Telefono == "")
             {
-                Mensaje += "Es necesario el telefono del cliente";
+                Mensaje += "Es necesario el telefono del cliente\n";
             }
             if (Mensaje != string.Empty)
             {
@@ -51,19 +51,19 @@ namespace Negocio
             Mensaje = string.Empty;
             if (oCliente.Documento == "")
             {
-                Mensaje += "Es necesario el documento del cliente";
+                Mensaje += "Es necesario el documento del cliente\n";
             }
             if (oCliente.NombreCompleto == "")
             {
-                Mensaje += "Es necesario el nombre del cliente";
+                Mensaje += "Es necesario el nombre del cliente\n";
             }
             if (oCliente.Correo == "")
             {
-                Mensaje += "Es necesario el correo del cliente";
+                Mensaje += "Es necesario el correo del cliente\n";
             }
             if (oCliente.Telefono == "")
             {
-                Mensaje += "Es necesario el telefono del cliente";
+                Mensaje += "Es necesario el telefono del cliente\n";
             }
             if (Mensaje != string.Empty)
             {

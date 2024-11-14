@@ -104,25 +104,24 @@ namespace SistemaVentas.Modals
                 dgvdata.Rows.Clear();
                 List<Entidades.Producto> listaProd = new N_Producto().listar();
 
-                var filteredProd = listaProd
-                .Where(p =>
-                    (catSelected == 0 || (p.oCategoria != null && p.oCategoria.IdCategoria == catSelected)) && // Filtrar por categoría si no es "Todos"
-                    (string.IsNullOrEmpty(searchText) || // Si no hay texto de búsqueda, no filtrar por texto
-                     (p.Codigo != null && p.Codigo.ToLower().Contains(searchText)) ||
-                     (p.Nombre != null && p.Nombre.ToLower().Contains(searchText)) ||
-                     (p.Descripcion != null && p.Descripcion.ToLower().Contains(searchText)) ||
-                     (p.oCategoria != null && p.oCategoria.Descripcion.ToLower().Contains(searchText)) ||
-                     (p.oProveedor != null && p.oProveedor.Documento != null && p.oProveedor.Documento.ToLower().Contains(searchText)) ||
-                     (int.TryParse(searchText, out int stockValue) && p.Stock.HasValue && p.Stock.Value == stockValue)
-                    )
-                ).ToList();
-
-
-
-                foreach (Entidades.Producto item in filteredProd)
+                if (esVenta)
                 {
-                    dgvdata.Rows.Add(new object[]
+                    var filteredProd = listaProd
+                    .Where(p =>
+                        (catSelected == 0 || (p.oCategoria != null && p.oCategoria.IdCategoria == catSelected)) && // Filtrar por categoría si no es "Todos"
+                        (string.IsNullOrEmpty(searchText) || // Si no hay texto de búsqueda, no filtrar por texto
+                         (p.Codigo != null && p.Codigo.ToLower().Contains(searchText)) ||
+                         (p.Nombre != null && p.Nombre.ToLower().Contains(searchText)) ||
+                         (p.Descripcion != null && p.Descripcion.ToLower().Contains(searchText)) ||
+                         (p.oCategoria != null && p.oCategoria.Descripcion.ToLower().Contains(searchText)) ||
+                         (p.oProveedor != null && p.oProveedor.Documento != null && p.oProveedor.Documento.ToLower().Contains(searchText)) ||
+                         (int.TryParse(searchText, out int stockValue) && p.Stock.HasValue && p.Stock.Value == stockValue)
+                        ) && (p.PrecioVenta != 0)
+                    ).ToList();
+                    foreach (Entidades.Producto item in filteredProd)
                     {
+                        dgvdata.Rows.Add(new object[]
+                        {
                         item.IdProducto,
                         item.Codigo,
                         item.Nombre,
@@ -131,8 +130,39 @@ namespace SistemaVentas.Modals
                         item.Stock.HasValue ? item.Stock.Value.ToString() : "N/A",
                         item.PrecioCompra.HasValue ? item.PrecioCompra.Value.ToString() : "N/A",
                         item.PrecioVenta.HasValue ? item.PrecioVenta.Value.ToString("C") : "N/A",
-                    });
+                        });
+                    }
                 }
+                else
+                {
+                    var filteredProd = listaProd
+                    .Where(p =>
+                        (catSelected == 0 || (p.oCategoria != null && p.oCategoria.IdCategoria == catSelected)) && // Filtrar por categoría si no es "Todos"
+                        (string.IsNullOrEmpty(searchText) || // Si no hay texto de búsqueda, no filtrar por texto
+                         (p.Codigo != null && p.Codigo.ToLower().Contains(searchText)) ||
+                         (p.Nombre != null && p.Nombre.ToLower().Contains(searchText)) ||
+                         (p.Descripcion != null && p.Descripcion.ToLower().Contains(searchText)) ||
+                         (p.oCategoria != null && p.oCategoria.Descripcion.ToLower().Contains(searchText)) ||
+                         (p.oProveedor != null && p.oProveedor.Documento != null && p.oProveedor.Documento.ToLower().Contains(searchText)) ||
+                         (int.TryParse(searchText, out int stockValue) && p.Stock.HasValue && p.Stock.Value == stockValue)
+                        ) 
+                    ).ToList();
+                    foreach (Entidades.Producto item in filteredProd)
+                    {
+                        dgvdata.Rows.Add(new object[]
+                        {
+                        item.IdProducto,
+                        item.Codigo,
+                        item.Nombre,
+                        item.oCategoria.IdCategoria,
+                        item.oCategoria.Descripcion,
+                        item.Stock.HasValue ? item.Stock.Value.ToString() : "N/A",
+                        item.PrecioCompra.HasValue ? item.PrecioCompra.Value.ToString() : "N/A",
+                        item.PrecioVenta.HasValue ? item.PrecioVenta.Value.ToString("C") : "N/A",
+                        });
+                    }
+                }
+
             }
         }
 

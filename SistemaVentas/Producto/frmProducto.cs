@@ -98,6 +98,12 @@ namespace SistemaVentas.Producto
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if(selectedProduct ==  null)
+            {
+                MessageBox.Show("Seleccione un producto para editar");
+                return;
+            }
+
             if (frmAddProducto != null && !frmAddProducto.IsDisposed)
             {
                 MessageBox.Show("No se puede abrir 'Editar Producto' mientras 'Agregar Producto' está abierto.");

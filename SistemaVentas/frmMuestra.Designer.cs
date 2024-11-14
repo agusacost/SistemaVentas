@@ -33,8 +33,8 @@
             this.lblusuario = new System.Windows.Forms.Label();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lbldia = new System.Windows.Forms.Label();
             this.lbldiafecha = new System.Windows.Forms.Label();
+            this.lbldia = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -90,21 +90,11 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.picLogo);
             this.groupBox1.Controls.Add(this.lblusuario);
-            this.groupBox1.Location = new System.Drawing.Point(205, 42);
+            this.groupBox1.Location = new System.Drawing.Point(278, 87);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(366, 363);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            // 
-            // lbldia
-            // 
-            this.lbldia.AutoSize = true;
-            this.lbldia.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldia.Location = new System.Drawing.Point(6, 343);
-            this.lbldia.Name = "lbldia";
-            this.lbldia.Size = new System.Drawing.Size(30, 17);
-            this.lbldia.TabIndex = 4;
-            this.lbldia.Text = "Dia:";
             // 
             // lbldiafecha
             // 
@@ -115,6 +105,16 @@
             this.lbldiafecha.Size = new System.Drawing.Size(30, 17);
             this.lbldiafecha.TabIndex = 5;
             this.lbldiafecha.Text = "Dia:";
+            // 
+            // lbldia
+            // 
+            this.lbldia.AutoSize = true;
+            this.lbldia.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldia.Location = new System.Drawing.Point(6, 343);
+            this.lbldia.Name = "lbldia";
+            this.lbldia.Size = new System.Drawing.Size(30, 17);
+            this.lbldia.TabIndex = 4;
+            this.lbldia.Text = "Dia:";
             // 
             // frmMuestra
             // 
